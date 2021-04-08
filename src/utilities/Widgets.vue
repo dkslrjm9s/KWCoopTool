@@ -1,427 +1,549 @@
 <template>
-    <div class="layout-widgets">
-        <h4>Reusable CSS widgets for your applications.</h4>
+<h4>Reusable CSS widgets for your applications.</h4>
 
-        <div class="p-grid">
-            <div class="p-col-12">
-                <div class="card">
-                    <h4>Overview Boxes</h4>
-                    <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-xl-3">
-                            <div class="card no-gutter widget-overview-box widget-overview-box-1">
-                                <span class="overview-icon">
-                                    <i class="pi pi-shopping-cart"></i>
-                                </span>
-                                <span class="overview-title">Orders</span>
-                                <div class="p-grid overview-detail">
-                                    <div class="p-col-6">
-                                        <div class="overview-number">640</div>
-                                        <div class="overview-subtext">Pending</div>
+<div class="layout-widgets">
+    <div class="p-grid">
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="card overview-box white">
+                <div class="overview-info">
+                    <h6>Graphics</h6>
+                    <h1>18%</h1>
+                </div>
+                <i class="pi pi-image"></i>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="card overview-box blue">
+                <div class="overview-info">
+                    <h6>New users (Today)</h6>
+                    <h1>32</h1>
+                </div>
+                <i class="pi pi-users"></i>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="card overview-box gray">
+                <div class="overview-info">
+                    <h6>Uptime</h6>
+                    <h1>5h12m</h1>
+                </div>
+                <i class="pi pi-globe"></i>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-6 p-lg-3">
+            <div class="card overview-box darkgray">
+                <div class="overview-info">
+                    <h6>Cloud users</h6>
+                    <h1>4216</h1>
+                </div>
+                <i class="pi pi-cloud"></i>
+            </div>
+        </div>
+        <div class="p-col-12 p-lg-6">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <div class="card statistics">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h6>Statistics</h6>
+                                <p class="subtitle">Europe 1</p>
+                            </div>
+                            <p class="subtitle">8 May</p>
+                        </div>
+                        <div class="p-grid">
+                            <div class="p-col-12 p-md-6">
+                                <div class="statistic-item">
+                                    <div class="item-title">
+                                        <span>🐳</span>
+                                        <h5>99,99%</h5>
                                     </div>
-                                    <div class="p-col-6">
-                                        <div class="overview-number">1420</div>
-                                        <div class="overview-subtext">Completed</div>
+                                    <h6>Uptime/year</h6>
+                                </div>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <div class="statistic-item">
+                                    <div class="item-title">
+                                        <span>🖥 </span>
+                                        <h5>2K</h5>
                                     </div>
+                                    <h6>Connected devices</h6>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-xl-3">
-                            <div class="card no-gutter widget-overview-box widget-overview-box-2">
-                                <span class="overview-icon">
-                                    <i class="pi pi-dollar"></i>
-                                </span>
-                                <span class="overview-title">Revenue</span>
-                                <div class="p-grid overview-detail">
-                                    <div class="p-col-6">
-                                        <div class="overview-number">$2,100</div>
-                                        <div class="overview-subtext">Expenses</div>
+                            <div class="p-col-12 p-md-6">
+                                <div class="statistic-item">
+                                    <div class="item-title">
+                                        <span>🎁 </span>
+                                        <h5>244</h5>
                                     </div>
-                                    <div class="p-col-6">
-                                        <div class="overview-number">$9,640</div>
-                                        <div class="overview-subtext">Income</div>
+                                    <h6>Thanks messages received</h6>
+                                </div>
+                            </div>
+                            <div class="p-col-12 p-md-6">
+                                <div class="statistic-item">
+                                    <div class="item-title">
+                                        <span>💵 </span>
+                                        <h5>4812$</h5>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-xl-3">
-                            <div class="card no-gutter widget-overview-box widget-overview-box-3">
-                                <span class="overview-icon">
-                                    <i class="pi pi-users"></i>
-                                </span>
-                                <span class="overview-title">Customers</span>
-                                <div class="p-grid overview-detail">
-                                    <div class="p-col-6">
-                                        <div class="overview-number">8272</div>
-                                        <div class="overview-subtext">Active</div>
-                                    </div>
-                                    <div class="p-col-6">
-                                        <div class="overview-number">25402</div>
-                                        <div class="overview-subtext">Registered</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-xl-3">
-                            <div class="card no-gutter widget-overview-box widget-overview-box-4">
-                                <span class="overview-icon">
-                                    <i class="pi pi-comment"></i>
-                                </span>
-                                <span class="overview-title">Comments</span>
-                                <div class="p-grid overview-detail">
-                                    <div class="p-col-6">
-                                        <div class="overview-number">12</div>
-                                        <div class="overview-subtext">New</div>
-                                    </div>
-                                    <div class="p-col-6">
-                                        <div class="overview-number">85</div>
-                                        <div class="overview-subtext">Responded</div>
-                                    </div>
+                                    <h6>Earnings/month</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card widget-tasks">
-                    <h4>Task Status</h4>
-                    <div>
-                        <div class="task task-1">
-                            <div class="task-name"><span>12 Orders</span> to fulfill</div>
-                            <div class="task-progress">
-                                <div></div>
+                <div class="p-col-12">
+                    <div class="card team">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h6>Team</h6>
+                                <p class="subtitle">22 People</p>
                             </div>
                         </div>
-                        <div class="task task-2">
-                            <div class="task-name"><span>40+ Payments</span> to withdraw</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-3">
-                            <div class="task-name"><span>4 Reports</span> to revise</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-4">
-                            <div class="task-name"><span>6 Questions</span> to respond</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-5">
-                            <div class="task-name"><span>2 Chargebacks</span> to review</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
+                        <div class="peoples">
+                            <img src="assets/demo/images/dashboard/avatar/avatar-1.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-2.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-3.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-4.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-5.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-6.png" alt="freya-layout" />
+                            <div class="no-picture" style="background: #BAE6FF;"><span>AT</span></div>
+                            <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                            <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                            <div class="no-picture "><span>+18</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card">
-                    <h4>Image List</h4>
-
-                    <ul class="widget-image-list">
-                        <li>
-                            <span>Product</span>
-                            <span>Sales</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/bamboo-watch.jpg" alt="diamond-layout" />
-                                <span>Bamboo Watch</span>
-                            </span>
-                            <span class="listitem-value">82</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/blue-band.jpg" alt="diamond-layout" />
-                                <span>Blue Band</span>
-                            </span>
-                            <span class="listitem-value">75</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/game-controller.jpg" alt="diamond-layout" />
-                                <span>Game Controller</span>
-                            </span>
-                            <span class="listitem-value">64</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/lime-band.jpg" alt="diamond-layout" />
-                                <span>Lime Band</span>
-                            </span>
-                            <span class="listitem-value">62</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="widget-pricing-card">
-                    <h4>PRICING</h4>
-                    <span>Starting from</span>
-                    <h3>$19</h3>
-                    <ul>
-                        <li>Responsive Layout</li>
-                        <li>Unlimited Push Messages</li>
-                        <li>50 Support Tickets</li>
-                        <li>Free Shipping</li>
-                        <li>10GB Storage</li>
-                    </ul>
-                    <a href="#">BUY NOW</a>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-3">
-                <div class="card">
-                    <h4>Timeline</h4>
-                    <div class="widget-timeline">
-                        <div class="timeline-event">
-                            <span class="timeline-event-icon" style="background-color: #64b5f6">
-                                <i class="pi pi-dollar"></i>
-                            </span>
-                            <div class="timeline-event-title">New Sale</div>
-                            <div class="timeline-event-detail">
-                                Richard Jones has purchased a blue t-shirt for
-                                <strong>$79</strong>.
-                            </div>
-                        </div>
-                        <div class="timeline-event">
-                            <span class="timeline-event-icon" style="background-color: #7986cb">
-                                <i class="timeline-icon pi pi-download"></i>
-                            </span>
-                            <div class="timeline-event-title">Withdrawal Initiated</div>
-                            <div class="timeline-event-detail">
-                                Your request for withdrawal of
-                                <strong>$2500</strong> has been initiated.
-                            </div>
-                        </div>
-                        <div class="timeline-event">
-                            <span class="timeline-event-icon" style="background-color: #4db6ac">
-                                <i class="timeline-icon pi pi-question"></i>
-                            </span>
-                            <div class="timeline-event-title">Question Received</div>
-                            <div class="timeline-event-detail">
-                                Jane Davis has posted a
-                                <strong>new question</strong> about your product.
-                            </div>
-                        </div>
-                        <div class="timeline-event">
-                            <span class="timeline-event-icon" style="background-color: #4dd0e1">
-                                <i class="timeline-icon pi pi-comment"></i>
-                            </span>
-                            <div class="timeline-event-title">Comment Received</div>
-                            <div class="timeline-event-detail">
-                                Claire Smith has upvoted your store along with a
-                                <strong>comment</strong>.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-9">
-                <div class="card">
-                    <h4>Chat</h4>
-                    <div class="widget-chat">
-                        <ul>
-                            <li class="message-from">
-                                <img src="assets/demo/images/avatar/ionibowcher.png" alt="diamond-layout" />
-                                <div>Retro occupy organic, stumptown shabby chic pour-over roof party DIY normcore.</div>
-                            </li>
-                            <li class="message-own">
-                                <img src="assets/demo/images/avatar/onyamalimba.png" alt="diamond-layout" />
-                                <div>Actually artisan organic occupy, Wes Anderson ugh whatever pour-over gastropub selvage.</div>
-                            </li>
-                            <li class="message-from">
-                                <img src="assets/demo/images/avatar/ionibowcher.png" alt="diamond-layout" />
-                                <div>Chillwave craft beer tote bag stumptown quinoa hashtag.</div>
-                            </li>
-                            <li class="message-own">
-                                <img src="assets/demo/images/avatar/onyamalimba.png" alt="diamond-layout" />
-                                <div>Dreamcatcher locavore iPhone chillwave, occupy trust fund slow-carb distillery art party narwhal.</div>
-                            </li>
-                        </ul>
-                        <div class="new-message">
-                            <div class="message-attachment">
-                                <i class="pi pi-paperclip"></i>
-                            </div>
-                            <div class="message-input">
-                                <input type="text" placeholder="Write a message" class="p-inputtext" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card">
-                    <h4>Person List</h4>
-                    <ul class="widget-person-list">
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Amy Elsner</div>
-                                    <div class="person-subtext">Accounting</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button type="button" class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button type="button" class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/annafali.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Anna Fali</div>
-                                    <div class="person-subtext">Procurement</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/bernardodominic.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Bernardo Dominic</div>
-                                    <div class="person-subtext">Finance</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/ivanmagalhaes.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Ivan Magalhaes</div>
-                                    <div class="person-subtext">Sales</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/xuxuefeng.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Xuxue Feng</div>
-                                    <div class="person-subtext">Management</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card widget-user-card">
-                    <div class="user-card-header">
-                        <img src="assets/demo/images/avatar/profile.jpg" class="user-card-avatar" alt="diamond-layout" />
-                    </div>
-                    <div class="user-card-body">
-                        <div class="user-card-title">AMELIA STONE</div>
-                        <div class="user-card-subtext">Sales Team</div>
-
-                        <div class="p-grid user-card-stats">
-                            <div class="p-col-4">
-                                <i class="pi pi-users"></i>
-                                <div>14 Clients</div>
-                            </div>
-                            <div class="p-col-4">
-                                <i class="pi pi-bookmark"></i>
-                                <div>2 Leads</div>
-                            </div>
-                            <div class="p-col-4">
-                                <i class="pi pi-check-square"></i>
-                                <div>6 Tasks</div>
-                            </div>
-                        </div>
-
-                        <Button label="Assign" style="width: 100%"></Button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card p-fluid">
-                    <h4>Contact Form</h4>
-                    <div class="p-field">
-                        <label for="firstname">First Name</label>
-                        <InputText id="firstname" />
-                    </div>
-                    <div class="p-field">
-                        <label for="lastname">Last Name</label>
-                        <InputText id="lastname" />
-                    </div>
-                    <div class="p-field">
-                        <label for="email">Email</label>
-                        <InputText id="email" />
-                    </div>
-                    <div class="p-field">
-                        <label for="message">Message</label>
-                        <Textarea id="message"></Textarea>
-                    </div>
-                    <Button label="Send"></Button>
-                </div>
-            </div>
-
-            <div class="p-col-12">
-                <div class="card">
-                    <h4>Feature Box</h4>
-                    <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-lg-3">
-                            <div class="card widget-feature-box">
-                                <img src="assets/layout/images/pages/landing/icon-devices.svg" alt="diamond-layout" />
-                                <h2>Responsive</h2>
-                                <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
-                            </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-lg-3">
-                            <div class="card widget-feature-box">
-                                <img src="assets/layout/images/pages/landing/icon-design.svg" alt="diamond-layout" />
-                                <h2>Modern Design</h2>
-                                <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
-                            </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-lg-3">
-                            <div class="card widget-feature-box">
-                                <img src="assets/layout/images/pages/landing/icon-document.svg" alt="diamond-layout" />
-                                <h2>Well Documented</h2>
-                                <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
-                            </div>
-                        </div>
-                        <div class="p-col-12 p-md-6 p-lg-3">
-                            <div class="card widget-feature-box">
-                                <img src="assets/layout/images/pages/landing/icon-diamond.svg" alt="diamond-layout" />
-                                <h2>Premium Support</h2>
-                                <span>Nam non ligula sed urna malesuada lacinia. Aliquam sed viverra ipsum.</span>
-                            </div>
-                        </div>
+                <div class="p-col-12">
+                    <div class="notification">
+                        <h6>👋  Hello! Welcome to Hit! Before start please complete your profile to know you better. <a href="#">Profile settings <i class="pi pi-arrow-up"></i></a></h6>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="p-col-12 p-lg-6">
+            <div class="card stocks">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h6>👓 Stock watchlist (12)</h6>
+                        <p class="subtitle">Today</p>
+                    </div>
+                    <Button type="button" icon="pi pi-plus" class="p-button-secondary p-button-text p-button-rounded"></Button>
+                </div>
+                <ul>
+                    <li class="down">
+                        <div class="stock-name">
+                            <h6>AMD</h6>
+                        </div>
+                        <img src="assets/demo/images/dashboard/mini-graph-1.svg" alt="freya-layout" />
+                        <div class="stock-price">
+                            <i class="pi pi-arrow-down"></i>
+                            <h6>54.20</h6>
+                        </div>
+                        <div class="stock-status">
+                            <span>0.57%</span>
+                            <span>4.01</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stock-name">
+                            <h6>MSFT</h6>
+                        </div>
+                        <img src="assets/demo/images/dashboard/mini-graph-2.svg" alt="freya-layout" />
+                        <div class="stock-price">
+                            <i class="pi pi-arrow-down"></i>
+                            <h6>183.16</h6>
+                        </div>
+                        <div class="stock-status">
+                            <span>1.46%</span>
+                            <span>4.01</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stock-name">
+                            <h6>AAPL</h6>
+                        </div>
+                        <img src="assets/demo/images/dashboard/mini-graph-3.svg" alt="freya-layout" />
+                        <div class="stock-price">
+                            <i class="pi pi-arrow-down"></i>
+                            <h6>307.20</h6>
+                        </div>
+                        <div class="stock-status">
+                            <span>0.59%</span>
+                            <span>4.01</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="stock-name">
+                            <h6>TSLA</h6>
+                        </div>
+                        <img src="assets/demo/images/dashboard/mini-graph-4.svg" alt="freya-layout" />
+                        <div class="stock-price">
+                            <i class="pi pi-arrow-down"></i>
+                            <h6>799.17</h6>
+                        </div>
+                        <div class="stock-status">
+                            <span>0.52%</span>
+                            <span>4.01</span>
+                        </div>
+                    </li>
+                    <li class="same">
+                        <div class="stock-name">
+                            <h6>AMZN</h6>
+                        </div>
+                        <img src="assets/demo/images/dashboard/mini-graph-5.svg" alt="freya-layout" />
+                        <div class="stock-price">
+                            <i class="pi pi-minus"></i>
+                            <h6>799.17</h6>
+                        </div>
+                        <div class="stock-status">
+                            <span>0.52%</span>
+                            <span>4.01</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#">Show all</a>
+                <Button type="button" label="Go to full stock page"></Button>
+            </div>
+        </div>
+
+        <div class="p-col-12  p-md-3">
+            <div class="card map">
+                <img src="assets/demo/images/dashboard/asset-map.png" alt="freya-layout" />
+                <div class="map-content">
+                    <h6>Last active region (data traffic)</h6>
+                    <div class="city">
+                        <span><span>1</span> Tokyo</span>
+                        <span class="status">22%</span>
+                    </div>
+                    <div class="city">
+                        <span><span>2</span> London</span>
+                        <span class="status">22%</span>
+                    </div>
+                    <a href="#">See all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-col-12  p-md-6">
+            <div class="card chat">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h6>Chat</h6>
+                    </div>
+                </div>
+                <TabView>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                            <span class="p-badge">3</span>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="chat-content">
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>Hey M. hope you are well. Our idea is accepted by the board. Now it’s time to execute it.</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                    <div class="message">
+                                        <p>we did it! 🤠</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <span class="name">Micheal J.</span>
+                                    <div class="message">
+                                        <p>That’s really good!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>But it’s important to ship MVP ASAP</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <span class="name">Micheal J.</span>
+                                    <div class="message">
+                                        <p>I’ll be looking at the process then, just to be sure 🤓 </p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>That’s awesome. Thanks!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-2.png" alt="freya-layout" />
+                            <span class="p-badge">1</span>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="chat-content">
+                                <div class="chat-message">
+                                    <span class="name">Sarah</span>
+                                    <div class="message">
+                                        <p>That’s really good!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>But it’s important to ship MVP ASAP</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-3.png" alt="freya-layout" />
+                        </template>
+                        <div class="chat">
+                            <div class="chat-content no-message">
+                                <h4>No Message From Margret K.</h4>
+                            </div>
+                            <div class="chat-input">
+                                <input pInputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-4.png" alt="freya-layout" />
+                        </template>
+                        <div class="chat">
+                            <div class="chat-content no-message">
+                                <h4>No Message From Bob C.</h4>
+                            </div>
+                            <div class="chat-input">
+                                <input pInputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <i class="pi pi-plus"></i>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="contacts">
+                                <ul>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-2.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-3.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-4.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Search new person" />
+                            </div>
+                        </div>
+                    </TabPanel>
+                </TabView>
+            </div>
+        </div>
+
+        <div class="p-col-12  p-md-3">
+            <div class="card image-card">
+                <span class="ui-badge">3</span>
+                <img src="assets/demo/images/dashboard/asset-image.jpg" alt="freya-layout" />
+                <div class="image-content">
+                    <h6>Shared team pictures</h6>
+                    <p>Work can be overwhelming, so we need to take time and do activities. See who is doing in other officess!</p>
+                    <Button type="button" label="Aww, let me see them!"></Button>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-lg-6">
+            <div class="card timeline">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h6>Timeline</h6>
+                        <p class="subtitle">All servers</p>
+                    </div>
+                </div>
+                <ul>
+                    <li class="blue">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">New Sale</span>
+                            <span>Richard Jones has purchased a blue t-shirt for $79.</span>
+                            <span class="time">3 mins ago</span>
+                        </div>
+                    </li>
+                    <li class="blue">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">Log</span>
+                            <span>AWS settings are updated by admin@freya.com</span>
+                            <span class="time">12 mins ago</span>
+                        </div>
+                    </li>
+                    <li class="green">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">Capacity</span>
+                            <span>Reached 80% CPU capacity in Ireland. Automatic
+                                            capacity increase initiated.</span>
+                            <span class="time">1:30PM</span>
+                        </div>
+                    </li>
+                    <li class="orange">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">Capacity</span>
+                            <span>Reached 60% CPU capacity in Ireland.</span>
+                            <span class="time">9:40AM</span>
+                        </div>
+                    </li>
+                    <li class="blue">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">Billing</span>
+                            <span>Upgraded plan, 10users yearly to 20users yearly</span>
+                            <span class="time">7:42AM</span>
+                        </div>
+                    </li>
+                    <li class="blue">
+                        <i class="pi pi-circle-on"></i>
+                        <div class="event-content">
+                            <span class="event-title">New Sale</span>
+                            <span>Richard Jones has purchased a blue t-shirt for $79.</span>
+                            <span class="time">3 mins ago</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#">See all</a>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-lg-6">
+            <div class="card schedule">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h6>Schedule</h6>
+                        <p class="subtitle">Europe office</p>
+                    </div>
+                    <p class="subtitle">Today</p>
+                </div>
+                <p>3 events, 3h 30m</p>
+                <ul>
+                    <li>
+                        <div class="schedule-header">
+                            <h6>Daily talks over Zoom w/ teamA</h6>
+                            <span>8:00 - 9:00</span>
+                        </div>
+                        <a href="#">Join over Zoom</a>
+                        <span>6 participiants (4 accepted)</span>
+                    </li>
+                    <li>
+                        <div class="schedule-header">
+                            <h6>New Project Kick, v1</h6>
+                            <span>8:00 - 9:00</span>
+                        </div>
+                        <a href="#">Join over Zoom</a>
+                        <span>3 participiants (all accepted)</span>
+                    </li>
+                    <li>
+                        <div class="schedule-header">
+                            <h6>Grooming btw TeamA and SR1E</h6>
+                            <span>8:00 - 9:00</span>
+                        </div>
+                        <a href="#">Master room</a>
+                        <span>12 participiants (11 accepted)</span>
+                    </li>
+                </ul>
+                <a href="#">Go to full schedule</a>
+            </div>
+        </div>
     </div>
+</div>
+
 </template>
 
 <script>

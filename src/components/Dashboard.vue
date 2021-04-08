@@ -1,484 +1,613 @@
 <template>
     <div class="layout-dashboard">
         <div class="p-grid">
-            <div class="p-col-12 p-md-6 p-xl-3">
-                <div class="card no-gutter widget-overview-box widget-overview-box-1">
-                    <span class="overview-icon">
-                        <i class="pi pi-shopping-cart"></i>
-                    </span>
-                    <span class="overview-title">Orders</span>
-                    <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">640</div>
-                            <div class="overview-subtext">Pending</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">1420</div>
-                            <div class="overview-subtext">Completed</div>
-                        </div>
-                    </div>
+            <div class="p-col-12">
+                <div class="notification">
+                    <h6>👋  Hello! Welcome to Hit! Before start please complete your profile to know you better. <a href="#">Profile settings <i class="pi pi-arrow-up"></i></a></h6>
                 </div>
             </div>
-            <div class="p-col-12 p-md-6 p-xl-3">
-                <div class="card no-gutter widget-overview-box widget-overview-box-2">
-                    <span class="overview-icon">
-                        <i class="pi pi-dollar"></i>
-                    </span>
-                    <span class="overview-title">Revenue</span>
-                    <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">$2,100</div>
-                            <div class="overview-subtext">Expenses</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">$9,640</div>
-                            <div class="overview-subtext">Income</div>
+
+            <div class="p-col-12">
+                <div class="p-grid">
+                    <div class="p-col">
+                        <div class="card overview-box white">
+                            <div class="overview-info">
+                                <h6>Graphics</h6>
+                                <h1>18%</h1>
+                            </div>
+                            <i class="pi pi-image"></i>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="p-col-12 p-md-6 p-xl-3">
-                <div class="card no-gutter widget-overview-box widget-overview-box-3">
-                    <span class="overview-icon">
-                        <i class="pi pi-users"></i>
-                    </span>
-                    <span class="overview-title">Customers</span>
-                    <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">8272</div>
-                            <div class="overview-subtext">Active</div>
-                        </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">25402</div>
-                            <div class="overview-subtext">Registered</div>
+                    <div class="p-col">
+                        <div class="card overview-box blue">
+                            <div class="overview-info">
+                                <h6>New users (Today)</h6>
+                                <h1>32</h1>
+                            </div>
+                            <i class="pi pi-users"></i>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="p-col-12 p-md-6 p-xl-3">
-                <div class="card no-gutter widget-overview-box widget-overview-box-4">
-                    <span class="overview-icon">
-                        <i class="pi pi-comment"></i>
-                    </span>
-                    <span class="overview-title">Comments</span>
-                    <div class="p-grid overview-detail">
-                        <div class="p-col-6">
-                            <div class="overview-number">12</div>
-                            <div class="overview-subtext">New</div>
+                    <div class="p-col">
+                        <div class="card overview-box gray">
+                            <div class="overview-info">
+                                <h6>Uptime</h6>
+                                <h1>5h12m</h1>
+                            </div>
+                            <i class="pi pi-globe"></i>
                         </div>
-                        <div class="p-col-6">
-                            <div class="overview-number">85</div>
-                            <div class="overview-subtext">Responded</div>
+                    </div>
+                    <div class="p-col">
+                        <div class="card overview-box darkgray">
+                            <div class="overview-info">
+                                <h6>Text coverage</h6>
+                                <h1>96%</h1>
+                            </div>
+                            <i class="pi pi-th-large"></i>
+                        </div>
+                    </div>
+                    <div class="p-col">
+                        <div class="card overview-box orange">
+                            <div class="overview-info">
+                                <h6>Cloud users</h6>
+                                <h1>4216</h1>
+                            </div>
+                            <i class="pi pi-cloud"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="p-col-12 p-xl-6">
-                <div class="card no-gutter orders">
+            <div class="p-col-12 p-md-6 p-xl-3">
+                <div class="card timeline">
                     <div class="card-header">
-                        <h4>Orders</h4>
-                        <Menu id="orders-button" :popup="true" :model="items" ref="menu" appendTo="body"></Menu>
-                        <Button icon="pi pi-search" class="p-button-text p-button-secondary" @click="menuToggle($event)" aria-controls="orders-button" aria-haspopup="true"></Button>
-                    </div>
-
-                    <div class="p-grid">
-                        <div class="p-col-12">
-                            <div id="order-tabs-container" class="p-grid order-tabs">
-                                <div class="order-tab order-tab-new p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);"
-                                    data-label="New Orders" data-index="0" data-stroke="#BBDEFB" data-fill="rgba(100, 181, 246, 0.2)" >
-                                    <i class="pi pi-plus-circle"></i>
-                                    <span class="order-label">New</span>
-                                    <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-new.svg" alt="diamond-vue" />
-                                </div>
-                                <div class="order-tab order-tab-completed p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);"
-                                    data-label="Completed Orders" data-index="1" data-stroke="#C5CAE9" data-fill="rgba(121, 134, 203, 0.2)">
-                                    <i class="pi pi-check-circle"></i>
-                                    <span class="order-label">Completed</span>
-                                    <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-completed.svg" alt="diamond-vue" />
-                                </div>
-                                <div class="order-tab order-tab-refunded p-col-6 p-md-3" @click="changeDataset($event); refreshDataset($event);" 
-                                        data-label="Refunded Orders" data-index="2" data-stroke="#B2DFDB" data-fill="rgba(224, 242, 241, 0.5)">
-                                    <i class="pi pi-refresh"></i>
-                                    <span class="order-label">Refunded</span>
-                                    <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-refunded.svg" alt="diamond-vue" />
-                                </div>
-                                <div class="order-tab order-tab-cancelled p-col-6 p-md-3" @click="changeDataset($event);  refreshDataset($event);"
-                                    data-label="Cancelled Orders" data-index="3" data-stroke="#B2EBF2" data-fill="rgba(224, 247, 250, 0.5)">
-                                    <i class="pi pi-times-circle"></i>
-                                    <span class="order-label">Cancelled</span>
-                                    <i class="stat-detail-icon icon-arrow-right-circle"></i>
-                                    <img src="assets/demo/images/dashboard/graph-cancelled.svg" alt="diamond-vue" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-col-12">
-                            <div class="overview-chart">
-                                <Chart ref="chart" type="line" :data="ordersChart" :options="ordersChartOptions" id="order-chart"></Chart>
-                            </div>
+                        <div class="card-title">
+                            <h6>Timeline</h6>
+                            <p class="subtitle">All servers</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Recent Sales</h4>
-                        <Dropdown :options="orderWeek" v-model="selectedOrderWeek" optionLabel="name" @change="recentSales($event)" class="dashbard-demo-dropdown"></Dropdown>
-                    </div>
-
-                    <p>Your sales activity over time.</p>
-
-                    <DataTable :value="products" :paginator="true" :rows="5" responsiveLayout="scroll">
-                        <Column field="id" header="ID" :sortable="true">
-                            <template #body="slotProps">
-                                <span class="p-column-title">Id</span>
-                                {{slotProps.data.id}}
-                            </template>
-                        </Column>
-                        <Column field="category" header="Category" :sortable="true">
-                            <template #body="slotProps">
-                                <span class="p-column-title">Category</span>
-                                {{slotProps.data.category}}
-                            </template>
-                        </Column>
-                        <Column field="price" header="Price" :sortable="true">
-                            <template #body="slotProps">
-                                <span class="p-column-title">Price</span>
-                                {{ formatCurrency(slotProps.data.price) }}
-                            </template>
-                        </Column>
-                        <Column field="inventoryStatus" header="Status" :sortable="true">
-                            <template #body="slotProps">
-                                <span :class="'product-badge status-' + slotProps.data.inventoryStatus.toLowerCase()">{{ slotProps.data.inventoryStatus }}</span>
-                            </template>
-                        </Column>
-                        <Column bodyStyle="text-align: center">
-                            <template #body> <Button type="button" icon="pi pi-search"></Button></template
-                        ></Column>
-                    </DataTable>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-4">
-                <div class="card widget-tasks">
-                    <h4>Tasks</h4>
-                    <p>Overview of your pending tasks.</p>
-                    <div>
-                        <div class="task task-1">
-                            <div class="task-name"><span>12 Orders</span> to fulfill</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-2">
-                            <div class="task-name"><span>40+ Payments</span> to withdraw</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-3">
-                            <div class="task-name"><span>4 Reports</span> to revise</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-4">
-                            <div class="task-name"><span>6 Questions</span> to respond</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                        <div class="task task-5">
-                            <div class="task-name"><span>2 Chargebacks</span> to review</div>
-                            <div class="task-progress">
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h4>Best Sellers</h4>
-                    <p>Most popular products from your collection.</p>
-
-                    <ul class="widget-image-list">
-                        <li>
-                            <span>Product</span>
-                            <span>Sales</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/bamboo-watch.jpg" alt="diamond-layout" />
-                                <span>Bamboo Watch</span>
-                            </span>
-                            <span class="listitem-value">82</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/blue-band.jpg" alt="diamond-layout" />
-                                <span>Blue Band</span>
-                            </span>
-                            <span class="listitem-value">75</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/game-controller.jpg" alt="diamond-layout" />
-                                <span>Game Controller</span>
-                            </span>
-                            <span class="listitem-value">64</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/lime-band.jpg" alt="diamond-layout" />
-                                <span>Lime Band</span>
-                            </span>
-                            <span class="listitem-value">62</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/gold-phone-case.jpg" alt="diamond-layout" />
-                                <span>Phone Case</span>
-                            </span>
-                            <span class="listitem-value">55</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/green-t-shirt.jpg" alt="diamond-layout" />
-                                <span>Green T-Shirt</span>
-                            </span>
-                            <span class="listitem-value">48</span>
-                        </li>
-                        <li>
-                            <span>
-                                <img src="assets/demo/images/product/purple-t-shirt.jpg" alt="diamond-layout" />
-                                <span>Purple T-Shirt</span>
-                            </span>
-                            <span class="listitem-value">32</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="p-col-12 p-lg-8">
-                <div class="card revenue">
-                    <h4>Revenue Stream</h4>
-                    <p>Comparison of your revenue sources.</p>
-                    <div class="revenue-chart-container">
-                        <Chart type="pie" id="revenue-chart" :data="revenueChart"></Chart>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h4>Team Members</h4>
-                    <ul class="widget-person-list">
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/amyelsner.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Amy Elsner</div>
-                                    <div class="person-subtext">Accounting</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
+                    <ul>
+                        <li class="blue">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">New Sale</span>
+                                <span>Richard Jones has purchased a blue t-shirt for $79.</span>
+                                <span class="time">3 mins ago</span>
                             </div>
                         </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/annafali.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Anna Fali</div>
-                                    <div class="person-subtext">Procurement</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
+                        <li class="blue">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">Log</span>
+                                <span>AWS settings are updated by admin@freya.com</span>
+                                <span class="time">12 mins ago</span>
                             </div>
                         </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/bernardodominic.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Bernardo Dominic</div>
-                                    <div class="person-subtext">Finance</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
+                        <li class="green">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">Capacity</span>
+                                <span>Reached 80% CPU capacity in Ireland. Automatic
+                                            capacity increase initiated.</span>
+                                <span class="time">1:30PM</span>
                             </div>
                         </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/ivanmagalhaes.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Ivan Magalhaes</div>
-                                    <div class="person-subtext">Sales</div>
-                                </div>
-                            </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
+                        <li class="orange">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">Capacity</span>
+                                <span>Reached 60% CPU capacity in Ireland.</span>
+                                <span class="time">9:40AM</span>
                             </div>
                         </li>
-                        <li>
-                            <div class="person-item">
-                                <img src="assets/demo/images/avatar/xuxuefeng.png" alt="diamond-layout" />
-                                <div class="person-info">
-                                    <div class="person-name">Xuxue Feng</div>
-                                    <div class="person-subtext">Management</div>
-                                </div>
+                        <li class="blue">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">Billing</span>
+                                <span>Upgraded plan, 10users yearly to 20users yearly</span>
+                                <span class="time">7:42AM</span>
                             </div>
-                            <div class="person-actions">
-                                <Button class="p-button-rounded p-button-success" icon="pi pi-envelope"></Button>
-                                <Button class="p-button-rounded p-button-warning" icon="pi pi-cog"></Button>
+                        </li>
+                        <li class="blue">
+                            <i class="pi pi-circle-on"></i>
+                            <div class="event-content">
+                                <span class="event-title">New Sale</span>
+                                <span>Richard Jones has purchased a blue t-shirt for $79.</span>
+                                <span class="time">3 mins ago</span>
                             </div>
                         </li>
                     </ul>
+                    <a href="#">See all</a>
                 </div>
+            </div>
+
+
+            <div class="p-col-12 p-md-6">
+                <div class="p-grid">
+                    <div class="p-col-12">
+                        <div class="card device-status">
+                            <div class="p-grid">
+                                <div class="p-col-12 p-xl-9">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h6>Total connected device change for last 4 days</h6>
+                                            <p class="subtitle">Line graph</p>
+                                        </div>
+                                    </div>
+                                    <p class="content">Labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ercitation ullamco laboris nisi..</p>
+                                    <div class="progress active">
+                                        <span>Today</span>
+                                        <ProgressBar :value="100" :showValue="false"></ProgressBar>
+                                        <span>2100</span>
+                                    </div>
+                                    <div class="progress">
+                                        <span>Fri</span>
+                                        <ProgressBar :value="20" :showValue="false"></ProgressBar>
+                                        <span>1100</span>
+                                    </div>
+                                    <div class="progress">
+                                        <span>Thu</span>
+                                        <ProgressBar :value="50" :showValue="false"></ProgressBar>
+                                        <span>1203</span>
+                                    </div>
+                                    <div class="progress">
+                                        <span>Wed</span>
+                                        <ProgressBar :value="100" :showValue="false"></ProgressBar>
+                                        <span>1316</span>
+                                    </div>
+                                    <a href="#">More</a>
+                                </div>
+                                <div class="p-col-12 p-xl-3">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h6>Devices</h6>
+                                            <p class="subtitle">Type</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-grid p-nogutter">
+                                        <div class="p-col-3 p-xl-12">
+                                            <div class="device">
+                                                <span><span>1</span> iPhone</span>
+                                                <span class="status">22%</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-3 p-xl-12">
+                                            <div class="device">
+                                                <span><span>2</span> Galaxy S20</span>
+                                                <span class="status">18%</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-3 p-xl-12">
+                                            <div class="device">
+                                                <span><span>3</span> Macbook</span>
+                                                <span class="status">13%</span>
+                                            </div>
+                                        </div>
+                                        <div class="p-col-3 p-xl-12">
+                                            <div class="device">
+                                                <span><span>4</span> Macbook Air</span>
+                                                <span class="status">11%</span>
+                                            </div>
+                                        </div>
+                                        <a href="#">See all</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12  desktop-teams">
+                        <div class="card team">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h6>Team</h6>
+                                    <p class="subtitle">22 People</p>
+                                </div>
+                            </div>
+                            <div class="peoples">
+                                <img src="assets/demo/images/dashboard/avatar/avatar-1.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-2.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-3.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-4.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-5.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-6.png" alt="freya-layout" />
+                                <div class="no-picture" style="background: #BAE6FF;"><span>AT</span></div>
+                                <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                                <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                                <div class="no-picture "><span>+18</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-8 p-xl-3">
+                <div class="card operations">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h6>Cloud operations</h6>
+                            <p class="subtitle">Europe 1</p>
+                        </div>
+                        <p class="subtitle">8 May</p>
+                    </div>
+                    <Chart type="line" :data="chart1" :options="chartOptions1" style="max-height: 160px;"></Chart>
+                    <div class="insights">
+                        <div class="insight-header">
+                            <img src="assets/demo/images/dashboard/subtract.svg" alt="freya-layout" />
+                            <h6>Insights</h6>
+                        </div>
+                        <ul>
+                            <li>
+                                <span><span>1</span> Increase CPU load levels</span>
+                                <span class="p-tag p-tag-warning">12%</span>
+                            </li>
+                            <li>
+                                <span><span>2</span> 28% increase on thanks mes./w..</span>
+                                <span class="p-tag p-tag-success">UP!</span>
+                            </li>
+                            <a href="#">See all(4)</a>
+                        </ul>
+
+                    </div>
+                    <Button type="button" label="Go to full stock page" class="p-button-outlined"></Button>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4 p-xl-3 mobile-teams">
+                <div class="card team">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h6>Team</h6>
+                            <p class="subtitle">22 People</p>
+                        </div>
+                    </div>
+                    <div class="peoples">
+                        <img src="assets/demo/images/dashboard/avatar/avatar-1.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-2.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-3.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-4.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-5.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-6.png" alt="freya-layout" />
+                        <div class="no-picture" style="background: #FFC3A2;"><span>TA</span></div>
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-1.png" alt="freya-layout" />
+                        <div class="no-picture" style="background: #FFDB7D;"><span>JH</span></div>
+                        <img src="assets/demo/images/dashboard/avatar/avatar-2.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-3.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-4.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-5.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-6.png" alt="freya-layout" />
+                        <div class="no-picture" style="background: #BAE6FF;"><span>SE</span></div>
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-1.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-2.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-3.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-4.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-5.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-6.png" alt="freya-layout" />
+                        <div class="no-picture" style="background: #91CC9D;"><span>TH</span></div>
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <img src="assets/demo/images/dashboard/avatar/avatar-7.png" alt="freya-layout" />
+                        <div class="no-picture"><span>+18</span></div>
+                    </div>
+                    <a href="#">See all teams</a>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-12 p-xl-8">
+                <div class="p-grid">
+                    <div class="p-col-12">
+                        <div class="card chart">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h6>Nasdaq 100</h6>
+                                    <p class="subtitle">Line graph</p>
+                                </div>
+                            </div>
+                            <Chart type="line" :data="chart2" :options="chartOptions2" style="max-height: 330px;"></Chart>
+                        </div>
+                    </div>
+                    <div class="p-col-12  p-md-5">
+                        <div class="card map">
+                            <img src="assets/demo/images/dashboard/asset-map.png" alt="freya-layout" />
+                            <div class="map-content">
+                                <h6>Last active region (data traffic)</h6>
+                                <div class="city">
+                                    <span><span>1</span> Tokyo</span>
+                                    <span class="status">22%</span>
+                                </div>
+                                <div class="city">
+                                    <span><span>2</span> London</span>
+                                    <span class="status">22%</span>
+                                </div>
+                                <a href="#">See all</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-7">
+                        <div class="card schedule">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h6>Schedule</h6>
+                                    <p class="subtitle">Europe office</p>
+                                </div>
+                                <p class="subtitle">Today</p>
+                            </div>
+                            <p>3 events, 3h 30m</p>
+                            <ul>
+                                <li>
+                                    <div class="schedule-header">
+                                        <h6>Daily talks over Zoom w/ teamA</h6>
+                                        <span>8:00 - 9:00</span>
+                                    </div>
+                                    <a href="#">Join over Zoom</a>
+                                    <span>6 participiants (4 accepted)</span>
+                                </li>
+                                <li>
+                                    <div class="schedule-header">
+                                        <h6>New Project Kick, v1</h6>
+                                        <span>8:00 - 9:00</span>
+                                    </div>
+                                    <a href="#">Join over Zoom</a>
+                                    <span>3 participiants (all accepted)</span>
+                                </li>
+                                <li>
+                                    <div class="schedule-header">
+                                        <h6>Grooming btw TeamA and SR1E</h6>
+                                        <span>8:00 - 9:00</span>
+                                    </div>
+                                    <a href="#">Master room</a>
+                                    <span>12 participiants (11 accepted)</span>
+                                </li>
+                                <li>
+                                    <div class="schedule-header">
+                                        <h6>New Project Kick, v2</h6>
+                                        <span>12:00 - 14:00</span>
+                                    </div>
+                                    <a href="#">Master room</a>
+                                    <span>5 participiants (1 accepted)</span>
+                                </li>
+                            </ul>
+                            <a href="#">Go to full schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-12 p-xl-4">
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-6 p-xl-12">
+                        <div class="card statistics">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h6>Statistics</h6>
+                                    <p class="subtitle">Europe 1</p>
+                                </div>
+                                <p class="subtitle">8 May</p>
+                            </div>
+                            <div class="p-grid">
+                                <div class="p-col-12 p-md-6">
+                                    <div class="statistic-item">
+                                        <div class="item-title">
+                                            <span>🐳</span>
+                                            <h5>99,99%</h5>
+                                        </div>
+                                        <h6>Uptime/year</h6>
+                                    </div>
+                                </div>
+                                <div class="p-col-12 p-md-6">
+                                    <div class="statistic-item">
+                                        <div class="item-title">
+                                            <span>🖥 </span>
+                                            <h5>2K</h5>
+                                        </div>
+                                        <h6>Connected devices</h6>
+                                    </div>
+                                </div>
+                                <div class="p-col-12 p-md-6">
+                                    <div class="statistic-item">
+                                        <div class="item-title">
+                                            <span>🎁 </span>
+                                            <h5>244</h5>
+                                        </div>
+                                        <h6>Thanks messages received</h6>
+                                    </div>
+                                </div>
+                                <div class="p-col-12 p-md-6">
+                                    <div class="statistic-item">
+                                        <div class="item-title">
+                                            <span>💵 </span>
+                                            <h5>4812$</h5>
+                                        </div>
+                                        <h6>Earnings/month</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-6 p-xl-12">
+                        <div class="card stocks">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h6>👓 Stock watchlist (12)</h6>
+                                    <p class="subtitle">Today</p>
+                                </div>
+                                <Button type="button" icon="pi pi-plus" class="p-button-secondary p-button-text p-button-rounded"></Button>
+                            </div>
+                            <ul>
+                                <li class="down">
+                                    <div class="stock-name">
+                                        <h6>AMD</h6>
+                                    </div>
+                                    <img src="assets/demo/images/dashboard/mini-graph-1.svg" alt="freya-layout" />
+                                    <div class="stock-price">
+                                        <i class="pi pi-arrow-down"></i>
+                                        <h6>54.20</h6>
+                                    </div>
+                                    <div class="stock-status">
+                                        <span>0.57%</span>
+                                        <span>4.01</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="stock-name">
+                                        <h6>MSFT</h6>
+                                    </div>
+                                    <img src="assets/demo/images/dashboard/mini-graph-2.svg" alt="freya-layout" />
+                                    <div class="stock-price">
+                                        <i class="pi pi-arrow-down"></i>
+                                        <h6>183.16</h6>
+                                    </div>
+                                    <div class="stock-status">
+                                        <span>1.46%</span>
+                                        <span>4.01</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="stock-name">
+                                        <h6>AAPL</h6>
+                                    </div>
+                                    <img src="assets/demo/images/dashboard/mini-graph-3.svg" alt="freya-layout" />
+                                    <div class="stock-price">
+                                        <i class="pi pi-arrow-down"></i>
+                                        <h6>307.20</h6>
+                                    </div>
+                                    <div class="stock-status">
+                                        <span>0.59%</span>
+                                        <span>4.01</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="stock-name">
+                                        <h6>TSLA</h6>
+                                    </div>
+                                    <img src="assets/demo/images/dashboard/mini-graph-4.svg" alt="freya-layout" />
+                                    <div class="stock-price">
+                                        <i class="pi pi-arrow-down"></i>
+                                        <h6>799.17</h6>
+                                    </div>
+                                    <div class="stock-status">
+                                        <span>0.52%</span>
+                                        <span>4.01</span>
+                                    </div>
+                                </li>
+                                <li class="same">
+                                    <div class="stock-name">
+                                        <h6>AMZN</h6>
+                                    </div>
+                                    <img src="assets/demo/images/dashboard/mini-graph-5.svg" alt="freya-layout" />
+                                    <div class="stock-price">
+                                        <i class="pi pi-minus"></i>
+                                        <h6>799.17</h6>
+                                    </div>
+                                    <div class="stock-status">
+                                        <span>0.52%</span>
+                                        <span>4.01</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="#">Show all</a>
+                            <Button type="button" label="Go to full stock page"></Button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import ProductService from '../service/ProductService';
 export default {
     data() {
         return {
-            selectedOrderWeek: null,
-            products: null,
-            productsThisWeek: null,
-            productsLastWeek: null,
-            productService: null,
-            cols: [
-                { field: 'vin', header: 'Vin' },
-                { field: 'year', header: 'Year' },
-                { field: 'brand', header: 'Brand' },
-                { field: 'color', header: 'Color' },
-            ],
+            chart1: {
+                labels: ['8Sun', '9Mon', '10Thu', '11Wed', '12Fri', '13Sat', '14Sun'],
+                datasets: [
+                    {
+                        label: 'Revenue',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: [
+                            '#FFA928',
+                        ],
+                        borderWidth: 4,
+                        fill: true,
+                        backgroundColor: [
+                            'rgba(255, 169, 40, .2)'
+                        ],
+                    }
+                ]
+            },
 
-            items: [
-                {
-                    label: 'Shipments',
-                    items: [
-                        { label: 'Tracker', icon: 'pi pi-compass' },
-                        { label: 'Map', icon: 'pi pi-map-marker' },
-                        { label: 'Manage', icon: 'pi pi-pencil' },
-                    ],
+            chartOptions1: {
+                legend: {
+                    display: false,
                 },
-            ],
+                maintainAspectRatio: false,
+                hover: {
+                    mode: 'index'
+                },
+                scales: {
+                    xAxes: [{
+                        display: false,
+                    }],
+                    yAxes: [{
+                        display: false,
+                    }]
+                }
+            },
 
-            ordersChart: {
+            chart2: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [
                     {
-                        label: 'New',
-                        data: [2, 7, 20, 9, 16, 9, 5],
-                        backgroundColor: ['rgba(100, 181, 246, 0.2)'],
-                        borderColor: ['#64B5F6'],
-                        borderWidth: 3,
+                        label: 'Revenue',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: [
+                            getComputedStyle(document.body).getPropertyValue('--primary-color') || '#2c84d8',
+                        ],
+                        borderWidth: 4,
                         fill: true,
-                    },
-                ],
+                        backgroundColor: [
+                            getComputedStyle(document.body).getPropertyValue('--primary-lighter-color') || '#2c84d8',
+                        ],
+                    }
+                ]
             },
 
-            ordersChartOptions: {
+            chartOptions2: {
                 legend: {
-                    display: true,
+                    display: false,
                 },
-                responsive: true,
+                maintainAspectRatio: false,
                 hover: {
-                    mode: 'index',
+                    mode: 'index'
                 },
                 scales: {
-                    yAxes: [
-                        {
-                            ticks: { min: 0, max: 20},
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            color:    'transparent',
                         },
-                    ],
-                },
-            },
-
-            orderWeek: [
-                { name: 'This Week', code: '0' },
-                { name: 'Last Week', code: '1' },
-            ],
-
-            revenueChart: {
-                labels: ['Direct', 'Promoted', 'Affiliate'],
-                datasets: [
-                    {
-                        data: [40, 35, 25],
-                        backgroundColor: ['#64B5F6', '#7986CB', '#4DB6AC'],
-                    },
-                ],
+                        ticks: {
+                            fontColor: '#BFC2C6'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        gridLines: {
+                            color:  'rgba(191, 194, 198, .45)',
+                            borderDash:[5, 10],
+                        },
+                        ticks: {
+                            fontColor:  '#BFC2C6',
+                            min: 0,
+                            stepSize: 5,
+                        }
+                    }]
+                }
             }
-        };
-    },
-    created() {
-        this.productService = new ProductService();
-    },
-    mounted() {
-        this.productService.getProducts().then((data) => (this.products = data));
-        this.productService.getProducts().then((data) => (this.productsThisWeek = data));
-        this.productService.getProductsMixed().then((data) => (this.productsLastWeek = data));
-
-        this.selectedOrderWeek = this.orderWeek[0];
-    },
-    methods: {
-        changeDataset(event) {
-            const dataSet = [
-                [2, 7, 20, 9, 16, 9, 5],
-                [2, 4, 9, 20, 16, 12, 20],
-                [2, 17, 7, 15, 4, 20, 8],
-                [2, 2, 20, 4, 17, 16, 20],
-            ];
-
-            this.ordersChart.datasets[0].data = dataSet[parseInt(event.currentTarget.getAttribute('data-index'))];
-            this.ordersChart.datasets[0].label = event.currentTarget.getAttribute('data-label');
-            this.ordersChart.datasets[0].borderColor = event.currentTarget.getAttribute('data-stroke');
-            this.ordersChart.datasets[0].backgroundColor = event.currentTarget.getAttribute('data-fill');
-        },
-
-        recentSales($event) {
-            if ($event.value.code === '0') {
-                this.products = this.productsThisWeek;
-            } else {
-                this.products = this.productsLastWeek;
-            }
-        },
-
-        shuffle() {
-            for (let i = this.products.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [this.products[i], this.products[j]] = [this.products[j], this.products[i]];
-            }
-            return this.products;
-        },
-
-        menuToggle($event) {
-            this.$refs.menu.toggle($event);
-        },
-
-        refreshDataset($event) {
-            this.$refs.chart.refresh($event);
-        },
-
-        formatCurrency(value) {
-            return value.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-        },
-    },
+        }
+    }
 };
 </script>
 
