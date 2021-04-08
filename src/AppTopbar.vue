@@ -2,43 +2,43 @@
     <div class="layout-topbar">
         <div class="layout-topbar-wrapper">
             <div class="layout-topbar-left">
-                <a tabindex="0" class="menu-button" @click="onMenuButtonClick(event)">
+                <a tabindex="0" class="menu-button" @click="onMenuButtonClick">
                     <i class="pi pi-bars"></i>
                 </a>
-                <a tabindex="0" id="logo-link" class="layout-topbar-logo" @click="onMenuButtonClick(event)">
+                <a tabindex="0" id="logo-link" class="layout-topbar-logo" @click="onMenuButtonClick">
                     <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
                 </a>
             </div>
 
             <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver"
-                @toggle-menu="onToggleMenu" />
+                @toggle-menu="onToggleMenu" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
 
             <div class="layout-topbar-right">
                 <ul class="layout-topbar-actions">
                     <li ref="search" class="topbar-item search-item" :class="{'active-topmenuitem': searchActive}">
-                        <a tabindex="0" @click="onTopbarSearchClick">
+                        <a tabindex="0" @click="onTopbarSearchToggle">
                             <i class="topbar-icon pi pi-search"></i>
                         </a>
 
-                        <div class="search-input-wrapper">
+                        <div class="search-input-wrapper" @click="onTopbarSearchClick">
                             <span class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <InputText type="text" placeholder="Search..." @click="$emit('update:searchClick', true)" />
+                                <InputText type="text" placeholder="Search..." @keydown="onInputKeydown" />
                             </span>
                         </div>
 
                         <ul class="fadeInDown">
-                            <div class="search-input-wrapper p-fluid" style="width: 100%">
+                            <div class="search-input-wrapper p-fluid" style="width: 100%" @click="onTopbarSearchClick">
                                 <span class="p-input-icon-left">
                                     <i class="pi pi-search"></i>
-                                    <InputText type="text" placeholder="Search..." @click="$emit('update:searchClick', true)" />
+                                    <InputText type="text" placeholder="Search..." @keydown="onInputKeydown" />
                                 </span>
                             </div>
                         </ul>
                     </li>
 
                     <li ref="profile" class="topbar-item user-profile" :class="{'active-topmenuitem fadeInDown': topbarUserMenuActive}">
-                        <a href="#" @click="onTopbarUserMenuClick">
+                        <a @click="onTopbarUserMenuClick">
                             <img src="assets/layout/images/avatar-profilemenu.png" alt="freya-layout"/>
                         </a>
                         <ul class="fadeInDown">
@@ -78,7 +78,7 @@
 import AppMenu from './AppMenu';
 export default {
     name: "AppTopbar",
-    emits: ["toggle-menu", "right-menubutton-click", "sidebar-mouse-over", "sidebar-mouse-leave", "topbar-search-click", "topbar-usermenu-click", "update:searchClick"],
+    emits: ["menu-click", "menuitem-click", "root-menuitem-click", "menu-button-click", "toggle-menu", "right-menubutton-click", "sidebar-mouse-over", "sidebar-mouse-leave", "topbar-search-toggle", "topbar-search-click", "topbar-search-hide", "topbar-usermenu-click", "update:searchClick"],
     props: {
         searchActive: Boolean,
         searchClick: Boolean,
@@ -101,11 +101,34 @@ export default {
         }
     },
     methods: {
+        onMenuClick(event) {
+            this.$emit("menu-click", event);
+        },
+        onMenuItemClick(event) {
+            this.$emit("menuitem-click", event);
+        },
+		onRootMenuItemClick(event) {
+			this.$emit("root-menuitem-click", event);
+		},
+        onMenuButtonClick(event) {
+            this.$emit("menu-button-click", event);
+        },
         onToggleMenu(event) {
             this.$emit("toggle-menu", event);
         },
+        onTopbarSearchToggle(event) {
+            this.$emit('topbar-search-toggle', event);
+        },
         onTopbarSearchClick(event) {
-            this.$emit('topbar-search-click', event);
+            this.$emit("topbar-search-click", event);
+        },
+        onInputKeydown(event) {
+            const key = event.which;
+            
+            //escape, tab and enter
+            if (key === 27 || key === 9 || key === 13) {
+                this.$emit("topbar-search-hide", event);
+            }
         },
         onTopbarUserMenuClick(event) {
             this.$emit("topbar-usermenu-click", event)

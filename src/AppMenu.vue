@@ -1,6 +1,6 @@
 <template>
     <div class="menu-wrapper" :class="{ 'layout-sidebar-active' : sidebarActive}"
-        @click="onSidebarClick($event)" @mouseover="onSidebarMouseOver($event)" @mouseleave="onSidebarMouseLeave($event)">
+        @click="onMenuClick" @mouseover="onSidebarMouseOver" @mouseleave="onSidebarMouseLeave">
         <div class="sidebar-logo">
             <a href="/">
                 <img src="assets/layout/images/logo-freya-single.svg" alt="freya-layout">
@@ -8,7 +8,6 @@
             <a class="sidebar-pin" @click="onToggleMenu($event)">
                 <span class="pin"></span>
             </a>
-            <!-- <button class="sidebar-pin" @click="onToggleMenu($event)" /> -->
         </div>
 
         <div class="layout-menu-container">

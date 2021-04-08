@@ -1,10 +1,11 @@
 <template>
     <div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
-            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" @right-menubutton-click="onRightMenuButtonClick" 
+            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" 
                 :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" @topbar-usermenu-click="onTopbarUserMenuClick" @toggle-menu="onToggleMenu"
                 :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" :activeTopbarItem="activeTopbarItem"
-                @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-click="onTopbarSearchClick" ></AppTopBar>
+                @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-toggle="onTopbarSearchToggle" @topbar-search-click="OnTopbarSearchClick" 
+                @topbar-search-hide="onTopbarSearchHide"></AppTopBar>
 
             <div class="layout-main">
                 <div class="layout-content">
@@ -37,7 +38,6 @@ export default {
             colorScheme: "light",
             topbarTheme: "light",
             menuTheme: "light",
-            // overlayMenuActive: false,
             sidebarActive: false,
             sidebarStatic: false,
             staticMenuDesktopInactive: false,
@@ -66,7 +66,7 @@ export default {
                     "layout-horizontal": this.layoutMode === "horizontal",
                     "layout-slim": this.layoutMode === "slim",
                     "layout-rightpanel-active": this.rightMenuActive,
-                    // "layout-static-inactive": this.staticMenuDesktopInactive && this.layoutMode === "static",
+                    'layout-mobile-active': this.staticMenuMobileActive,
                     "p-input-filled": this.$appState.inputStyle === "filled",
                     "p-ripple-disabled": !this.$primevue.config.ripple,
                 },
@@ -88,17 +88,14 @@ export default {
     },
     methods: {
         onDocumentClick() {
+            console.log(this.menuClick)
             if (!this.searchClick && this.searchActive) {
-                this.searchActive = false;
-                this.searchClick = false;
+                this.onTopbarSearchHide();
             }
 
-            if (!this.userMenuClick) {
+            if (!this.topbarUserMenuClick && this.topbarUserMenuActive) {
                 this.topbarUserMenuActive = false;
-            }
-
-            if (!this.topbarUserMenuClick) {
-                this.topbarUserMenuActive = false;
+                this.topbarUserMenuClick = false;
             }
 
             if (!this.rightMenuClick) {
@@ -111,7 +108,7 @@ export default {
 					this.menuActive = false;
                 }
 
-                if (this.overlayMenuActive || this.staticMenuMobileActive) {
+                if (this.staticMenuMobileActive) {
                     this.hideOverlayMenu();
                 }
 
@@ -141,16 +138,9 @@ export default {
         onMenuButtonClick(event) {
             this.menuClick = true;
             this.topbarUserMenuActive = false;
-            this.topbarNotificationMenuActive = false;
             this.rightMenuActive = false;
 
-            // if (this.isOverlay()) {
-            //     this.overlayMenuActive = !this.overlayMenuActive;
-            // }
-
-            if (this.isDesktop()) {
-                this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive;
-            } else {
+            if (this.isMobile()) {
                 this.staticMenuMobileActive = !this.staticMenuMobileActive;
                 if (this.staticMenuMobileActive) {
                     this.blockBodyScroll();
@@ -190,7 +180,6 @@ export default {
             this.configClick = true;
         },
         hideOverlayMenu() {
-            this.overlayMenuActive = false;
             this.staticMenuMobileActive = false;
             this.unblockBodyScroll();
         },
@@ -301,22 +290,20 @@ export default {
         onSidebarMouseLeave() {
             this.sidebarActive = false;
         },
-        // onTopbarItemClick(item) {
-        //     this.topbarItemClick = true;
-
-        //     if (this.activeTopbarItem === item) {
-        //         this.activeTopbarItem = null;
-        //     } else {
-        //         this.activeTopbarItem = item;
-        //     }
-        // },
-        onTopbarSearchClick() {
+        onTopbarSearchToggle() {
             this.searchActive = !this.searchActive;
-            this.searchClick = !this.searchClick;
+            this.searchClick = true;
+        },
+        OnTopbarSearchClick() {
+            this.searchClick = true;
+        },
+        onTopbarSearchHide() {
+            this.searchActive = false;
+            this.searchClick = false;
         },
         onTopbarUserMenuClick() {
             this.topbarUserMenuActive = !this.topbarUserMenuActive;
-            this.topbarUserMenuClick = !this.topbarUserMenuClick;
+            this.topbarUserMenuClick = true;
         },
     },
 };
