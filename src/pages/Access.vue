@@ -2,7 +2,7 @@
     <div class="exception-body access">
         <div class="exception-topbar">
             <a id="logolink" href="/" class="layout-topbar-logo">
-                <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
+                <img :src="'assets/layout/images/logo-' + (colorScheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
             </a>
         </div>
         <div class="exception-wrapper">
@@ -21,8 +21,8 @@
 <script>
 export default {
     computed: {
-        topbarTheme() {
-            return this.$primevue.config.topbarTheme; 
+        colorScheme() {
+            return this.$appState.colorScheme; 
         }
     }
 };

@@ -101,7 +101,7 @@
 <script>
 export default {
     name: "AppConfig",
-    emits: ["config-button-click", "config-click", "update:layoutMode", "update:menuTheme", "update:colorScheme", "update:topbarTheme", "change-component-theme", "change-color-scheme"],
+    emits: ["config-button-click", "config-click", "update:layoutMode", "menu-theme", "update:colorScheme", "topbar-theme", "change-component-theme", "change-color-scheme"],
     props: {
         configActive: {
             type: Boolean,
@@ -162,21 +162,22 @@ export default {
         },
         changeMenuMode(mode) {
             this.$emit("update:layoutMode", mode);
+            if(mode === 'horizontal') {
+                this.$emit('menu-theme', this.d_topbarTheme);
+            }
         },
         changeColorScheme(scheme) {
             this.$emit("change-color-scheme", scheme);
         },
         changeTopbarTheme(scheme) {
-            this.$emit("update:topbarTheme", scheme);
-            this.$primevue.config.topbarTheme = scheme;
-            this.$emit("update:menuTheme", scheme);
+            this.$emit("topbar-theme", scheme);
+            this.$emit("menu-theme", scheme);
         },
         changeTopbarScheme(scheme) {
-            this.$emit("update:topbarTheme", scheme);
-            this.$primevue.config.topbarTheme = scheme;
+            this.$emit("topbar-theme", scheme);
         },
         changeMenuScheme(scheme) {
-            this.$emit("update:menuTheme", scheme);
+            this.$emit("menu-theme", scheme);
         }
     },
 };

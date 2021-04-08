@@ -17,8 +17,8 @@
 
         <AppRightMenu v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
-        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" v-model:topbarTheme="topbarTheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
-            @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme"></AppConfig>
+        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
+            @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"></AppConfig>
 
         <div class="layout-mask modal-in"></div>
     </div>
@@ -31,13 +31,16 @@ import AppFooter from "./AppFooter";
 import AppConfig from "./AppConfig";
 import AppRightMenu from "./AppRightMenu";
 export default {
+    props: {
+        topbarTheme: String,
+        menuTheme: String
+    },
+    emits: ["change-color-scheme", "change-component-theme", "topbar-theme", "menu-theme"],
     data() {
         return {
             menuActive: false,
             layoutMode: "sidebar",
             colorScheme: "light",
-            topbarTheme: "light",
-            menuTheme: "light",
             sidebarActive: false,
             sidebarStatic: false,
             staticMenuDesktopInactive: false,
@@ -87,8 +90,13 @@ export default {
         },
     },
     methods: {
+        onTopbarThemeChange(theme) {
+            this.$emit('topbar-theme', theme);
+        },
+        onMenuThemeChange(theme) {
+            this.$emit('menu-theme', theme);
+        },
         onDocumentClick() {
-            console.log(this.menuClick)
             if (!this.searchClick && this.searchActive) {
                 this.onTopbarSearchHide();
             }
@@ -184,81 +192,12 @@ export default {
             this.unblockBodyScroll();
         },
         changeComponentTheme(theme) {
-            this.changeStyleSheetUrl("theme-css", theme, 3);
+            this.$emit('change-component-theme', theme);
         },
         changeColorScheme(scheme) {
             this.colorScheme = scheme;
-            this.topbarTheme = scheme;
-            this.menuTheme = scheme;
-
-            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
-            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
-            this.changeLogo();
-        },
-        changeStyleSheetUrl(id, value, from) {
-            const element = document.getElementById(id);
-            const urlTokens = element.getAttribute("href").split("/");
-
-            if (from === 1) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 1] = value;
-            } else if (from === 2) {
-                // which function invoked this function
-                if (value !== null) {
-                    urlTokens[urlTokens.length - 2] = value;
-                }
-            } else if (from === 3) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 2] = value;
-            }
-
-            const newURL = urlTokens.join("/");
-
-            this.replaceLink(element, newURL);
-        },
-        changeLogo() {
-            const appLogoLink = document.getElementById("app-logo");
-            const mobileLogoLink = document.getElementById("logo-mobile");
-            const invoiceLogoLink = document.getElementById("invoice-logo");
-            const footerLogoLink = document.getElementById("footer-logo");
-            const logoUrl = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? 'dark' : 'white'}.svg`;
-
-            if (appLogoLink) {
-                appLogoLink.src = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? this.logoColor : 'white'}.svg`;
-            }
-
-            if (mobileLogoLink) {
-                mobileLogoLink.src = logoUrl;
-            }
-
-            if (invoiceLogoLink) {
-                invoiceLogoLink.src = logoUrl;
-            }
-
-            if (footerLogoLink) {
-                footerLogoLink.src = logoUrl;
-            }
-        },
-        replaceLink(linkElement, href) {
-            if (this.isIE()) {
-                linkElement.setAttribute("href", href);
-            } else {
-                const id = linkElement.getAttribute("id");
-                const cloneLinkElement = linkElement.cloneNode(true);
-
-                cloneLinkElement.setAttribute("href", href);
-                cloneLinkElement.setAttribute("id", id + "-clone");
-
-                linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-                cloneLinkElement.addEventListener("load", () => {
-                    linkElement.remove();
-                    cloneLinkElement.setAttribute("id", id);
-                });
-            }
-        },
-        isIE() {
-            return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
+            this.$emit('change-color-scheme', scheme);
+            this.$appState.colorScheme = scheme;
         },
         blockBodyScroll() {
             if (document.body.classList) {

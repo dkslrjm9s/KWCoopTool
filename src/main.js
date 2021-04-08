@@ -1,7 +1,7 @@
 import { createApp, h } from 'vue';
 import { reactive } from 'vue';
 import router from './router';
-import App from './App.vue';
+import AppWrapper from './AppWrapper.vue';
 import PrimeVue from 'primevue/config';
 import AutoComplete from 'primevue/autocomplete';
 import Accordion from 'primevue/accordion';
@@ -101,31 +101,11 @@ router.beforeEach(function(to, from, next) {
     next();
 });
 
-import Access from './pages/Access';
-import Error from './pages/Error';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
 const app = createApp({
-    computed: {
-        ViewComponent () {
-			switch (this.$route.path) {
-				case '/login':
-					return Login;
-				case '/error':
-					return Error;
-				case '/access':
-					return Access;
-				case '/notfound':
-					return NotFound;
-				default:
-					return App;
-			}
-		}
-    },
-    render () { return h(this.ViewComponent) }
+    render () { return h(AppWrapper) }
 });
 
-app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined', topbarTheme: 'light' });
+app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined', colorScheme: 'light' });
 
 app.use(PrimeVue, { ripple: true });
 app.use(ConfirmationService);
