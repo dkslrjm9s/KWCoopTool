@@ -7,16 +7,16 @@
                         <span class="footer-menutitle">SITE MAP</span>
                         <ul>
                             <li><a href="/">Dashboard</a></li>
-                            <li><a href="/pages/crud">Crud</a></li>
-                            <li><a href="/pages/invoice">Invoice</a></li>
-                            <li><a href="/pages/help">Help</a></li>
+                            <li><a href="/crud">Crud</a></li>
+                            <li><a href="/invoice">Invoice</a></li>
+                            <li><a href="/help">Help</a></li>
                         </ul>
                     </div>
                     <div class="p-col-6">
                         <span class="footer-menutitle"></span>
                         <ul>
-                            <li><a href="/pages/calendar">Calendar</a></li>
-                            <li><a href="/utilities/widgets">Widgets</a></li>
+                            <li><a href="/calendar">Calendar</a></li>
+                            <li><a href="/widgets">Widgets</a></li>
                             <li><a href="/documentation">Documentation</a></li>
                             <li><a href="https://www.primefaces.org/store">Buy Now</a></li>
                         </ul>

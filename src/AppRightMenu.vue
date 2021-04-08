@@ -1,71 +1,282 @@
 <template>
-    <div class="layout-sidebar-right" :class="{ 'layout-sidebar-right-active': rightMenuActive }" @click="rightMenuClick">
-        <h5>Activity</h5>
-        <div class="widget-timeline">
-            <div class="timeline-event">
-                <span class="timeline-event-icon" style="background-color: #64b5f6">
-                    <i class="pi pi-dollar"></i>
-                </span>
-                <div class="timeline-event-title">New Sale</div>
-                <div class="timeline-event-detail">
-                    Richard Jones has purchased a blue t-shirt for
-                    <strong>$79</strong>.
+    <div class="layout-rightpanel" @click="$emit('update:rightMenuClick', true)">
+        <div class="rightpanel-wrapper">
+            <div class="rightpanel-section weather-section">
+                <div class="section-header">
+                    <h6>Today</h6>
+                </div>
+                <div class="weather">
+                    <img src="assets/demo/images/rightpanel/icon-sun.svg" alt="freya-layout" />
+                    <div class="weather-info">
+                        <h6>Ankara, 22 May</h6>
+                        <h1>24º</h1>
+                    </div>
                 </div>
             </div>
-            <div class="timeline-event">
-                <span class="timeline-event-icon" style="background-color: #7986cb">
-                    <i class="timeline-icon pi pi-download"></i>
-                </span>
-                <div class="timeline-event-title">Withdrawal Initiated</div>
-                <div class="timeline-event-detail">Your request for withdrawal of <strong>$2500</strong> has been initiated.</div>
+
+            <div class="rightpanel-section tasks-section">
+                <div class="section-header">
+                    <h6>My list</h6>
+                    <Button type="button" icon="pi pi-plus" class="p-button-secondary p-button-text p-button-rounded"></Button>
+                </div>
+                <ul>
+                    <li>
+                        <div class="task-info">
+                            <h6>Perform usability testing for P15 MVP</h6>
+                            <span>-Public pages</span>
+                            <span>-Product pages</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="task-info">
+                            <h6>Buy puzzle set from Amazon</h6>
+                            <span>Ravensburger Seurat, 2000</span>
+                        </div>
+                    </li>
+                    <li class="done">
+                        <div class="task-info">
+                            <h6>Morning Run</h6>
+                        </div>
+                        <i class="pi pi-check"></i>
+                    </li>
+                    <li class="done">
+                        <div class="task-info">
+                            <h6>Morning Run</h6>
+                        </div>
+                        <i class="pi pi-check"></i>
+                    </li>
+                </ul>
             </div>
-            <div class="timeline-event">
-                <span class="timeline-event-icon" style="background-color: #4db6ac">
-                    <i class="timeline-icon pi pi-question"></i>
-                </span>
-                <div class="timeline-event-title">Question Received</div>
-                <div class="timeline-event-detail">Jane Davis has posted a <strong>new question</strong> about your product.</div>
-            </div>
-            <div class="timeline-event">
-                <span class="timeline-event-icon" style="background-color: #4dd0e1">
-                    <i class="timeline-icon pi pi-comment"></i>
-                </span>
-                <div class="timeline-event-title">Comment Received</div>
-                <div class="timeline-event-detail">
-                    Claire Smith has upvoted your store along with a
-                    <strong>comment</strong>.
+
+            <div class="rightpanel-section favorites-section">
+                <div class="section-header">
+                    <h6>Favorites</h6>
+                </div>
+                <div class="favorite-items">
+                    <a href="#" class="favorite-item">
+                        <img src="assets/demo/images/rightpanel/github.svg" alt="freya-layout" />
+                    </a>
+                    <a href="#" class="favorite-item">
+                        <img src="assets/demo/images/rightpanel/slack.svg" alt="freya-layout" />
+                    </a>
+                    <a href="#" class="favorite-item">
+                        <img src="assets/demo/images/rightpanel/aws.svg" alt="freya-layout" />
+                    </a>
+                    <a href="#" class="favorite-item">
+                        <img src="assets/demo/images/rightpanel/jenkins.svg" alt="freya-layout" />
+                    </a>
+                    <a href="#" class="favorite-item">
+                        <img src="assets/demo/images/rightpanel/jira.svg" alt="freya-layout" />
+                    </a>
+                    <a href="#" class="add-item">
+                        <i class="pi pi-plus"></i>
+                    </a>
                 </div>
             </div>
+
+            <div class="rightpanel-section chat-section chat">
+                <TabView>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                            <span class="p-badge">3</span>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="chat-content">
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>Hey M. hope you are well. Our idea is accepted by the board. Now it’s time to execute it.</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                    <div class="message">
+                                        <p>we did it! 🤠</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <span class="name">Micheal J.</span>
+                                    <div class="message">
+                                        <p>That’s really good!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>But it’s important to ship MVP ASAP</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <span class="name">Micheal J.</span>
+                                    <div class="message">
+                                        <p>I’ll be looking at the process then, just to be sure 🤓 </p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>That’s awesome. Thanks!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-2.png" alt="freya-layout" />
+                            <span class="p-badge">1</span>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="chat-content">
+                                <div class="chat-message">
+                                    <span class="name">Sarah</span>
+                                    <div class="message">
+                                        <p>That’s really good!</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message send">
+                                    <span class="name">You</span>
+                                    <div class="message">
+                                        <p>But it’s important to ship MVP ASAP</p>
+                                        <span>3 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-3.png" alt="freya-layout" />
+                        </template>
+                        <div class="chat">
+                            <div class="chat-content no-message">
+                                <h4>No Message From Margret K.</h4>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <img src="assets/demo/images/rightpanel/profile-4.png" alt="freya-layout" />
+                        </template>
+                        <div class="chat">
+                            <div class="chat-content no-message">
+                                <h4>No Message From Bob C.</h4>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Write here..." />
+                            </div>
+                        </div>
+                    </TabPanel>
+                    <TabPanel>
+                        <template #header>
+                            <i class="pi pi-plus"></i>
+                        </template>
+                        <div class="chat">
+                            <span class="fade"></span>
+                            <div class="contacts">
+                                <ul>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-2.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-3.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-4.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="assets/demo/images/rightpanel/profile-1.png" alt="freya-layout" />
+                                        <div class="contact-info">
+                                            <h6>John Doe</h6>
+                                            <span>Active</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat-input">
+                                <InputText type="text" placeholder="Search new person" />
+                            </div>
+                        </div>
+                    </TabPanel>
+                </TabView>
+            </div>  
         </div>
-
-        <hr />
-
-        <h5>Quick Withdraw</h5>
-
-        <div class="withdraw p-fluid">
-            <div>
-                <InputText type="text" placeholder="Amount" />
-            </div>
-            <div>
-                <Dropdown :options="amount" optionLabel="label" v-model="selectedAmount"></Dropdown>
-            </div>
-            <div>
-                <Button label="Confirm" icon="pi pi-check"></Button>
-            </div>
-        </div>
-
-        <hr />
-
-        <h5>Shipment Tracking</h5>
-        <p>Track your ongoing shipments to customers.</p>
-        <img class="logo-image" src="assets/demo/images/sidebar-right/staticmap.png" alt="diamond-vue" style="width: 100%" />
     </div>
 </template>
 
 <script>
 export default {
     name: "AppRightMenu",
-    emits: ["right-menu-click"],
+    emits: ["right-menu-click", "update:rightMenuClick"],
     props: {
         rightMenuActive: Boolean,
     },

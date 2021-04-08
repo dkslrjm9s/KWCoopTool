@@ -1,141 +1,98 @@
 <template>
     <div class="layout-topbar">
-        <div class="topbar-left">
-            <a tabindex="0" class="menu-button" @click="onMenuButtonClick">
-                <i class="pi pi-chevron-left"></i>
-            </a>
-            <span class="topbar-separator"></span>
-           
-            <div class="layout-breadcrumb viewname" style="text-transform: uppercase">
-                <template v-if="$route.meta.breadcrumb">
-                    <span>{{$route.meta.breadcrumb[0].label}}</span>
-                </template>
+        <div class="layout-topbar-wrapper">
+            <div class="layout-topbar-left">
+                <a tabindex="0" class="menu-button" @click="onMenuButtonClick(event)">
+                    <i class="pi pi-bars"></i>
+                </a>
+                <a tabindex="0" id="logo-link" class="layout-topbar-logo" @click="onMenuButtonClick(event)">
+                    <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
+                </a>
             </div>
 
-            <img id="logo-mobile" class="mobile-logo" src="assets/layout/images/logo-dark.svg" alt="diamond-layout" />
-        </div>
+            <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver"
+                @toggle-menu="onToggleMenu" />
 
-        <div class="topbar-right">
-            <ul class="topbar-menu">
-                <li class="search-item">
-                    <a tabindex="0" @click="onSearchClick">
-                        <i class="pi pi-search"></i>
-                    </a>
-                </li>
-                <li class="notifications-item" :class="{ 'active-menuitem ': topbarNotificationMenuActive }">
-                    <a href="#" tabindex="0" @click="onTopbarNotificationMenuButtonClick">
-                        <i class="pi pi-bell"></i>
-                        <span class="topbar-badge">5</span>
-                    </a>
-                    <ul class="notifications-menu fade-in-up">
-                        <li role="menuitem">
-                            <a href="#" tabindex="0">
-                                <i class="pi pi-shopping-cart"></i>
-                                <div class="notification-item">
-                                    <div class="notification-summary">New Order</div>
-                                    <div class="notification-detail">You have <strong>3</strong> new orders.</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#" tabindex="0">
-                                <i class="pi pi-check-square"></i>
-                                <div class="notification-item">
-                                    <div class="notification-summary">Withdrawn Completed</div>
-                                    <div class="notification-detail">Funds are on their way.</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#" tabindex="0">
-                                <i class="pi pi-chart-line"></i>
-                                <div class="notification-item">
-                                    <div class="notification-summary">Monthly Reports</div>
-                                    <div class="notification-detail">New reports are ready.</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#" tabindex="0">
-                                <i class="pi pi-comments"></i>
-                                <div class="notification-item">
-                                    <div class="notification-summary">Comments</div>
-                                    <div class="notification-detail"><strong>2</strong> new comments.</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li role="menuitem">
-                            <a href="#" tabindex="0">
-                                <i class="pi pi-exclamation-circle"></i>
-                                <div class="notification-item">
-                                    <div class="notification-summary">Chargeback Request</div>
-                                    <div class="notification-detail"><strong>1</strong> to review.</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <div class="layout-topbar-right">
+                <ul class="layout-topbar-actions">
+                    <li ref="search" class="topbar-item search-item" :class="{'active-topmenuitem': searchActive}">
+                        <a tabindex="0" @click="onTopbarSearchClick">
+                            <i class="topbar-icon pi pi-search"></i>
+                        </a>
 
-                <li class="profile-item" :class="{ 'active-menuitem fadeInDown': topbarUserMenuActive }">
-                    <a href="#" @click="onTopbarUserMenuButtonClick">
-                        <img src="assets/demo/images/avatar/profile.jpg" alt="diamond-layout" class="profile-image" />
-                        <span class="profile-name">Amelia Stone</span>
-                    </a>
-                    <ul class="profile-menu fade-in-up">
-                        <li>
-                            <a href="#">
-                                <i class="pi pi-user"></i>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="pi pi-cog"></i>
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="pi pi-calendar"></i>
-                                <span>Calendar</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="pi pi-inbox"></i>
-                                <span>Inbox</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="pi pi-power-off"></i>
-                                <span>Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                        <div class="search-input-wrapper">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <InputText type="text" placeholder="Search..." @click="$emit('update:searchClick', true)" />
+                            </span>
+                        </div>
 
-                <li class="right-sidebar-item">
-                    <a href="#" tabindex="0" @click="onRightMenuClick">
-                        <i class="pi pi-align-right"></i>
-                    </a>
-                </li>
-            </ul>
+                        <ul class="fadeInDown">
+                            <div class="search-input-wrapper p-fluid" style="width: 100%">
+                                <span class="p-input-icon-left">
+                                    <i class="pi pi-search"></i>
+                                    <InputText type="text" placeholder="Search..." @click="$emit('update:searchClick', true)" />
+                                </span>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <li ref="profile" class="topbar-item user-profile" :class="{'active-topmenuitem fadeInDown': topbarUserMenuActive}">
+                        <a href="#" @click="onTopbarUserMenuClick">
+                            <img src="assets/layout/images/avatar-profilemenu.png" alt="freya-layout"/>
+                        </a>
+                        <ul class="fadeInDown">
+                            <li>
+                                <a href="#">
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Messages</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>Notifications</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <a href="#" tabindex="0" class="layout-rightpanel-button" @click="onRightMenuButtonClick($event)">
+                    <i class="pi pi-arrow-left"></i>
+                </a>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import AppMenu from './AppMenu';
 export default {
     name: "AppTopbar",
-    emits: ["menu-button-click", "search-click", "topbar-notification", "topbar-user-menu", "right-menubutton-click"],
+    emits: ["toggle-menu", "right-menubutton-click", "sidebar-mouse-over", "sidebar-mouse-leave", "topbar-search-click", "topbar-usermenu-click", "update:searchClick"],
     props: {
-        topbarNotificationMenuActive: Boolean,
+        searchActive: Boolean,
+        searchClick: Boolean,
+        topbarItemClick: Boolean,
         topbarUserMenuActive: Boolean,
+        topbarUserMenuClick: Boolean,
+        activeTopbarItem: String,
+        sidebarActive: Boolean,
+        sidebarStatic: Boolean,
+        layoutMode: String,
+        topbarTheme: String
     },
     data() {
-        return {
-            items: [],
+        return {           
         };
     },
     unmounted() {
@@ -144,21 +101,27 @@ export default {
         }
     },
     methods: {
-        onMenuButtonClick(event) {
-            this.$emit("menu-button-click", event);
+        onToggleMenu(event) {
+            this.$emit("toggle-menu", event);
         },
-        onSearchClick(event) {
-            this.$emit("search-click", event);
+        onTopbarSearchClick(event) {
+            this.$emit('topbar-search-click', event);
         },
-        onTopbarNotificationMenuButtonClick(event) {
-            this.$emit("topbar-notification", event);
+        onTopbarUserMenuClick(event) {
+            this.$emit("topbar-usermenu-click", event)
         },
-        onTopbarUserMenuButtonClick(event) {
-            this.$emit("topbar-user-menu", event);
-        },
-        onRightMenuClick(event) {
+        onRightMenuButtonClick(event) {
             this.$emit("right-menubutton-click", event);
+        },
+        onSidebarMouseOver() {
+            this.$emit("sidebar-mouse-over");
+        },
+        onSidebarMouseLeave() {
+            this.$emit("sidebar-mouse-leave");
         }
+    }, 
+    components: { 
+        AppMenu
     }
 };
 </script>

@@ -1,22 +1,23 @@
 <template>
     <div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
-            <AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick" @search-click="toggleSearch"
-                @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick" @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"></AppTopBar>
+            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" @right-menubutton-click="onRightMenuButtonClick" 
+                :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" @topbar-usermenu-click="onTopbarUserMenuClick" @toggle-menu="onToggleMenu"
+                :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" :activeTopbarItem="activeTopbarItem"
+                @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-click="onTopbarSearchClick" ></AppTopBar>
 
-            <div class="layout-content">
-                <router-view/>
+            <div class="layout-main">
+                <div class="layout-content">
+                    <router-view/>
+                </div>
+                <AppFooter/>
             </div>
-            <AppFooter/>
         </div>
 
-        <AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" :mobileMenuActive="staticMenuMobileActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"></AppMenu>
+        <AppRightMenu v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
 
-        <AppRightMenu :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
-
-        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"></AppConfig>
-
-        <AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/>
+        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" v-model:topbarTheme="topbarTheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
+            @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme"></AppConfig>
 
         <div class="layout-mask modal-in"></div>
     </div>
@@ -27,8 +28,6 @@ import EventBus from './event-bus';
 import AppTopBar from "./AppTopbar";
 import AppFooter from "./AppFooter";
 import AppConfig from "./AppConfig";
-import AppMenu from "./AppMenu";
-import AppSearch from "./AppSearch";
 import AppRightMenu from "./AppRightMenu";
 export default {
     data() {
@@ -38,133 +37,23 @@ export default {
             colorScheme: "light",
             topbarTheme: "light",
             menuTheme: "light",
-            overlayMenuActive: false,
+            // overlayMenuActive: false,
+            sidebarActive: false,
+            sidebarStatic: false,
             staticMenuDesktopInactive: false,
             staticMenuMobileActive: false,
             menuClick: false,
             searchActive: false,
             searchClick: false,
+            topbarItemClick: false,
+            activeTopbarItem: null,
             userMenuClick: false,
             topbarUserMenuActive: false,
-            notificationMenuClick: false,
-            topbarNotificationMenuActive: false,
+            topbarUserMenuClick: false,
             rightMenuClick: false,
             rightMenuActive: false,
             configActive: false,
-            configClick: false,
-            menu: [
-                {
-                    label: "Favorites", icon: "pi pi-fw pi-home",
-                    items: [
-                        {label: "Dashboard", icon: "pi pi-fw pi-home", to: "/"},
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "UI Kit", icon: "pi pi-fw pi-id-card",
-                    items: [
-                        {label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout"},
-                        {label: "Input", icon: "pi pi-fw pi-check-square", to: "/input"},
-                        {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
-                        {label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "invalidstate"},
-                        {label: "Button", icon: "pi pi-fw pi-mobile", to: "/button", class: 'rotated-icon'},
-                        {label: "Table", icon: "pi pi-fw pi-table", to: "/table"},
-                        {label: "List", icon: "pi pi-fw pi-list", to: "/list"},
-                        {label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree"},
-                        {label: "Panel", icon: "pi pi-fw pi-tablet", to: "/panel"},
-                        {label: "Overlay", icon: "pi pi-fw pi-clone", to: "/overlay"},
-                        {label: "Media", icon: "pi pi-fw pi-image", to: "/media"},
-                        {label: "Menu", icon: "pi pi-fw pi-bars", to: "/menu"},
-                        {label: "Message", icon: "pi pi-fw pi-comment", to: "/messages"},
-                        {label: "File", icon: "pi pi-fw pi-file", to: "/file"},
-                        {label: "Chart", icon: "pi pi-fw pi-chart-bar", to: "/chart"},
-                        {label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc"},
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Utilities", icon: "pi pi-fw pi-desktop",
-                    items: [
-                        {label: "Display", icon:"pi pi-fw pi-desktop", to:"/display"},
-                        {label: "Elevation", icon:"pi pi-fw pi-external-link", to:"/elevation"},
-                        {label: "Flexbox", icon:"pi pi-fw pi-directions", to:"/flexbox"},
-                        {label: "Icons", icon:"pi pi-fw pi-search", to:"/icons"},
-                        {label: "Text", icon:"pi pi-fw pi-pencil", to:"/text"},
-                        {label: "Widgets", icon:"pi pi-fw pi-star-o", to:"/widgets"},
-                        {label: "Grid System", icon:"pi pi-fw pi-th-large", to:"/grid"},
-                        {label: "Spacing", icon:"pi pi-fw pi-arrow-right", to:"/spacing"},
-                        {label: "Typography", icon:"pi pi-fw pi-align-center", to:"/typography"},
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Pages", icon: "pi pi-fw pi-pencil",
-                    items: [
-                        {label: "Crud", icon: "pi pi-fw pi-pencil", to: "/crud"},
-                        {label: "Calendar", icon: "pi pi-fw pi-calendar-plus", to: "/calendar"},
-                        {label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
-                        {label: "Landing", icon: "pi pi-fw pi-user-plus", url: "assets/pages/landing.html", target: "_blank"},
-                        {label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login"},
-                        {label: "Invoice", icon: "pi pi-fw pi-dollar", to: "/invoice"},
-                        {label: "Help", icon: "pi pi-fw pi-question-circle", to: "/help"},
-                        {label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error"},
-                        {label: "Not Found", icon: "pi pi-fw pi-exclamation-circle", to: "/notfound"},
-                        {label: "Access Denied", icon: "pi pi-fw pi-lock", to: "/access"},
-                        {label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty"}
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Hierarchy", icon: "pi pi-fw pi-align-left",
-                    items: [
-                        {
-                            label: "Submenu 1",icon: "pi pi-fw pi-align-left",
-                            items: [
-                                {
-                                    label: "Submenu 1.1", icon: "pi pi-fw pi-align-left",
-                                    items: [
-                                        {label: "Submenu 1.1.1", icon: "pi pi-fw pi-align-left"},
-                                        {label: "Submenu 1.1.2", icon: "pi pi-fw pi-align-left"},
-                                        {label: "Submenu 1.1.3", icon: "pi pi-fw pi-align-left"},
-                                    ],
-                                },
-                                {
-                                    label: "Submenu 1.2", icon: "pi pi-fw pi-align-left",
-                                    items: [
-                                        {label: "Submenu 1.2.1", icon: "pi pi-fw pi-align-left"},
-                                    ],
-                                },
-                            ],
-                        },
-                        {
-                            label: "Submenu 2", icon: "pi pi-fw pi-align-left",
-                            items: [
-                                {
-                                    label: "Submenu 2.1", icon: "pi pi-fw pi-align-left",
-                                    items: [
-                                        {label: "Submenu 2.1.1", icon: "pi pi-fw pi-align-left"},
-                                        {label: "Submenu 2.1.2", icon: "pi pi-fw pi-align-left"},
-                                    ],
-                                },
-                                {
-                                    label: "Submenu 2.2", icon: "pi pi-fw pi-align-left",
-                                    items: [
-                                        {label: "Submenu 2.2.1", icon: "pi pi-fw pi-align-left"},
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-                { separator: true },
-                {
-                    label: "Start", icon: "pi pi-fw pi-download",
-                    items: [
-                        {label: "Buy Now", icon: "pi pi-fw pi-shopping-cart", command: () => window.open("https://www.primefaces.org/store", "_blank")},
-                        {label: "Documentation", icon: "pi pi-fw pi-info-circle", to: "/documentation"},
-                    ],
-                },
-            ],
+            configClick: false
         };
     },
     computed: {
@@ -176,12 +65,12 @@ export default {
                     "layout-static": this.layoutMode === "sidebar" && this.sidebarStatic,
                     "layout-horizontal": this.layoutMode === "horizontal",
                     "layout-slim": this.layoutMode === "slim",
-                    "layout-rightpanel-active": this.staticMenuMobileActive,
-                    "layout-static-inactive": this.staticMenuDesktopInactive && this.layoutMode === "static",
+                    "layout-rightpanel-active": this.rightMenuActive,
+                    // "layout-static-inactive": this.staticMenuDesktopInactive && this.layoutMode === "static",
                     "p-input-filled": this.$appState.inputStyle === "filled",
                     "p-ripple-disabled": !this.$primevue.config.ripple,
                 },
-                "layout-menu" + this.menuTheme + ' layout-topbar-' + this.topbarTheme
+                "layout-menu-" + this.menuTheme + ' layout-topbar-' + this.topbarTheme
             ];
         },
     },
@@ -189,8 +78,6 @@ export default {
         AppTopBar,
         AppFooter,
         AppConfig,
-        AppMenu,
-        AppSearch,
         AppRightMenu,
     },
     watch: {
@@ -202,15 +89,16 @@ export default {
     methods: {
         onDocumentClick() {
             if (!this.searchClick && this.searchActive) {
-                this.onSearchHide();
+                this.searchActive = false;
+                this.searchClick = false;
             }
 
             if (!this.userMenuClick) {
                 this.topbarUserMenuActive = false;
             }
 
-            if (!this.notificationMenuClick) {
-                this.topbarNotificationMenuActive = false;
+            if (!this.topbarUserMenuClick) {
+                this.topbarUserMenuActive = false;
             }
 
             if (!this.rightMenuClick) {
@@ -238,8 +126,14 @@ export default {
             this.configClick = false;
             this.userMenuClick = false;
             this.rightMenuClick = false;
-            this.notificationMenuClick = false;
+            this.topbarUserMenuClick = false;
             this.menuClick = false;
+        },
+        onToggleMenu(event) {
+            this.menuClick = true;
+            this.sidebarStatic = !this.sidebarStatic;
+
+            event.preventDefault();
         },
         onMenuClick() {
             this.menuClick = true;
@@ -250,9 +144,9 @@ export default {
             this.topbarNotificationMenuActive = false;
             this.rightMenuActive = false;
 
-            if (this.isOverlay()) {
-                this.overlayMenuActive = !this.overlayMenuActive;
-            }
+            // if (this.isOverlay()) {
+            //     this.overlayMenuActive = !this.overlayMenuActive;
+            // }
 
             if (this.isDesktop()) {
                 this.staticMenuDesktopInactive = !this.staticMenuDesktopInactive;
@@ -279,33 +173,6 @@ export default {
 		onRootMenuItemClick() {
             this.menuActive = !this.menuActive;
         },
-        onTopbarUserMenuButtonClick(event) {
-            this.userMenuClick = true;
-            this.topbarUserMenuActive = !this.topbarUserMenuActive;
-
-            this.hideOverlayMenu();
-
-            event.preventDefault();
-        },
-        onTopbarNotificationMenuButtonClick(event) {
-            this.notificationMenuClick = true;
-            this.topbarNotificationMenuActive = !this.topbarNotificationMenuActive;
-
-            this.hideOverlayMenu();
-
-            event.preventDefault();
-        },
-        toggleSearch() {
-            this.searchActive = !this.searchActive;
-            this.searchClick = true;
-        },
-        onSearchClick() {
-            this.searchClick = true;
-        },
-        onSearchHide() {
-            this.searchActive = false;
-            this.searchClick = false;
-        },
         onRightMenuClick() {
 			this.rightMenuClick = true;
 		},
@@ -327,6 +194,83 @@ export default {
             this.staticMenuMobileActive = false;
             this.unblockBodyScroll();
         },
+        changeComponentTheme(theme) {
+            this.changeStyleSheetUrl("theme-css", theme, 3);
+        },
+        changeColorScheme(scheme) {
+            this.colorScheme = scheme;
+            this.topbarTheme = scheme;
+            this.menuTheme = scheme;
+
+            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
+            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
+            this.changeLogo();
+        },
+        changeStyleSheetUrl(id, value, from) {
+            const element = document.getElementById(id);
+            const urlTokens = element.getAttribute("href").split("/");
+
+            if (from === 1) {
+                // which function invoked this function
+                urlTokens[urlTokens.length - 1] = value;
+            } else if (from === 2) {
+                // which function invoked this function
+                if (value !== null) {
+                    urlTokens[urlTokens.length - 2] = value;
+                }
+            } else if (from === 3) {
+                // which function invoked this function
+                urlTokens[urlTokens.length - 2] = value;
+            }
+
+            const newURL = urlTokens.join("/");
+
+            this.replaceLink(element, newURL);
+        },
+        changeLogo() {
+            const appLogoLink = document.getElementById("app-logo");
+            const mobileLogoLink = document.getElementById("logo-mobile");
+            const invoiceLogoLink = document.getElementById("invoice-logo");
+            const footerLogoLink = document.getElementById("footer-logo");
+            const logoUrl = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? 'dark' : 'white'}.svg`;
+
+            if (appLogoLink) {
+                appLogoLink.src = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? this.logoColor : 'white'}.svg`;
+            }
+
+            if (mobileLogoLink) {
+                mobileLogoLink.src = logoUrl;
+            }
+
+            if (invoiceLogoLink) {
+                invoiceLogoLink.src = logoUrl;
+            }
+
+            if (footerLogoLink) {
+                footerLogoLink.src = logoUrl;
+            }
+        },
+        replaceLink(linkElement, href) {
+            if (this.isIE()) {
+                linkElement.setAttribute("href", href);
+            } else {
+                const id = linkElement.getAttribute("id");
+                const cloneLinkElement = linkElement.cloneNode(true);
+
+                cloneLinkElement.setAttribute("href", href);
+                cloneLinkElement.setAttribute("id", id + "-clone");
+
+                linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
+
+                cloneLinkElement.addEventListener("load", () => {
+                    linkElement.remove();
+                    cloneLinkElement.setAttribute("id", id);
+                });
+            }
+        },
+        isIE() {
+            return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
+        },
         blockBodyScroll() {
             if (document.body.classList) {
                 document.body.classList.add('blocked-scroll');
@@ -347,7 +291,33 @@ export default {
         },
         isDesktop() {
             return window.innerWidth > 991;
-        }
+        },
+        isMobile() {
+            return window.innerWidth <= 991;
+        },
+        onSidebarMouseOver() {
+            this.sidebarActive = !this.isMobile();
+        },
+        onSidebarMouseLeave() {
+            this.sidebarActive = false;
+        },
+        // onTopbarItemClick(item) {
+        //     this.topbarItemClick = true;
+
+        //     if (this.activeTopbarItem === item) {
+        //         this.activeTopbarItem = null;
+        //     } else {
+        //         this.activeTopbarItem = item;
+        //     }
+        // },
+        onTopbarSearchClick() {
+            this.searchActive = !this.searchActive;
+            this.searchClick = !this.searchClick;
+        },
+        onTopbarUserMenuClick() {
+            this.topbarUserMenuActive = !this.topbarUserMenuActive;
+            this.topbarUserMenuClick = !this.topbarUserMenuClick;
+        },
     },
 };
 </script>

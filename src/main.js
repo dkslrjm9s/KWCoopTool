@@ -125,7 +125,7 @@ const app = createApp({
     render () { return h(this.ViewComponent) }
 });
 
-app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined' });
+app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined', topbarTheme: 'light' });
 
 app.use(PrimeVue, { ripple: true });
 app.use(ConfirmationService);

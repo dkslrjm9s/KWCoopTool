@@ -15,15 +15,12 @@
 
         .sidebar-pin {
             display: none;
-            @include transition(all $transitionDuration);
-
-            > span {
-                display: block;
-                height: 16px;
-                width: 16px;
-                @include border-radius(50%);
-                border: 2px solid $dividerColor;
-            }
+            height: 16px;
+            width: 16px;
+            @include border-radius(50%);
+            border: 2px solid $dividerColor;
+			transition: background-color $transitionDuration;
+            cursor: pointer;
         }
 
         img {
@@ -72,6 +69,25 @@
                         i.layout-submenu-toggler {
                             @include rotate(-180deg);
                         }
+                    }
+                    .layout-menu-enter-from,
+                    .layout-menu-leave-to {
+                        max-height: 0;
+                    }
+                
+                    .layout-menu-enter-to,
+                    .layout-menu-leave-from {
+                        max-height: 1000px;
+                    }
+                
+                    .layout-menu-enter-active {
+                        overflow: hidden;
+                        transition: max-height 1s ease-in-out;
+                    }
+                
+                    .layout-menu-leave-active {
+                        overflow: hidden;
+                        transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
                     }
                 }
 
@@ -215,16 +231,8 @@
 
                     .sidebar-pin {
                         display: inline-block;
-                        > span {
-                            display: block;
-                            height: 16px;
-                            width: 16px;
-                            @include border-radius(50%);
-                            border: 2px solid $dividerColor;
-                            border: 2px solid var(--primary-light-color);
-                            background-color: $dividerColor;
-                            background-color: var(--primary-lighter-color);
-                        }
+                        border: 2px solid var(--primary-color);
+                        background-color: rgba(119, 123, 241, 0.1);
                     }
                 }
                 @include internalSubmenu;
@@ -254,13 +262,6 @@
 
                 .sidebar-pin {
                     display: inline-block;
-                    > span {
-                        display: block;
-                        height: 16px;
-                        width: 16px;
-                        @include border-radius(50%);
-                        border: 2px solid $dividerColor;
-                    }
                 }
             }
             @include internalSubmenu;

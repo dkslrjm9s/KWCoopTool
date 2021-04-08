@@ -6,11 +6,11 @@
         <div class="layout-config" :class="{ 'layout-config-active': configActive }" @click="onConfigClick">
             <h5>Menu Type</h5>
             <div class="p-field-radiobutton">
-                <RadioButton name="menuMode" value="static" v-model="d_menuMode" id="mode1" @change="changeMenuMode('horizontal')"></RadioButton>
+                <RadioButton name="menuMode" value="horizontal" v-model="d_menuMode" id="mode1" @change="changeMenuMode('horizontal')"></RadioButton>
                 <label for="mode1">Horizontal</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="menuMode" value="overlay" v-model="d_menuMode" id="mode2" @change="changeMenuMode('sidebar')"></RadioButton>
+                <RadioButton name="menuMode" value="sidebar" v-model="d_menuMode" id="mode2" @change="changeMenuMode('sidebar')"></RadioButton>
                 <label for="mode2">Sidebar</label>
             </div>
             <div class="p-field-radiobutton">
@@ -21,36 +21,52 @@
 
             <h5>Color Scheme</h5>
             <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" id="theme3" @change="changeColorScheme('light')"></RadioButton>
+                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" id="theme1" @change="changeColorScheme('light')"></RadioButton>
                 <label for="theme3">Light</label>
             </div>
             <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" id="theme1" @change="changeColorScheme('dark')"></RadioButton>
+                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" id="theme2" @change="changeColorScheme('dark')"></RadioButton>
                 <label for="theme1">Dark</label>
             </div>
 
             <hr />
 
-            <h5>Topbar Mode</h5>
-            <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" id="theme3" @change="changeColorScheme('light')"></RadioButton>
-                <label for="theme3">Light</label>
+            <div v-if="layoutMode === 'horizontal'">
+                <h5>Topbar and Menu Mode</h5>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" @change="changeColorScheme('light')"></RadioButton>
+                    <label for="theme3">Light</label>
+                </div>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" @change="changeColorScheme('dark')"></RadioButton>
+                    <label for="theme1">Dark</label>
+                </div>
             </div>
-            <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" id="theme1" @change="changeColorScheme('dark')"></RadioButton>
-                <label for="theme1">Dark</label>
+
+            <div v-if="layoutMode !== 'horizontal'">
+                <h5>Topbar Mode</h5>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="topbarScheme" value="light" v-model="d_topbarTheme" id="topbar1" @change="changeTopbarScheme('light')" :disabled="d_colorScheme === 'dark'"></RadioButton>
+                    <label for="topbar1">Light</label>
+                </div>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="topbarScheme" value="dark" v-model="d_topbarTheme" id="topbar2" @change="changeTopbarScheme('dark')" :disabled="d_colorScheme === 'dark'"></RadioButton>
+                    <label for="topbar2">Dark</label>
+                </div>
             </div>
 
             <hr />
 
-            <h5>Menu Mode</h5>
-            <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" id="theme3" @change="changeColorScheme('light')"></RadioButton>
-                <label for="theme3">Light</label>
-            </div>
-            <div class="p-field-radiobutton">
-                <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" id="theme1" @change="changeColorScheme('dark')"></RadioButton>
-                <label for="theme1">Dark</label>
+            <div v-if="layoutMode !== 'horizontal'">
+                <h5>Menu Mode</h5>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="colorScheme" value="light" v-model="d_menuTheme" id="menuTheme1" @change="changeMenuScheme('light')" :disabled="d_colorScheme === 'dark'"></RadioButton>
+                    <label for="menuTheme1">Light</label>
+                </div>
+                <div class="p-field-radiobutton">
+                    <RadioButton name="colorScheme" value="dark" v-model="d_menuTheme" id="menuTheme2" @change="changeMenuScheme('dark')" :disabled="d_colorScheme === 'dark'"></RadioButton>
+                    <label for="menuTheme2">Dark</label>
+                </div>
             </div>
 
             <hr />
@@ -72,19 +88,7 @@
 
             <hr />
 
-            <h5>Menu Themes</h5>
-            <div class="layout-themes" v-if="d_colorScheme === 'light'">
-                <div v-for="theme in menuThemes" :key="theme.name">
-                    <a style="cursor: pointer" @click="changeMenuTheme(theme.name, theme.logoColor, theme.componentTheme)" :title="theme.name" :style="{ 'background-color': theme.color }"></a>
-                </div>
-            </div>
-            <div v-if="d_colorScheme !== 'light'">
-                <p>Menu themes are only available in light mode by design as large surfaces can emit too much brightness in dark mode.</p>
-            </div>
-
-            <hr />
-
-            <h5>Component Themes</h5>
+            <h5>Theme Colors</h5>
             <div class="layout-themes">
                 <div v-for="theme in componentThemes" :key="theme.name">
                     <a style="cursor: pointer" @click="changeComponentTheme(theme.name)" :title="theme.name" :style="{ 'background-color': theme.color }"></a>
@@ -97,7 +101,7 @@
 <script>
 export default {
     name: "AppConfig",
-    emits: ["config-button-click", "config-click", "update:layoutMode", "update:menuTheme", "update:colorScheme"],
+    emits: ["config-button-click", "config-click", "update:layoutMode", "update:menuTheme", "update:colorScheme", "update:topbarTheme", "change-component-theme", "change-color-scheme"],
     props: {
         configActive: {
             type: Boolean,
@@ -108,105 +112,26 @@ export default {
             default: null,
         },
         colorScheme: String,
+        topbarTheme: String,
         menuTheme: String,
         layoutMode: String
     },
     data() {
         return {
-            menuThemes: [
-                {
-                    name: "white",
-                    color: "#ffffff",
-                    logoColor: "dark",
-                    componentTheme: null,
-                },
-                {
-                    name: "darkgray",
-                    color: "#343a40",
-                    logoColor: "white",
-                    componentTheme: null,
-                },
-                {
-                    name: "blue",
-                    color: "#1976d2",
-                    logoColor: "white",
-                    componentTheme: "blue",
-                },
-                {
-                    name: "bluegray",
-                    color: "#455a64",
-                    logoColor: "white",
-                    componentTheme: "lightgreen",
-                },
-                {
-                    name: "brown",
-                    color: "#5d4037",
-                    logoColor: "white",
-                    componentTheme: "cyan",
-                },
-                {
-                    name: "cyan",
-                    color: "#0097a7",
-                    logoColor: "white",
-                    componentTheme: "cyan",
-                },
-                {
-                    name: "green",
-                    color: "#388e3C",
-                    logoColor: "white",
-                    componentTheme: "green",
-                },
-                {
-                    name: "indigo",
-                    color: "#303f9f",
-                    logoColor: "white",
-                    componentTheme: "indigo",
-                },
-                {
-                    name: "deeppurple",
-                    color: "#512da8",
-                    logoColor: "white",
-                    componentTheme: "deeppurple",
-                },
-                {
-                    name: "orange",
-                    color: "#F57c00",
-                    logoColor: "dark",
-                    componentTheme: "orange",
-                },
-                {
-                    name: "pink",
-                    color: "#c2185b",
-                    logoColor: "white",
-                    componentTheme: "pink",
-                },
-                {
-                    name: "purple",
-                    color: "#7b1fa2",
-                    logoColor: "white",
-                    componentTheme: "purple",
-                },
-                {
-                    name: "teal",
-                    color: "#00796b",
-                    logoColor: "white",
-                    componentTheme: "teal",
-                },
-            ],
             componentThemes: [
-                { name: "blue", color: "#42A5F5" },
-                { name: "green", color: "#66BB6A" },
-                { name: "lightgreen", color: "#9CCC65" },
-                { name: "purple", color: "#AB47BC" },
-                { name: "deeppurple", color: "#7E57C2" },
-                { name: "indigo", color: "#5C6BC0" },
-                { name: "orange", color: "#FFA726" },
-                { name: "cyan", color: "#26C6DA" },
-                { name: "pink", color: "#EC407A" },
-                { name: "teal", color: "#26A69A" },
+                {name: 'blue', color: '#2c84d8'},
+                {name: 'green', color: '#34B56F'},
+                {name: 'orange', color: '#FF810E'},
+                {name: 'turquoise', color: '#58AED3'},
+                {name: 'avocado', color: '#AEC523'},
+                {name: 'purple', color: '#464DF2'},
+                {name: 'red', color: '#FF9B7B'},
+                {name: 'yellow', color: '#FFB340'},
             ],
             logoColor: 'white',
             d_colorScheme: this.colorScheme,
+            d_topbarTheme: this.topbarTheme,
+            d_menuTheme: this.menuTheme,
             d_menuMode: this.layoutMode
         };
     },
@@ -220,7 +145,7 @@ export default {
     },
     methods: {
         changeComponentTheme(theme) {
-            this.changeStyleSheetUrl("theme-css", theme, 3);
+            this.$emit("change-component-theme", theme);
         },
         onConfigButtonClick(event) {
             this.$emit("config-button-click", event);
@@ -238,88 +163,15 @@ export default {
         changeMenuMode(mode) {
             this.$emit("update:layoutMode", mode);
         },
-        changeMenuTheme(name, logoColor, componentTheme) {
-            this.$emit("update:menuTheme", "layout-sidebar-" + name);
-            this.changeStyleSheetUrl("theme-css", componentTheme, 2);
-
-            const appLogoLink = document.getElementById("app-logo");
-            const appLogoUrl = `assets/layout/images/logo-${logoColor === 'dark' ? 'dark' : 'white'}.svg`;
-
-            if (appLogoLink) {
-                appLogoLink.src = appLogoUrl;
-            }
-            this.logoColor = logoColor;
-        },
         changeColorScheme(scheme) {
-            this.$emit("update:colorScheme", scheme);
-            this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
-            this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
-            this.changeLogo();
+            this.$emit("change-color-scheme", scheme);
         },
-        changeStyleSheetUrl(id, value, from) {
-            const element = document.getElementById(id);
-            const urlTokens = element.getAttribute("href").split("/");
-
-            if (from === 1) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 1] = value;
-            } else if (from === 2) {
-                // which function invoked this function
-                if (value !== null) {
-                    urlTokens[urlTokens.length - 2] = value;
-                }
-            } else if (from === 3) {
-                // which function invoked this function
-                urlTokens[urlTokens.length - 2] = value;
-            }
-
-            const newURL = urlTokens.join("/");
-
-            this.replaceLink(element, newURL);
+        changeTopbarScheme(scheme) {
+            this.$emit("update:topbarTheme", scheme);
+            this.$primevue.config.topbarTheme = scheme;
         },
-        changeLogo() {
-            const appLogoLink = document.getElementById("app-logo");
-            const mobileLogoLink = document.getElementById("logo-mobile");
-            const invoiceLogoLink = document.getElementById("invoice-logo");
-            const footerLogoLink = document.getElementById("footer-logo");
-            const logoUrl = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? 'dark' : 'white'}.svg`;
-
-            if (appLogoLink) {
-                appLogoLink.src = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? this.logoColor : 'white'}.svg`;
-            }
-
-            if (mobileLogoLink) {
-                mobileLogoLink.src = logoUrl;
-            }
-
-            if (invoiceLogoLink) {
-                invoiceLogoLink.src = logoUrl;
-            }
-
-            if (footerLogoLink) {
-                footerLogoLink.src = logoUrl;
-            }
-        },
-        replaceLink(linkElement, href) {
-            if (this.isIE()) {
-                linkElement.setAttribute("href", href);
-            } else {
-                const id = linkElement.getAttribute("id");
-                const cloneLinkElement = linkElement.cloneNode(true);
-
-                cloneLinkElement.setAttribute("href", href);
-                cloneLinkElement.setAttribute("id", id + "-clone");
-
-                linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-                cloneLinkElement.addEventListener("load", () => {
-                    linkElement.remove();
-                    cloneLinkElement.setAttribute("id", id);
-                });
-            }
-        },
-        isIE() {
-            return /(MSIE|Trident\/|Edge\/)/i.test(window.navigator.userAgent);
+        changeMenuScheme(scheme) {
+            this.$emit("update:menuTheme", scheme);
         }
     },
 };
