@@ -34,11 +34,11 @@
             <div v-if="layoutMode === 'horizontal'">
                 <h5>Topbar and Menu Mode</h5>
                 <div class="p-field-radiobutton">
-                    <RadioButton name="colorScheme" value="light" v-model="d_colorScheme" @change="changeColorScheme('light')"></RadioButton>
+                    <RadioButton name="topbarScheme" value="light" v-model="d_topbarTheme" @change="changeTopbarTheme('light')"></RadioButton>
                     <label for="theme3">Light</label>
                 </div>
                 <div class="p-field-radiobutton">
-                    <RadioButton name="colorScheme" value="dark" v-model="d_colorScheme" @change="changeColorScheme('dark')"></RadioButton>
+                    <RadioButton name="topbarScheme" value="dark" v-model="d_topbarTheme" @change="changeTopbarTheme('dark')"></RadioButton>
                     <label for="theme1">Dark</label>
                 </div>
             </div>
@@ -165,6 +165,11 @@ export default {
         },
         changeColorScheme(scheme) {
             this.$emit("change-color-scheme", scheme);
+        },
+        changeTopbarTheme(scheme) {
+            this.$emit("update:topbarTheme", scheme);
+            this.$primevue.config.topbarTheme = scheme;
+            this.$emit("update:menuTheme", scheme);
         },
         changeTopbarScheme(scheme) {
             this.$emit("update:topbarTheme", scheme);
