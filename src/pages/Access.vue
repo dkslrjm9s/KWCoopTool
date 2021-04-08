@@ -1,15 +1,29 @@
 <template>
     <div class="exception-body access">
-        <img src="assets/layout/images/logo-white.svg" alt="diamond-layout" class="logo" />
-
-        <div class="exception-content">
-            <div class="exception-title">ACCESS DENIED</div>
-            <div class="exception-detail">You do not have the necessary permissions.</div>
-            <router-link to="/">Go to Dashboard</router-link>
+        <div class="exception-topbar">
+            <a id="logolink" href="/" class="layout-topbar-logo">
+                <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
+            </a>
+        </div>
+        <div class="exception-wrapper">
+            <div class="exception-content">
+                <img src="assets/layout/images/pages/asset-access.svg" alt="freya-layout" />
+                <span>access denied</span>
+            </div>
+            <div class="exception-footer">
+                <h4>freya</h4>
+                <h6>Copyright Ⓒ PrimeTek Informatics</h6>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    computed: {
+        topbarTheme() {
+            return this.$primevue.config.topbarTheme; 
+        }
+    }
+};
 </script>
