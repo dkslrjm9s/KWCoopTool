@@ -3,18 +3,18 @@
         <div class="p-col-12">
             <div class="card docs">
                 <h4>Current Version</h4>
-                <p>Vue 3.0.2 and PrimeVue 3.x</p>
+                <p>Vue 3.0.6 and PrimeVue 3.x</p>
 
                 <h4>Dependencies</h4>
 				<p>
-					Diamond has no direct dependency other than PrimeVue. More
+					Freya has no direct dependency other than PrimeVue. More
 					information about dependencies is available at
 					<a href="https://www.primefaces.org/primevue-3-0-0-final-released-for-vue-3/">PrimeVue 3.0.0 Is Ready For PrimeTime</a>
 					article.
 				</p>
 
                 <h4>Getting Started</h4>
-                <p>Diamond is a true native application template for Vue and is distributed as a CLI project. In case CLI is not installed already, use the command below to set it up.</p>
+                <p>Freya is a true native application template for Vue and is distributed as a CLI project. In case CLI is not installed already, use the command below to set it up.</p>
 <pre v-code><code>
 npm install -g @vue/cli
 
@@ -24,10 +24,10 @@ yarn global add @vue/cli
 
 </code></pre>
 
-                <p>Once CLI is ready in your system, extract the contents of the Diamond zip file distribution, cd to the directory and install the libraries from npm.</p>
+                <p>Once CLI is ready in your system, extract the contents of the Freya zip file distribution, cd to the directory and install the libraries from npm.</p>
 
 <pre v-code><code>
-cd diamond
+cd freya
 npm install
 npm run serve
 
@@ -47,7 +47,7 @@ npm run serve
 </code></pre>
 
                 <h4>Structure</h4>
-                <p>Diamond consists of 3 main parts; the application layout, layout resources and theme resources for PrimeVue components. <i>App.vue</i> inside app folder is the html
+                <p>Freya consists of 3 main parts; the application layout, layout resources and theme resources for PrimeVue components. <i>App.vue</i> inside app folder is the html
 					template for the base layout, required resources for the layout are placed inside the <i>src/assets/layout</i> folder and similarly theme resources are inside <i>src/assets/theme</i> folder.</p>
 
                 <h4>Template</h4>
@@ -213,7 +213,7 @@ data() {
 
                 <h4>Integration with an Existing CLI Project</h4>
 				<p>
-					To setup Diamond in an existing project, follow the steps
+					To setup Freya in an existing project, follow the steps
 					below;
 				</p>
 
@@ -243,7 +243,7 @@ import './App.scss'; 	                            //your styles and overrides
                     if this is not a requirement, you may also add them to the styles configuration above so they go inside the bundle.</p>
 
 				<h4>Theme</h4>
-				<p>Diamond provides 30 PrimeVue themes out of the box. Setup of a theme is simple by including the css of theme to your
+				<p>Freya provides 30 PrimeVue themes out of the box. Setup of a theme is simple by including the css of theme to your
 					bundle that are located inside assets/theme folder such as assets/theme/theme-amber-teal.css.</p>
 
                 <ul>
@@ -1243,7 +1243,7 @@ $splitterGutterHandleBg:$shade300;
 				</ul>
 
                 <h4>Grid CSS</h4>
-				<p>Diamond uses PrimeVue Flex Grid CSS throughout the demos such as Dashboard, however any Grid library can be used with it since Diamond Layout itself does not depend on PrimeFlex CSS.</p>
+				<p>Freya uses PrimeVue Flex Grid CSS throughout the demos such as Dashboard, however any Grid library can be used with it since Freya Layout itself does not depend on PrimeFlex CSS.</p>
 
 				<h4>Customizing Styles</h4>
 				<p>It is suggested to add your customizations in the following sass files under the "sass/overrides" folder instead of adding them to the scss files under sass folder to avoid maintenance issues after an update.</p>
