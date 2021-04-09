@@ -34,11 +34,11 @@
             <div v-if="layoutMode === 'horizontal'">
                 <h5>Topbar and Menu Mode</h5>
                 <div class="p-field-radiobutton">
-                    <RadioButton name="topbarScheme" value="light" v-model="d_topbarTheme" @change="changeTopbarTheme('light')"></RadioButton>
+                    <RadioButton name="topbarScheme" value="light" v-model="d_topbarTheme" :disabled="d_colorScheme === 'dark'" @change="changeTopbarTheme('light')"></RadioButton>
                     <label for="theme3">Light</label>
                 </div>
                 <div class="p-field-radiobutton">
-                    <RadioButton name="topbarScheme" value="dark" v-model="d_topbarTheme" @change="changeTopbarTheme('dark')"></RadioButton>
+                    <RadioButton name="topbarScheme" value="dark" v-model="d_topbarTheme" :disabled="d_colorScheme === 'dark'" @change="changeTopbarTheme('dark')"></RadioButton>
                     <label for="theme1">Dark</label>
                 </div>
             </div>
