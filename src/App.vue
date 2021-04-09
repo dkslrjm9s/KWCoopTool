@@ -1,7 +1,9 @@
 <template>
     <div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
-            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" 
+            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" :mobileMenuActive="staticMenuMobileActive"
+                :menuActive="menuActive" @menu-click="onMenuClick" 
+                @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" 
                 :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" @topbar-usermenu-click="onTopbarUserMenuClick" @toggle-menu="onToggleMenu"
                 :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" :activeTopbarItem="activeTopbarItem"
                 @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-toggle="onTopbarSearchToggle" @topbar-search-click="OnTopbarSearchClick" 
