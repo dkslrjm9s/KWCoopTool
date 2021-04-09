@@ -20,6 +20,7 @@
 						<Button label="Show" icon="pi pi-external-link" style="width: 50%" @click="open"/>
 					</div>
 				</div>
+				<ConfirmDialog group="dialog" />
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
@@ -126,7 +127,7 @@
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>ConfirmPopup</h5>
-				<ConfirmPopup></ConfirmPopup>
+				<ConfirmPopup group="popup"></ConfirmPopup>
 				<Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm" class="p-mr-2"></Button>
 			</div>
 		</div>
