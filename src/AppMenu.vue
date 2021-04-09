@@ -11,7 +11,7 @@
         </div>
 
         <div class="layout-menu-container">
-            <AppSubmenu :items="menu" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="active" :mobileMenuActive="mobileMenuActive" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
+            <AppSubmenu :items="menu" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
         </div>
     </div>
 </template>
@@ -25,7 +25,7 @@ export default {
         sidebarActive: Boolean,
         sidebarStatic: Boolean,
         layoutMode: String,
-        active: Boolean,
+        menuActive: Boolean,
         mobileMenuActive: Boolean
     },
     data() {
@@ -33,7 +33,7 @@ export default {
             menu: [
                 {label: "Dashboard", icon: "pi pi-fw pi-home", to: "/"},
                 {
-                    label: "UI Kit", icon: "pi pi-fw pi-id-card",
+                    label: "UI Kit", icon: "pi pi-fw pi-star-o",
                     items: [
                         {label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout"},
                         {label: "Input", icon: "pi pi-fw pi-check-square", to: "/input"},
@@ -54,7 +54,7 @@ export default {
                     ],
                 },
                 {
-                    label: "Utilities", icon: "pi pi-fw pi-desktop",
+                    label: "Utilities", icon: "pi pi-fw pi-compass",
                     items: [
                         {label: "Display", icon:"pi pi-fw pi-desktop", to:"/display"},
                         {label: "Elevation", icon:"pi pi-fw pi-external-link", to:"/elevation"},
@@ -68,7 +68,7 @@ export default {
                     ],
                 },
                 {
-                    label: "Pages", icon: "pi pi-fw pi-pencil",
+                    label: "Pages", icon: "pi pi-fw pi-briefcase",
                     items: [
                         {label: "Crud", icon: "pi pi-fw pi-pencil", to: "/crud"},
                         {label: "Calendar", icon: "pi pi-fw pi-calendar-plus", to: "/calendar"},

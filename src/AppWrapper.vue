@@ -37,7 +37,6 @@
 
                 this.changeStyleSheetUrl("layout-css", "layout-" + scheme + ".css", 1);
                 this.changeStyleSheetUrl("theme-css", "theme-" + scheme + ".css", 1);
-                this.changeLogo();
             },
             changeStyleSheetUrl(id, value, from) {
                 const element = document.getElementById(id);
@@ -59,29 +58,6 @@
                 const newURL = urlTokens.join("/");
 
                 this.replaceLink(element, newURL);
-            },
-            changeLogo() {
-                const appLogoLink = document.getElementById("app-logo");
-                const mobileLogoLink = document.getElementById("logo-mobile");
-                const invoiceLogoLink = document.getElementById("invoice-logo");
-                const footerLogoLink = document.getElementById("footer-logo");
-                const logoUrl = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? 'dark' : 'white'}.svg`;
-
-                if (appLogoLink) {
-                    appLogoLink.src = `assets/layout/images/logo-${this.d_colorScheme === 'light' ? this.logoColor : 'white'}.svg`;
-                }
-
-                if (mobileLogoLink) {
-                    mobileLogoLink.src = logoUrl;
-                }
-
-                if (invoiceLogoLink) {
-                    invoiceLogoLink.src = logoUrl;
-                }
-
-                if (footerLogoLink) {
-                    footerLogoLink.src = logoUrl;
-                }
             },
             replaceLink(linkElement, href) {
                 if (this.isIE()) {

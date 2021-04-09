@@ -10,7 +10,7 @@
                 </a>
             </div>
 
-            <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver"
+            <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver"
                 @toggle-menu="onToggleMenu" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
 
             <div class="layout-topbar-right">
@@ -89,7 +89,9 @@ export default {
         sidebarActive: Boolean,
         sidebarStatic: Boolean,
         layoutMode: String,
-        topbarTheme: String
+        topbarTheme: String,
+        menuActive: Boolean,
+        mobileMenuActive: Boolean
     },
     data() {
         return {           

@@ -14,6 +14,10 @@
                     <span class="layout-menuitem-text">{{ item.label }}</span>
                     <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
                 </a>
+                <div class="layout-menu-tooltip">
+					<div class="layout-menu-tooltip-arrow"></div>
+					<div class="layout-menu-tooltip-text">{{item.label}}</div>
+				</div>
                 <transition name="layout-menu">
                     <appsubmenu v-show="item.items && (root && ((isSlim() && (mobileMenuActive || activeIndex !== null))) ? true : activeIndex === i)" :items="visible(item) && item.items" 
                         :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></appsubmenu>
@@ -82,7 +86,7 @@ export default {
             });
         },
         onMenuItemMouseEnter(index) {
-            if (this.root && this.menuActive && this.layoutMode === "slim" && !this.isMobile()) {
+            if (this.root && this.menuActive && (this.layoutMode === "horizontal" || this.layoutMode === "slim") && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },
