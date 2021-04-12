@@ -176,7 +176,7 @@
 						</SplitterPanel>
 						<SplitterPanel :size="60" style="overflow: scroll">
 							<Splitter layout="vertical">
-								<SplitterPanel :size="15">
+								<SplitterPanel :size="15" style="overflow: scroll">
 									<p class="p-col p-m-3">
 										At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
 										quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
@@ -184,7 +184,7 @@
 										est eligendi optio cumque nihil impedit quo minus.
 									</p>
 								</SplitterPanel>
-								<SplitterPanel :size="85">
+								<SplitterPanel :size="85" style="overflow: scroll">
 									<p class="p-col p-m-3">
 										Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et 
 										molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur 
