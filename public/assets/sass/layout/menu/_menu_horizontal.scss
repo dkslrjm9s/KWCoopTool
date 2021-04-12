@@ -77,6 +77,18 @@
                                 > div {
                                     display: none;
                                 }
+                                
+                                > ul {
+                                    max-width: 230px;
+                                    @include flex-direction-column();
+
+                                    > .active-menuitem {
+                                        > ul {
+                                            max-width: 230px;
+                                            @include flex-direction-column();
+                                        }
+                                    }
+                                }
                             }
 
                             > ul {

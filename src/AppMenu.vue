@@ -136,9 +136,6 @@ export default {
         }
     },
     methods: {
-        onSidebarClick() {
-            this.menuClick = true;
-        },
         onSidebarMouseOver() {
             if (this.layoutMode === "sidebar" && !this.sidebarStatic) {
                 this.$emit("sidebar-mouse-over");

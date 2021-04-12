@@ -53,7 +53,7 @@ export default {
     },
     mounted() {
 		EventBus.on('reset-active-index', () => {
-			if (this.isSlim()) {
+			if (this.isSlim() || this.isHorizontal()) {
 				this.activeIndex = null;
 			}
 		});
@@ -86,7 +86,7 @@ export default {
             });
         },
         onMenuItemMouseEnter(index) {
-            if (this.root && this.menuActive && (this.layoutMode === "horizontal" || this.layoutMode === "slim") && !this.isMobile()) {
+            if (this.root && this.menuActive && (this.isHorizontal() || this.isSlim()) && !this.isMobile()) {
                 this.activeIndex = index;
             }
         },
@@ -98,6 +98,9 @@ export default {
         },
         isSlim() {
             return this.layoutMode === 'slim';
+        },
+        isHorizontal() {
+            return this.layoutMode === 'horizontal';
         }
     }
 };

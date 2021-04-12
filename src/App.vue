@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { DomHandler } from 'primevue/utils';
 import EventBus from './event-bus';
 import AppTopBar from "./AppTopbar";
 import AppFooter from "./AppFooter";
@@ -113,7 +114,7 @@ export default {
             }
 
             if (!this.menuClick) {
-                if (this.isSlim()) {
+                if (this.isSlim() || this.isHorizontal()) {
 					EventBus.emit('reset-active-index');
 					this.menuActive = false;
                 }
@@ -142,7 +143,12 @@ export default {
 
             event.preventDefault();
         },
-        onMenuClick() {
+        onMenuClick(event) {
+            if(this.isHorizontal() && DomHandler.hasClass(event.target,'layout-menu-container')) {
+                EventBus.emit('reset-active-index');
+                this.menuClick = false;
+                this.menuActive = false;
+            }
             this.menuClick = true;
         },
         onMenuButtonClick(event) {
@@ -218,6 +224,9 @@ export default {
         },
         isSlim() {
             return this.layoutMode === "slim";
+        },
+        isHorizontal() {
+            return this.layoutMode === "horizontal";
         },
         isDesktop() {
             return window.innerWidth > 991;
