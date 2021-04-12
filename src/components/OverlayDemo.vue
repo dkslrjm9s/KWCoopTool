@@ -188,6 +188,7 @@
 			confirm(event) {
 				this.$confirm.require({
 					target: event.currentTarget,
+					group: 'popup',
 					message: 'Are you sure you want to proceed?',
 					icon: 'pi pi-exclamation-triangle',
 					accept: () => {
@@ -200,6 +201,7 @@
 			},
 			del() {
 				this.$confirm.require({
+					group: 'dialog',
 					message: 'Are you sure you want to delete?',
 					icon: 'pi pi-exclamation-triangle',
 					accept: () => {
