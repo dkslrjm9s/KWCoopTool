@@ -13,23 +13,23 @@ $colors: (
 
 //reused color variables
 $shade000:#ffffff !default;    //surface
-$shade100:#f8f9fa !default;    //header background
-$shade200:#e9ecef !default;    //hover background
-$shade300:#dee2e6 !default;    //border, divider
-$shade400:#ced4da !default;    //input border
-$shade500:#adb5bd !default;    //input icon
-$shade600:#6c757d !default;    //text secondary color
-$shade700:#495057 !default;    //text color
+$shade100:#FCFCFC !default;    //header background
+$shade200:rgba($primaryColor,.2) !default;    //hover background
+$shade300:#D4D6D9 !default;    //border, divider
+$shade400:#D4D6D9 !default;    //input border
+$shade500:#545B67 !default;    //input icon
+$shade600:#83888F !default;    //text secondary color
+$shade700:#69707A !default;    //text color
 $shade800:#343a40 !default;    //unused
 $shade900:#212529 !default;    //unused
 
 //global
-$fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $fontSize:1rem !default;
 $fontWeight:normal !default;
 $textColor:$shade700 !default;
 $textSecondaryColor:$shade600 !default;
-$borderRadius:3px !default;
+$borderRadius:6px !default;
 $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
@@ -517,6 +517,10 @@ $dataViewContentBorder:0 none !default;
 $dataViewListItemBorder:solid $shade200 !default;
 $dataViewListItemBorderWidth:0 0 1px 0 !default;
 
+//orderlist, picklist
+$orderListBreakpoint:769px !default;
+$pickListBreakpoint:769px !default;
+
 //schedule
 $fullCalendarEventBg:$primaryDarkColor !default;
 $fullCalendarEventBorder:1px solid $primaryDarkColor !default;
@@ -624,7 +628,7 @@ $stepsItemNumberBorderRadius:50% !default;
 $stepsItemActiveFontWeight:600 !default;
 
 //progressbar
-$progressBarHeight:1.5rem !default;
+$progressBarHeight:1rem !default;
 $progressBarBorder:0 none !default;
 $progressBarBg:$shade300 !default;
 $progressBarValueBg:$primaryColor !default;
@@ -789,6 +793,9 @@ $splitterGutterHandleBg:$shade300;
     --text-color:#{$shade700};
     --text-color-secondary:#{$shade600};
     --primary-color:#{$primaryColor};
+    --primary-dark-color:#{$primaryDarkColor};
+    --primary-light-color:#{$primaryLightColor};
+    --primary-lighter-color:#{$primaryLighterColor};
     --primary-color-text:#{$primaryTextColor};
     --font-family:#{$fontFamily};
     --surface-0: #ffffff;
