@@ -83,6 +83,7 @@
                             }
 
                             > ul {
+                                display: none;
                                 position: absolute;
                                 top: 0;
                                 left: 62px;
@@ -93,15 +94,21 @@
 
                                 li {
                                     margin: 0;
+                                    padding: 0;
                                     > a {
+                                        justify-content:flex-start;
                                         padding: 10px 5px;
                                         > span {
                                             visibility: visible;
+                                            display: block;
                                         }
                                         > i {
                                             &.layout-submenu-toggler {
                                                 visibility: visible;
                                             }
+                                        }
+                                        &:hover + .layout-menu-tooltip {
+                                            display: none;
                                         }
                                     }
                                     @include nested-submenu-indents(10, 2, 10);
@@ -110,6 +117,10 @@
                             }
 
                             &.active-menuitem {
+                                > ul {
+                                    display: block;
+                                }
+                                
                                 > a {
                                     &:hover + .layout-menu-tooltip {
                                         display: none;
