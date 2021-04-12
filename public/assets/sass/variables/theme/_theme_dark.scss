@@ -14,10 +14,10 @@ $colors: (
 //shades
 $shade000:rgba(255,255,255,.87) !default;  //text color
 $shade100:rgba(255,255,255,.60) !default;  //text secondary color
-$shade600:#383838 !default;  //input bg, border, divider
-$shade700:#2b2b2b !default;  //unused
-$shade800:#1e1e1e !default;  //elevated surface
-$shade900:#121212 !default;  //ground surface
+$shade600:#304562 !default;  //input bg, border, divider
+$shade700:#283951 !default;  //unused
+$shade800:#1f2d40 !default;  //elevated surface
+$shade900:#17212f !default;  //ground surface
 
 $hoverBg:rgba(255,255,255,.03) !default;
 
@@ -205,7 +205,7 @@ $dangerButtonFocusShadow:0 0 0 1px scale-color($dangerButtonBg, $lightness: 30%)
 $linkButtonColor:$primaryColor !default;
 $linkButtonHoverColor:$primaryColor !default;
 $linkButtonTextHoverDecoration:underline !default;
-$linkButtonFocusShadow:0 0 0 1px $focusOutlineColor !default;
+$linkButtonFocusShadow:0 0 0 0.1rem $focusOutlineColor !default;
 
 //checkbox
 $checkboxWidth:20px !default;
@@ -236,7 +236,7 @@ $colorPickerPreviewWidth:2rem !default;
 $colorPickerPreviewHeight:2rem !default;
 $colorPickerBg:$shade800 !default;
 $colorPickerBorderColor:$shade600 !default;
-$colorPickerHandleColor:$shade000 !default;
+$colorPickerHandleColor:#ffffff !default;
 
 //togglebutton
 $toggleButtonBg:$shade800 !default;
@@ -539,7 +539,7 @@ $timelineEventConnectorSize:2px !default;
 $timelineEventColor:$shade600 !default;
 
 //org chart
-$organizationChartConnectorColor:$shade600 !default;
+$organizationChartConnectorColor:$shade100 !default;
 
 //message
 $messageMargin:1rem 0 !default;
@@ -641,7 +641,7 @@ $menuitemIconHoverColor:$shade000 !default;
 $menuitemHoverBg:$hoverBg !default;
 $menuitemTextActiveColor:$shade000 !default;
 $menuitemIconActiveColor:$shade000 !default;
-$menuitemActiveBg:$hoverBg !default;
+$menuitemActiveBg:$shade900 !default;
 $menuitemSubmenuIconFontSize:.875rem !default;
 $submenuHeaderMargin:0 !default;
 $submenuHeaderPadding:.75rem 1rem !default;
@@ -789,17 +789,17 @@ $splitterGutterHandleBg:$shade600;
     --primary-color:#{$primaryColor};
     --primary-color-text:#{$primaryTextColor};
     --font-family:#{$fontFamily};
-    --surface-0: #121212;
-    --surface-50: #181818;
-    --surface-100: #1e1e1e;
-    --surface-200: #242424;
-    --surface-300: #2a2a2a;
-    --surface-400: #303030;
-    --surface-500: #363636;
-    --surface-600: #3b3b3b;
-    --surface-700: #414141;
-    --surface-800: #474747;
-    --surface-900: #4d4d4d;
+    --surface-0: #17212f;
+    --surface-50: #1d2734;
+    --surface-100: #232c39;
+    --surface-200: #28323f;
+    --surface-300: #2e3744;
+    --surface-400: #343d49;
+    --surface-500: #3a424e;
+    --surface-600: #404853;
+    --surface-700: #454d59;
+    --surface-800: #4b535e;
+    --surface-900: #515963;
     --content-padding:#{$panelContentPadding};
     --inline-spacing:#{$inlineSpacing};
 }
