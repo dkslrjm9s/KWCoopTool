@@ -2,9 +2,9 @@
     <div class="menu-wrapper" :class="{ 'layout-sidebar-active' : sidebarActive}"
         @click="onMenuClick" @mouseover="onSidebarMouseOver" @mouseleave="onSidebarMouseLeave">
         <div class="sidebar-logo">
-            <a href="/">
+            <router-link to="/">
                 <img src="assets/layout/images/logo-freya-single.svg" alt="freya-layout">
-            </a>
+            </router-link>
             <a class="sidebar-pin" @click="onToggleMenu($event)">
                 <span class="pin"></span>
             </a>
