@@ -17,26 +17,17 @@
 				</Dialog>
 				<div class="p-grid">
 					<div class="p-col-12">
-						<Button label="Show" icon="pi pi-external-link" style="width: 50%" @click="open"/>
+						<Button label="Show" icon="pi pi-external-link" style="width: auto" @click="open"/>
 					</div>
 				</div>
-				<ConfirmDialog group="dialog" />
+				
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Confirmation</h5>
-				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" @click="openConfirmation" />
-				<Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{width: '350px'}" :modal="true">
-					<div class="confirmation-content">
-						<i class="pi pi-exclamation-triangle p-mr-3" style="font-size: 2rem" />
-						<span>Are you sure you want to proceed?</span>
-					</div>
-					<template #footer>
-						<Button label="No" icon="pi pi-times" @click="closeConfirmation" class="p-button-text"/>
-						<Button label="Yes" icon="pi pi-check" @click="closeConfirmation" class="p-button-text" autofocus />
-					</template>
-				</Dialog>
+				<Button label="Delete" icon="pi pi-trash" class="p-button-danger" @click="del" />
+				<ConfirmDialog group="dialog" />
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
@@ -45,14 +36,14 @@
 				<div class="p-grid p-formgrid">
 					<div class="p-col-6">
 						<Button type="button" label="Image" @click="toggle" class="p-button-success"/>
-						<OverlayPanel ref="op" appendTo="body" :showCloseIcon="true">
+						<OverlayPanel ref="op" appendTo="body" :showCloseIcon="true" style="width: 300px" :breakpoints="{'960px': '75vw', '640px': '100vw'}">
 							<img src="assets/demo/images/nature/nature9.jpg" alt="Nature 9" />
 						</OverlayPanel>
 					</div>
 					<div class="p-col-6">
 						<Button type="button" label="DataTable" @click="toggleDataTable" class="p-button-success"/>
-						<OverlayPanel ref="op2" appendTo="body" :showCloseIcon="true" id="overlay_panel" style="width: 450px">
-							<DataTable :value="products" v-model:selection="selectedProduct" selectionMode="single" :paginator="true" :rows="5" @row-select="onProductSelect">
+						<OverlayPanel ref="op2" appendTo="body" :showCloseIcon="true" id="overlay_panel" style="width: 450px" :breakpoints="{'960px': '75vw', '640px': '100vw'}">
+							<DataTable :value="products" v-model:selection="selectedProduct" selectionMode="single" :paginator="true" :rows="5" responsiveLayout="scroll" @row-select="onProductSelect">
 								<Column field="name" header="Name" :sortable="true"></Column>
 								<Column header="Image">
 									<template #body="slotProps">
@@ -141,7 +132,6 @@
 		data() {
 			return {
 				display: false,
-				displayConfirmation: false,
 				position: 'center',
 				visibleLeft: false,
 				visibleRight: false,
@@ -165,12 +155,6 @@
 			},
 			close() {
 				this.display = false;
-			},
-			openConfirmation() {
-				this.displayConfirmation = true;
-			},
-			closeConfirmation() {
-				this.displayConfirmation = false;
 			},
 			toggle(event) {
 				this.$refs.op.toggle(event);
@@ -202,6 +186,7 @@
 			del() {
 				this.$confirm.require({
 					group: 'dialog',
+					header: 'Confirmation',
 					message: 'Are you sure you want to delete?',
 					icon: 'pi pi-exclamation-triangle',
 					accept: () => {

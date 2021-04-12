@@ -1,7 +1,7 @@
 <template>
 	<div class="flexgrid-demo">
-		<h4>Grid System</h4>
-		<p>Grid is a lightweight flex based responsive layout utility optimized for mobile phones, tablets and desktops.</p>
+		<h4>PrimeFlex grid system is a lightweight flex based responsive layout utility optimized for mobile phones, tablets and
+			desktops.</h4>
 
 		<h5>Basic</h5>
 		<div class="p-grid">
@@ -20,7 +20,7 @@
 		<Button type="button" icon="pi pi-plus" title="Add Column" @click="addColumn" :disabled="columns.length === 20" style="margin-right: .5em" />
 		<Button type="button" icon="pi pi-minus" title="Remove Column" @click="removeColumn" :disabled="columns.length === 1" />
 
-		<div style="margin-top: .5em">
+		<div class="p-mt-4">
 			<transition-group name="dynamic-box" tag="div" class="p-grid">
 				<div v-for="col of columns" :key="col" class="p-col">
 					<div class="box">{{col+1}}</div>
@@ -140,8 +140,8 @@
 
 		<h5>Fixed Width Column</h5>
 		<div class="p-grid">
-			<div class="p-col-fixed" style="width:100px">
-				<div class="box">100px</div>
+			<div class="p-col-fixed" style="width:200px">
+				<div class="box">200px</div>
 			</div>
 			<div class="p-col">
 				<div class="box">auto</div>
@@ -395,13 +395,13 @@
 <style lang="scss">
 	.flexgrid-demo {
 		.box {
-			background-color: var(--surface-e);
-			text-align: center;
-			padding-top: 1rem;
-			padding-bottom: 1rem;
-			border-radius: 4px;
-			box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-		}
+            background-color: var(--surface-e);
+            text-align: center;
+            padding: 1.25rem;
+            font-size: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+        }
 		.box-stretched {
 			height: 100%;
 		}

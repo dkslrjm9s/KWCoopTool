@@ -64,7 +64,7 @@
 		<div class="p-col-12 p-lg-8">
 			<div class="card">
 				<h5>PickList</h5>
-				<PickList v-model="picklistValue" dataKey="code">
+				<PickList v-model="picklistValue" dataKey="code" :responsive="true" listStyle="height: 250px">
 					<template #sourceHeader>
 						From
 					</template>
@@ -155,6 +155,10 @@
 </script>
 
 <style scoped lang="scss">
+.p-dropdown {
+	width: 14rem;
+	font-weight: normal;
+}
 .product-name {
 	font-size: 1.5rem;
 	font-weight: 700;

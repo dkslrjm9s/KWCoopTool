@@ -20,7 +20,7 @@
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
 					<template #header>
 						<div class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
-							<h5 class="p-m-0">Manage Products</h5>
+							<h5 class="p-mb-2 p-m-md-0">Manage Products</h5>
 							<span class="p-input-icon-left">
                                 <i class="pi pi-search" />
                                 <InputText v-model="filters['global']" placeholder="Search..." />

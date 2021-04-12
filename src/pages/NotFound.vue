@@ -12,7 +12,7 @@
                 <span class="exception-subtitle">Looks like you are lost.</span>
                 <Button type="button" label="Go back to home" @click="goDashboard" ></button>
             </div>
-            <div class="exception-footer">
+            <div class="exception-footer p-mt-4">
                 <h4>freya</h4>
                 <h6>Copyright Ⓒ PrimeTek Informatics</h6>
             </div>
