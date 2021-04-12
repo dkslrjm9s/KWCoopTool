@@ -5,10 +5,10 @@
 				<h5>Toast</h5>
 
 				<Toast />
-				<Button @click="showSuccess()" label="Success" class="p-button-success p-mr-2" />
-				<Button @click="showInfo()" label="Info" class="p-button-info p-mr-2" />
-				<Button @click="showWarn()" label="Warn" class="p-button-warning p-mr-2" />
-				<Button @click="showError()" label="Error" class="p-button-danger p-mr-2" />
+				<Button @click="showSuccess()" label="Success" class="p-button-success p-mr-2 p-mb-2" />
+				<Button @click="showInfo()" label="Info" class="p-button-info p-mr-2 p-mb-2" />
+				<Button @click="showWarn()" label="Warn" class="p-button-warning p-mr-2 p-mb-2" />
+				<Button @click="showError()" label="Error" class="p-button-danger p-mr-2 p-mb-2" />
 			</div>
 		</div>
 
@@ -107,5 +107,8 @@
 	}
 	.p-inputtext {
 		margin-right: .5rem;
+	}
+	.p-button {
+		min-width: 8rem;
 	}
 </style>
