@@ -11,7 +11,7 @@
         </div>
 
         <div class="layout-menu-container">
-            <AppSubmenu :items="menu" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
+            <AppSubmenu class="layout-menu" :items="menu" :layoutMode="layoutMode" :parentMenuItemActive="true" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" :root="true" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
         </div>
     </div>
 </template>

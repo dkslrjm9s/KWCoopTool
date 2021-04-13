@@ -1,5 +1,5 @@
 <template>
-    <ul v-if="items" class="layout-menu" role="menu">
+    <ul v-if="items" role="menu">
         <template v-for="(item, i) of items">
             <li v-if="visible(item) && !item.separator" :key="item.label || i" :class="[{'layout-root-menuitem': root, 'active-menuitem': activeIndex === i && !item.disabled}]" role="menuitem">
                 <router-link v-if="item.to" :to="item.to" :style="item.style" :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]" active-class="active-route" :target="item.target"
