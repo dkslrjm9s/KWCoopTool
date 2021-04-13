@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <AppRightMenu v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightMenu>
+        <AppRightPanel v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightPanel>
 
         <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
             @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"></AppConfig>
@@ -32,7 +32,7 @@ import EventBus from './event-bus';
 import AppTopBar from "./AppTopbar";
 import AppFooter from "./AppFooter";
 import AppConfig from "./AppConfig";
-import AppRightMenu from "./AppRightMenu";
+import AppRightPanel from "./AppRightPanel";
 export default {
     props: {
         topbarTheme: String,
@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             menuActive: false,
-            layoutMode: "sidebar",
+            layoutMode: "horizontal",
             colorScheme: "light",
             sidebarActive: false,
             sidebarStatic: false,
@@ -84,7 +84,7 @@ export default {
         AppTopBar,
         AppFooter,
         AppConfig,
-        AppRightMenu,
+        AppRightPanel,
     },
     watch: {
         $route() {

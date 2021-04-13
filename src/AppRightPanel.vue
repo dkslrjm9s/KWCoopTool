@@ -275,7 +275,7 @@
 
 <script>
 export default {
-    name: "AppRightMenu",
+    name: "AppRightPanel",
     emits: ["right-menu-click", "update:rightMenuClick"],
     props: {
         rightMenuActive: Boolean,
