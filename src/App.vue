@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             menuActive: false,
-            layoutMode: "horizontal",
+            layoutMode: "sidebar",
             colorScheme: "light",
             sidebarActive: false,
             sidebarStatic: false,
