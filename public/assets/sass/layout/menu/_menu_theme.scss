@@ -16,10 +16,6 @@
                     &.active-route {
                         color: $primaryColor;
                         color: $activeRootMenuItemTextColor;
-                        &::before {
-                            background-color: $primaryColor;
-                            background-color: $activeRootMenuItemTextColor;
-                        }
                     }
                 }
 
@@ -27,56 +23,31 @@
                     > a {
                         color: $primaryColor;
                         color: $activeRootMenuItemTextColor;
-                        &::before {
-                            background-color: $primaryColor;
-                            background-color: $activeRootMenuItemTextColor;
-                        }
                     }
-                }
 
-                > ul {
-                    > li {
-                        &.active-menuitem {
-                            background-color:$menuBgColor;
-                            > a {
-                                background-color: $menuBgColor;
-                                color: $primaryColor;
-                                color: $activeRootMenuItemTextColor;
-                            }
-                        }
-
-                        > a {
-                            &.active-route {
-                                color: $primaryColor;
-                                color: $activeRootMenuItemTextColor;
-                                &::before {
-                                    background-color: $primaryColor;
-                                    background-color: $activeRootMenuItemTextColor;
+                    > ul {
+                        > li {
+                            &.active-menuitem {
+                                background-color:$menuBgColor;
+                                > a {
+                                    background-color: $menuBgColor;
+                                    color: $primaryColor;
+                                    color: $activeRootMenuItemTextColor;
                                 }
                             }
-                        }
-                    }
-                    li {
-                        a {
-                            color: $submenuItemTextColor;
-                            &:hover {
-                                background-color: rgba($primaryColor,.2);
-                                background-color: $submenuItemHoverBgColor;
-                            }
-                        }
-                        &.active-menuitem {
+    
                             > a {
-                                color: $primaryColor;
-                                color: $activeRootMenuItemTextColor;
-                                &::before {
+                                &.active-route {
+                                    color: $primaryColor;
+                                    color: $activeRootMenuItemTextColor;
+                                    color: red;
                                     background-color: $primaryColor;
-                                    background-color: $activeRootMenuItemTextColor;
+                                    background-color: $submenuItemHoverBgColor;
                                 }
                             }
                         }
                     }
                 }
-
             }
         }
     }
@@ -108,11 +79,6 @@
             > li {
                 > a {
                     color: $rootMenuItemTextColor;
-
-                    &:hover {
-                        color: $primaryColor;
-                        color: $activeRootMenuItemTextColor;
-                    }
                 }
 
                 &.active-menuitem {
@@ -135,6 +101,9 @@
                                 background-color: rgba($primaryColor,.1);
                                 background-color: $submenuItemHoverBgColor;
                                 color: $rootMenuItemTextColor;
+                                &::before {
+                                    background-color: unset;
+                                }
                             }
                         }
                     }
@@ -149,6 +118,9 @@
                         &.active-menuitem {
                             > a {
                                 color: $rootMenuItemTextColor;
+                                &::before {
+                                    background-color: unset;
+                                }
                             }
                         }
                     }
