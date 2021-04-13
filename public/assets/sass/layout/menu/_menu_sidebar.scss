@@ -326,6 +326,41 @@
                 @include internalSubmenu;
                 .layout-menu-container {
                     overflow: auto;
+                    .layout-menu {
+                        li {
+                            ul {
+                                li {
+                                    a {
+                                        padding-left: 30px;
+                                    }
+            
+                                    ul {
+                                        li {
+                                            a {
+                                                padding-left: 40px;
+                                            }
+                
+                                            ul {
+                                                li {
+                                                    a {
+                                                        padding-left: 50px;
+                                                    }
+                    
+                                                    ul {
+                                                        li {
+                                                            a {
+                                                                padding-left: 60px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 

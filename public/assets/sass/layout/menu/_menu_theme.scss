@@ -16,6 +16,10 @@
                     &.active-route {
                         color: $primaryColor;
                         color: $activeRootMenuItemTextColor;
+                        &::before {
+                            background-color: $primaryColor;
+                            background-color: $activeRootMenuItemTextColor;
+                        }
                     }
                 }
 
@@ -23,6 +27,10 @@
                     > a {
                         color: $primaryColor;
                         color: $activeRootMenuItemTextColor;
+                        &::before {
+                            background-color: $primaryColor;
+                            background-color: $activeRootMenuItemTextColor;
+                        }
                     }
 
                     > ul {
@@ -42,6 +50,49 @@
                                     color: $activeRootMenuItemTextColor;
                                     background-color: $primaryColor;
                                     background-color: $submenuItemHoverBgColor;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                > ul {
+                    > li {
+                        &.active-menuitem {
+                            background-color:$menuBgColor;
+                            > a {
+                                background-color: $menuBgColor;
+                                color: $primaryColor;
+                                color: $activeRootMenuItemTextColor;
+                            }
+                        }
+
+                        > a {
+                            &.active-route {
+                                color: $primaryColor;
+                                color: $activeRootMenuItemTextColor;
+                                &::before {
+                                    background-color: $primaryColor;
+                                    background-color: $activeRootMenuItemTextColor;
+                                }
+                            }
+                        }
+                    }
+                    li {
+                        a {
+                            color: $submenuItemTextColor;
+                            &:hover {
+                                background-color: rgba($primaryColor,.2);
+                                background-color: $submenuItemHoverBgColor;
+                            }
+                        }
+                        &.active-menuitem {
+                            > a {
+                                color: $primaryColor;
+                                color: $activeRootMenuItemTextColor;
+                                &::before {
+                                    background-color: $primaryColor;
+                                    background-color: $activeRootMenuItemTextColor;
                                 }
                             }
                         }
@@ -78,6 +129,11 @@
             > li {
                 > a {
                     color: $rootMenuItemTextColor;
+
+                    &:hover {
+                        color: $primaryColor;
+                        color: $activeRootMenuItemTextColor;
+                    }
                 }
 
                 &.active-menuitem {
@@ -87,6 +143,20 @@
                         &::before {
                             background-color: $primaryColor;
                             background-color: $activeRootMenuItemTextColor;
+                        }
+                    }
+
+                    > ul {
+                        > li {
+                            &.active-menuitem {
+                                background-color: rgba($primaryColor,.2);
+                                background-color: $submenuItemHoverBgColor;
+                                > a {
+                                    background-color: rgba($primaryColor,.1);
+                                    background-color: $submenuItemHoverBgColor;
+                                    color: $rootMenuItemTextColor;
+                                }
+                            }
                         }
                     }
                 }
@@ -100,9 +170,6 @@
                                 background-color: rgba($primaryColor,.1);
                                 background-color: $submenuItemHoverBgColor;
                                 color: $rootMenuItemTextColor;
-                                &::before {
-                                    background-color: unset;
-                                }
                             }
                         }
                     }
@@ -117,9 +184,6 @@
                         &.active-menuitem {
                             > a {
                                 color: $rootMenuItemTextColor;
-                                &::before {
-                                    background-color: unset;
-                                }
                             }
                         }
                     }
