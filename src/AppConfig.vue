@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <hr />
+            <hr v-if="layoutMode !== 'horizontal'" />
 
             <h5>Ripple Effect</h5>
             <InputSwitch :modelValue="rippleActive" @update:modelValue="onRippleChange"  />
