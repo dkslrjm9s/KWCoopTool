@@ -110,7 +110,7 @@
                             > a {
                                 &.active-route {
                                     color: $primaryColor;
-                                    color: $activeRootMenuItemTextColor;
+                                    color: $rootMenuItemTextColor;
                                     background-color: $primaryColor;
                                     background-color: $submenuItemHoverBgColor;
                                 }
@@ -232,7 +232,7 @@
                                     > a {
                                         &.active-route {
                                             color: $primaryColor;
-                                            color: $activeRootMenuItemTextColor;
+                                            color: $rootMenuItemTextColor;
                                             background-color: $primaryColor;
                                             background-color: $submenuItemHoverBgColor;
                                         }
@@ -401,5 +401,50 @@
 @media (max-width: $tabletBreakpoint) {
     .menu-wrapper {
         @include internalSubmenu;
+        .layout-menu-container {
+            .layout-menu {
+                > li {
+                    &.active-menuitem {
+                        > ul {
+                            > li {
+                                > a {
+                                    &.active-route {
+                                        color: $primaryColor;
+                                        color: $rootMenuItemTextColor;
+                                        background-color: $primaryColor;
+                                        background-color: $submenuItemHoverBgColor;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.layout-slim,
+    &.layout-horizontal {
+        .menu-wrapper {
+            .layout-menu-container {
+                .layout-menu {
+                    > li {
+                        &.active-menuitem {
+                            > ul {
+                                > li {
+                                    > a {
+                                        &.active-route {
+                                            color: $primaryColor;
+                                            color: $slimActiveRootMenuItemTextColor;
+                                            background-color: $menuBgColor;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
