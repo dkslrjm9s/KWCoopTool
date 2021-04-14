@@ -57,28 +57,30 @@ npm run serve
 
 <pre v-code><code>
 &lt;template&gt;
-    &lt;div :class="containerClass" data-theme="colorScheme" @click="onDocumentClick"&gt;
+    &lt;div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)"&gt;
         &lt;div class="layout-content-wrapper"&gt;
-            &lt;AppTopBar :topbarNotificationMenuActive="topbarNotificationMenuActive" :topbarUserMenuActive="topbarUserMenuActive" @menu-button-click="onMenuButtonClick"
-                        @search-click="toggleSearch" @topbar-notification="onTopbarNotificationMenuButtonClick" @topbar-user-menu="onTopbarUserMenuButtonClick"
-                        @right-menu-click="onRightMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick"&gt;&lt;/AppTopBar&gt;
+            &lt;AppTopBar :layoutMode="layoutMode" :topbarTheme="topbarTheme" :menuActive="menuActive" :mobileMenuActive="staticMenuMobileActive" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" 
+                :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" 
+                :activeTopbarItem="activeTopbarItem" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" 
+                @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" @toggle-menu="onToggleMenu" @topbar-usermenu-click="onTopbarUserMenuClick"
+                @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-toggle="onTopbarSearchToggle" @topbar-search-click="OnTopbarSearchClick" 
+                @topbar-search-hide="onTopbarSearchHide"&gt;&lt;/AppTopBar&gt;
 
-            &lt;div class="layout-content"&gt;
-                &lt;router-view/&gt;
+            &lt;div class="layout-main"&gt;
+                &lt;div class="layout-content"&gt;
+                    &lt;router-view/&gt;
+                &lt;/div&gt;
+                &lt;AppFooter/&gt;
             &lt;/div&gt;
-
-            &lt;AppFooter/&gt;
         &lt;/div&gt;
 
-        &lt;AppMenu :model="menu" :layoutMode="layoutMode" :active="menuActive" :mobileMenuActive="staticMenuMobileActive" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick"&gt;&lt;/AppMenu&gt;
+        &lt;AppRightPanel v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"&gt;&lt;/AppRightPanel&gt;
 
-        &lt;AppRightMenu :rightPanelMenuActive="rightPanelMenuActive" @rightmenu-click="onRightMenuClick"&gt;&lt;/AppRightMenu&gt;
+        &lt;AppConfig v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" v-model:configActive="configActive"
+            @config-click="onConfigClick" @config-button-click="onConfigButtonClick" @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" 
+            @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"&gt;&lt;/AppConfig&gt;
 
-        &lt;AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" v-model:menuTheme="menuTheme" v-model:colorScheme="colorScheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"&gt;&lt;/AppConfig&gt;
-
-        &lt;AppSearch :searchActive="searchActive" @search-click="onSearchClick" @search-hide="onSearchHide"/&gt;
-
-        &lt;div class="layout-mask modal-in"&gt;&lt;/div&gt;
+        &lt;div class="layout-mask modal-in"&lt;&gt;/div&gt;
     &lt;/div&gt;
 &lt;/template&gt;
 
@@ -92,116 +94,106 @@ npm run serve
 <pre v-code.script><code>
 data() {
     return {
-        menu : [
+        menu: [
+            {label: "Dashboard", icon: "pi pi-home", to: "/"},
             {
-                label: "Favorites", icon: "pi pi-fw pi-home",
+                label: "UI Kit", icon: "pi pi-star-o",
                 items: [
-                    {label: "Dashboard", icon: "pi pi-fw pi-home", to: "/"},
+                    {label: "Form Layout", icon: "pi pi-id-card", to: "/formlayout"},
+                    {label: "Input", icon: "pi pi-check-square", to: "/input"},
+                    {label: "Float Label", icon: "pi pi-bookmark", to: "/floatlabel"},
+                    {label: "Invalid State", icon: "pi pi-exclamation-circle", to: "/invalidstate"},
+                    {label: "Button", icon: "pi pi-mobile", to: "/button", class: 'rotated-icon'},
+                    {label: "Table", icon: "pi pi-table", to: "/table"},
+                    {label: "List", icon: "pi pi-list", to: "/list"},
+                    {label: "Tree", icon: "pi pi-share-alt", to: "/tree"},
+                    {label: "Panel", icon: "pi pi-tablet", to: "/panel"},
+                    {label: "Overlay", icon: "pi pi-clone", to: "/overlay"},
+                    {label: "Media", icon: "pi pi-image", to: "/media"},
+                    {label: "Menu", icon: "pi pi-bars", to: "/menu"},
+                    {label: "Message", icon: "pi pi-comment", to: "/messages"},
+                    {label: "File", icon: "pi pi-file", to: "/file"},
+                    {label: "Chart", icon: "pi pi-chart-bar", to: "/chart"},
+                    {label: "Misc", icon: "pi pi-circle-off", to: "/misc"},
                 ],
             },
-            { separator: true },
             {
-                label: "UI Kit", icon: "pi pi-fw pi-id-card",
+                label: "Utilities", icon: "pi pi-compass",
                 items: [
-                    {label: "Form Layout", icon: "pi pi-fw pi-id-card", to: "/formlayout"},
-                    {label: "Input", icon: "pi pi-fw pi-check-square", to: "/input"},
-                    {label: "Float Label", icon: "pi pi-fw pi-bookmark", to: "/floatlabel"},
-                    {label: "Invalid State", icon: "pi pi-fw pi-exclamation-circle", to: "/invalidstate"},
-                    {label: "Button", icon: "pi pi-fw pi-mobile", to: "/button"},
-                    {label: "Table", icon: "pi pi-fw pi-table", to: "/table"},
-                    {label: "List", icon: "pi pi-fw pi-list", to: "/list"},
-                    {label: "Tree", icon: "pi pi-fw pi-share-alt", to: "/tree"},
-                    {label: "Panel", icon: "pi pi-fw pi-tablet", to: "/panel"},
-                    {label: "Overlay", icon: "pi pi-fw pi-clone", to: "/overlay"},
-                    {label: "Media", icon: "pi pi-fw pi-image", to: "/media"},
-                    {label: "Menu", icon: "pi pi-fw pi-bars", to: "/menu"},
-                    {label: "Message", icon: "pi pi-fw pi-comment", to: "/messages"},
-                    {label: "File", icon: "pi pi-fw pi-file", to: "/file"},
-                    {label: "Chart", icon: "pi pi-fw pi-chart-bar", to: "/chart"},
-                    {label: "Misc", icon: "pi pi-fw pi-circle-off", to: "/misc"},
+                    {label: "Display", icon:"pi pi-desktop", to:"/display"},
+                    {label: "Elevation", icon:"pi pi-external-link", to:"/elevation"},
+                    {label: "Flexbox", icon:"pi pi-directions", to:"/flexbox"},
+                    {label: "Icons", icon:"pi pi-search", to:"/icons"},
+                    {label: "Text", icon:"pi pi-pencil", to:"/text"},
+                    {label: "Widgets", icon:"pi pi-star-o", to:"/widgets"},
+                    {label: "Grid System", icon:"pi pi-th-large", to:"/grid"},
+                    {label: "Spacing", icon:"pi pi-arrow-right", to:"/spacing"},
+                    {label: "Typography", icon:"pi pi-align-center", to:"/typography"},
                 ],
             },
-            { separator: true },
             {
-                label: "Utilities", icon: "pi pi-fw pi-desktop",
+                label: "Pages", icon: "pi pi-briefcase",
                 items: [
-                    {label: "Display", icon:"pi pi-fw pi-desktop", to:"/display"},
-                    {label: "Elevation", icon:"pi pi-fw pi-external-link", to:"/elevation"},
-                    {label: "Flexbox", icon:"pi pi-fw pi-directions", to:"/flexbox"},
-                    {label: "Icons", icon:"pi pi-fw pi-search", to:"/icons"},
-                    {label: "Widgets", icon:"pi pi-fw pi-star-o", to:"/widgets"},
-                    {label: "Grid System", icon:"pi pi-fw pi-th-large", to:"/grid"},
-                    {label: "Spacing", icon:"pi pi-fw pi-arrow-right", to:"/spacing"},
-                    {label: "Typography", icon:"pi pi-fw pi-align-center", to:"/typography"},
-                    {label: "Text", icon:"pi pi-fw pi-pencil", to:"/text"},
+                    {label: "Crud", icon: "pi pi-pencil", to: "/crud"},
+                    {label: "Calendar", icon: "pi pi-calendar-plus", to: "/calendar"},
+                    {label: 'Timeline', icon: 'pi pi-calendar', to: '/timeline'},
+                    {label: "Landing", icon: "pi pi-globe", url: "assets/pages/landing.html", target: "_blank"},
+                    {label: "Login", icon: "pi pi-sign-in", to: "/login"},
+                    {label: "Invoice", icon: "pi pi-dollar", to: "/invoice"},
+                    {label: "Help", icon: "pi pi-question-circle", to: "/help"},
+                    {label: "Error", icon: "pi pi-times-circle", to: "/error"},
+                    {label: "Not Found", icon: "pi pi-exclamation-circle", to: "/notfound"},
+                    {label: "Access Denied", icon: "pi pi-lock", to: "/access"},
+                    {label: "Empty", icon: "pi pi-circle-off", to: "/empty"}
                 ],
             },
-            { separator: true },
             {
-                label: "Pages", icon: "pi pi-fw pi-pencil",
-                items: [
-                    {label: "Crud", icon: "pi pi-fw pi-pencil", to: "/crud"},
-                    {label: "Calendar", icon: "pi pi-fw pi-calendar-plus", to: "/calendar"},
-                    {label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline'},
-                    {label: "Landing", icon: "pi pi-fw pi-user-plus", url: "assets/pages/landing.html", target: "_blank"},
-                    {label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login"},
-                    {label: "Invoice", icon: "pi pi-fw pi-dollar", to: "/invoice"},
-                    {label: "Help", icon: "pi pi-fw pi-question-circle", to: "/help"},
-                    {label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error"},
-                    {label: "Not Found", icon: "pi pi-fw pi-exclamation-circle", to: "/notfound"},
-                    {label: "Access Denied", icon: "pi pi-fw pi-lock", to: "/access"},
-                    {label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty"}
-                ],
-            },
-            { separator: true },
-            {
-                label: "Hierarchy", icon: "pi pi-fw pi-align-left",
+                label: "Hierarchy", icon: "pi pi-align-left",
                 items: [
                     {
-                        label: "Submenu 1",icon: "pi pi-fw pi-align-left",
+                        label: "Submenu 1",icon: "pi pi-align-left",
                         items: [
                             {
-                                label: "Submenu 1.1", icon: "pi pi-fw pi-align-left",
+                                label: "Submenu 1.1", icon: "pi pi-align-left",
                                 items: [
-                                    {label: "Submenu 1.1.1", icon: "pi pi-fw pi-align-left"},
-                                    {label: "Submenu 1.1.2", icon: "pi pi-fw pi-align-left"},
-                                    {label: "Submenu 1.1.3", icon: "pi pi-fw pi-align-left"},
+                                    {label: "Submenu 1.1.1", icon: "pi pi-align-left"},
+                                    {label: "Submenu 1.1.2", icon: "pi pi-align-left"},
+                                    {label: "Submenu 1.1.3", icon: "pi pi-align-left"},
                                 ],
                             },
                             {
-                                label: "Submenu 1.2", icon: "pi pi-fw pi-align-left",
+                                label: "Submenu 1.2", icon: "pi pi-align-left",
                                 items: [
-                                    {label: "Submenu 1.2.1", icon: "pi pi-fw pi-align-left"},
+                                    {label: "Submenu 1.2.1", icon: "pi pi-align-left"},
                                 ],
                             },
                         ],
                     },
                     {
-                        label: "Submenu 2", icon: "pi pi-fw pi-align-left",
+                        label: "Submenu 2", icon: "pi pi-align-left",
                         items: [
                             {
-                                label: "Submenu 2.1", icon: "pi pi-fw pi-align-left",
+                                label: "Submenu 2.1", icon: "pi pi-align-left",
                                 items: [
-                                    {label: "Submenu 2.1.1", icon: "pi pi-fw pi-align-left"},
-                                    {label: "Submenu 2.1.2", icon: "pi pi-fw pi-align-left"},
+                                    {label: "Submenu 2.1.1", icon: "pi pi-align-left"},
+                                    {label: "Submenu 2.1.2", icon: "pi pi-align-left"},
                                 ],
                             },
                             {
-                                label: "Submenu 2.2", icon: "pi pi-fw pi-align-left",
+                                label: "Submenu 2.2", icon: "pi pi-align-left",
                                 items: [
-                                    {label: "Submenu 2.2.1", icon: "pi pi-fw pi-align-left"},
+                                    {label: "Submenu 2.2.1", icon: "pi pi-align-left"},
                                 ],
                             },
                         ],
                     },
                 ],
             },
-            { separator: true },
             {
-                label: "Start", icon: "pi pi-fw pi-download",
+                label: "Start", icon: "pi pi-download",
                 items: [
-                    {label: "Buy Now", icon: "pi pi-fw pi-shopping-cart", command: () => window.open("https://www.primefaces.org/store", "_blank")},
-                    {label: "Documentation", icon: "pi pi-fw pi-info-circle", to: "/documentation"},
+                    {label: "Buy Now", icon: "pi pi-shopping-cart", command: () => window.open("https://www.primefaces.org/store", "_blank")},
+                    {label: "Documentation", icon: "pi pi-info-circle", to: "/documentation"},
                 ],
             },
         ]
@@ -243,40 +235,26 @@ import './App.scss'; 	                            //your styles and overrides
                     if this is not a requirement, you may also add them to the styles configuration above so they go inside the bundle.</p>
 
 				<h4>Theme</h4>
-				<p>Freya provides 30 PrimeVue themes out of the box. Setup of a theme is simple by including the css of theme to your
-					bundle that are located inside assets/theme folder such as assets/theme/theme-amber-teal.css.</p>
+				<p>Freya provides 16 PrimeVue themes out of the box. Setup of a theme is simple by including the css of theme to your
+					bundle that are located inside assets/theme folder such as assets/theme/purple/theme-light.css.</p>
 
                 <ul>
+					<li>avocado-light</li>
+					<li>avocado-dark</li>
 					<li>blue-light</li>
 					<li>blue-dark</li>
-					<li>blue-dim</li>
-					<li>cyan-light</li>
-					<li>cyan-dark</li>
-					<li>cyan-dim</li>
-					<li>deeppurple-light</li>
-					<li>deeppurple-dark</li>
-					<li>deeppurple-dim</li>
 					<li>green-light</li>
 					<li>green-dark</li>
-					<li>green-dim</li>
-					<li>indigo-light</li>
-					<li>indigo-dark</li>
-					<li>indigo-dim</li>
-					<li>lightgreen-light</li>
-					<li>lightgreen-dark</li>
-					<li>lightgreen-dim</li>
 					<li>orange-light</li>
 					<li>orange-dark</li>
-					<li>orange-dim</li>
-					<li>pink-light</li>
-					<li>pink-dark</li>
-					<li>pink-dim</li>
 					<li>purple-light</li>
 					<li>purple-dark</li>
-					<li>purple-dim</li>
-					<li>teal-light</li>
-					<li>teal-dark</li>
-					<li>teal-dim</li>
+					<li>red-light</li>
+					<li>red-dark</li>
+                    <li>turquoise-light</li>
+					<li>turquoise-dark</li>
+                    <li>yellow-light</li>
+					<li>yellow-dark</li>
 				</ul>
 
                 <p>A custom theme can be developed by the following steps.</p>
@@ -292,14 +270,15 @@ import './App.scss'; 	                            //your styles and overrides
                 <p>Here are the variables required to create a sample theme.</p>
 
 <pre v-code.css><code>
-$primaryColor: #2196F3;
-$primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
-$primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
-$primaryDarkerColor: scale-color($primaryColor, $lightness: -20%) !default;
-$primaryTextColor: #ffffff;
+$primaryLightColor: #777BF1;
+$primaryColor:#464DF2;
+$primaryDarkColor: #221ED9;
+$primaryDarkerColor: #1222B9;
+$primaryTextColor: #FFFFFF;
+$primaryLighterColor: rgba($primaryLightColor,.1);
 
-$highlightBg: #E3F2FD;
-$highlightTextColor: #495057;
+$highlightBg: $primaryColor;
+$highlightTextColor: $primaryTextColor;
 
 @import '../../sass/theme/_theme_light';
 
@@ -331,24 +310,26 @@ sass --watch public/assets:public/assets
 				<p>Here are the variables required to create a layout.</p>
 
 <pre v-code><code>
-@import '../../sass/layout/_layout';
+@import '../../sass/layout/_layout_light';
 
 </code></pre>
 
                 <h4>SASS Variables</h4>
 				<p>Both the theme and layout provides various variables to customize the design.</p>
 
-				<h5>sass/variables/layout/_common.scss</h5>
+				<h5>sass/variables/layout/_layout_common.scss</h5>
 				<p>Common variables for light, dark and dim application layout.</p>
 
 <pre v-code.css><code>
+//general
 $fontSize:14px !default;
-$fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
-$transitionDuration:.2s !default;
-$animationDuration:.4s !default;
+$fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$mobileBreakpoint:991px !default;
+$borderRadius:24px !default;
+$animationDuration:.2s !default;
 $animationTimingFunction:cubic-bezier(.05,.74,.2,.99) !default;
-$letterSpacing:normal !default;
-$borderRadius:4px !default;
+$letterSpacing:0.02em !default;
+$transitionDuration:.2s !default;
 $tabletBreakpoint:991px !default;
 $phoneBreakpoint:576px !default;
 
@@ -358,48 +339,35 @@ $phoneBreakpoint:576px !default;
                 <h5>sass/variables/layout/_layout_light.scss</h5>
 				<p>Variables of the light theme layout.</p>
 <pre v-code.css><code>
-@import '_common';
-
-$bodyBg: #f8f9fa !default;
-$textColor:#495057 !default;
-$textSecondaryColor:#6c757d !default;
+$bodyBgColor:#F2F4F6  !default;
 $dividerColor:#dee2e6 !default;
-$itemHoverBg:#e9ecef !default;
-$focusShadow:0 0 0 0.2rem #BBDEFB !default;
-$linkColor: #1976D2 !default;
+$textSecondaryColor:#6c757d !default;
 $overlayBorder:0 none !default;
 $overlayShadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 
-//card
-$cardBg: #ffffff !default;
-$cardBorder: 0 none !default;
+//text
+$textShade100:#3E4754 !default;
+$textShade200:rgba(41, 50, 65, 0.8) !default;
+$textShade300:rgba(41, 50, 65, 0.5) !default;
 
-//topbar
-$topbarBg: #ffffff !default;
-$topbarBottomBorder: 1px solid $dividerColor !default;
-$topbarTextColor: $textColor !default;
-$topbarIconBg: #f8f9fa !default;
-$topbarIconHoverBg: #e9ecef !default;
-
+//content
+$contentShade100:#ffffff !default;
+$contentShade200: #F7FAFF !default;
+$contentShade300: #EEF5FF !default;
+$contentShade400: #F7F7F8 !default;
+$dividerColor: #D4D6D9 !default;
 //accent
 $accentColor: #1976D2 !default;
 $accentTextColor: #ffffff !default;
 
-//sidebar
-$sidebarWidth: 16rem !default;
-$slimSidebarWidth: 6rem !default;
-
-//search
-$searchBg:#adb5bd !default;
-$searchBorder: 0 none !default;
-
-//footer
-$footerBg: #ffffff !default;
-$footerBorder: 1px solid $dividerColor !default;
+$menuTooltipBgColor:#293241!default;
+$menuTooltipTextColor:#ffffff !default;
 
 //sidebar right
 $rightSidebarWidth: 16rem !default;
 $rightSidebarBg: #ffffff !default;
+
+@import './_layout_common.scss';
 
 </code></pre>
 
@@ -409,25 +377,38 @@ $rightSidebarBg: #ffffff !default;
 
 <div style="height: 400px; overflow: auto">
 <pre v-code.css><code>
+$colors: (
+    "blue": #2196F3,
+    "green": #4caf50,
+    "yellow": #FBC02D,
+    "cyan": #00BCD4,
+    "pink": #E91E63,
+    "indigo": #3F51B5,
+    "teal": #009688,
+    "orange": #F57C00,
+    "bluegray": #607D8B,
+    "purple": #9C27B0
+);
+
 //reused color variables
 $shade000:#ffffff !default;    //surface
-$shade100:#f8f9fa !default;    //header background
-$shade200:#e9ecef !default;    //hover background
-$shade300:#dee2e6 !default;    //border, divider
-$shade400:#ced4da !default;    //input border
-$shade500:#adb5bd !default;    //input icon
-$shade600:#6c757d !default;    //text secondary color
-$shade700:#495057 !default;    //text color
+$shade100:#FCFCFC !default;    //header background
+$shade200:rgba($primaryColor,.2) !default;    //hover background
+$shade300:#D4D6D9 !default;    //border, divider
+$shade400:#D4D6D9 !default;    //input border
+$shade500:#545B67 !default;    //input icon
+$shade600:#83888F !default;    //text secondary color
+$shade700:#69707A !default;    //text color
 $shade800:#343a40 !default;    //unused
 $shade900:#212529 !default;    //unused
 
 //global
-$fontFamily:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !default;
+$fontFamily:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $fontSize:1rem !default;
 $fontWeight:normal !default;
 $textColor:$shade700 !default;
 $textSecondaryColor:$shade600 !default;
-$borderRadius:4px !default;
+$borderRadius:6px !default;
 $transitionDuration:.2s !default;
 $formElementTransition:background-color $transitionDuration, color $transitionDuration, border-color $transitionDuration, box-shadow $transitionDuration !default;
 $actionIconTransition:background-color $transitionDuration, color $transitionDuration, box-shadow $transitionDuration !default;
@@ -464,7 +445,6 @@ $actionIconBorderRadius:50% !default;
 //input field (e.g. inputtext, spinner, inputmask)
 $inputPadding:.5rem .5rem !default;
 $inputTextFontSize:1rem !default;
-
 $inputBg:$shade000 !default;
 $inputTextColor:$shade700 !default;
 $inputIconColor:$shade600 !default;
@@ -505,7 +485,7 @@ $inputListHeaderBorder:0 none !default;
 //inputs with overlays (e.g. autocomplete, dropdown, multiselect)
 $inputOverlayBg:$inputListBg !default;
 $inputOverlayHeaderBg:$inputListHeaderBg !default;
-$inputOverlayBorder:0 none !default;
+$inputOverlayBorder:0 none !default;                  
 $inputOverlayShadow:0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12) !default;
 
 //password
@@ -1027,7 +1007,7 @@ $stepsItemNumberBorderRadius:50% !default;
 $stepsItemActiveFontWeight:600 !default;
 
 //progressbar
-$progressBarHeight:1.5rem !default;
+$progressBarHeight:1rem !default;
 $progressBarBorder:0 none !default;
 $progressBarBg:$shade300 !default;
 $progressBarValueBg:$primaryColor !default;
@@ -1192,6 +1172,9 @@ $splitterGutterHandleBg:$shade300;
     --text-color:#{$shade700};
     --text-color-secondary:#{$shade600};
     --primary-color:#{$primaryColor};
+    --primary-dark-color:#{$primaryDarkColor};
+    --primary-light-color:#{$primaryLightColor};
+    --primary-lighter-color:#{$primaryLighterColor};
     --primary-color-text:#{$primaryTextColor};
     --font-family:#{$fontFamily};
     --surface-0: #ffffff;
@@ -1205,42 +1188,26 @@ $splitterGutterHandleBg:$shade300;
     --surface-700: #616161;
     --surface-800: #424242;
     --surface-900: #212121;
+    --content-padding:#{$panelContentPadding};
+    --inline-spacing:#{$inlineSpacing};
 }
 
 </code></pre>
 </div>
 
                 <h4>Menu Modes</h4>
-				<p>Menu has 3 modes, static, overlay and slim. Layout container element in App.vue is used to define which mode to use by adding specific classes. List below indicates the style classes for each mode.</p>
+				<p>Menu has 3 modes, sidebar, horizontal and slim. Layout container element in App.vue is used to define which mode to use by adding specific classes. List below indicates the style classes for each mode.</p>
 				<ul>
-					<li>Static: "layout-wrapper layout-static"</li>
-					<li>Overlay: "layout-wrapper layout-overlay"</li>
+					<li>Sidebar: "layout-wrapper layout-sidebar"</li>
+					<li>Horizontal: "layout-wrapper layout-horizontal"</li>
 					<li>Slim: "layout-wrapper layout-slim"</li>
 				</ul>
 
 				<p>For example to create a horizontal menu, the div element should be in following form;</p>
 <pre v-code><code>
-&lt;div class="layout-wrapper layout-static"&gt;
+&lt;div class="layout-wrapper layout-horizontal"&gt;
 
 </code></pre>
-
-                <h4>Menu Themes</h4>
-				<p>In addition to layout options, menu offer themes when the general color scheme is light. Menu themes are only available in light mode by design as large surfaces can emit too much brightness in dark mode. Available options for the menu themes are the following;</p>
-				<ul>
-					<li>white</li>
-					<li>darkgray</li>
-					<li>blue</li>
-					<li>bluegray</li>
-					<li>brown</li>
-					<li>cyan</li>
-					<li>green</li>
-					<li>indigo</li>
-					<li>deeppurple</li>
-					<li>orange</li>
-					<li>pink</li>
-					<li>purple</li>
-					<li>teal</li>
-				</ul>
 
                 <h4>Grid CSS</h4>
 				<p>Freya uses PrimeVue Flex Grid CSS throughout the demos such as Dashboard, however any Grid library can be used with it since Freya Layout itself does not depend on PrimeFlex CSS.</p>
