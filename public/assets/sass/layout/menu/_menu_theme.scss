@@ -46,10 +46,7 @@
     
                             > a {
                                 &.active-route {
-                                    color: $primaryColor;
-                                    color: $activeRootMenuItemTextColor;
-                                    background-color: $primaryColor;
-                                    background-color: $submenuItemHoverBgColor;
+                                    background-color:$menuBgColor;
                                 }
                             }
                         }
@@ -93,6 +90,29 @@
                                 &::before {
                                     background-color: $primaryColor;
                                     background-color: $activeRootMenuItemTextColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.layout-sidebar-active {
+    .layout-menu-container {
+        .layout-menu {
+            > li {
+                &.active-menuitem {
+                    > ul {
+                        > li {
+                            > a {
+                                &.active-route {
+                                    color: $primaryColor;
+                                    color: $activeRootMenuItemTextColor;
+                                    background-color: $primaryColor;
+                                    background-color: $submenuItemHoverBgColor;
                                 }
                             }
                         }
@@ -203,6 +223,26 @@
     &.layout-static {
         .menu-wrapper {
             @include internalSubmenu;
+            .layout-menu-container {
+                .layout-menu {
+                    > li {
+                        &.active-menuitem {
+                            > ul {
+                                > li {
+                                    > a {
+                                        &.active-route {
+                                            color: $primaryColor;
+                                            color: $activeRootMenuItemTextColor;
+                                            background-color: $primaryColor;
+                                            background-color: $submenuItemHoverBgColor;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }

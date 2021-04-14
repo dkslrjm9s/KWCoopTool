@@ -6,20 +6,20 @@
                     exact @click="onMenuItemClick($event, item, i)" @mouseenter="onMenuItemMouseEnter(i)" v-ripple>
                     <i :class="['layout-menuitem-icon', item.icon]"></i>
                     <span class="layout-menuitem-text">{{ item.label }}</span>
-                    <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
+                    <i v-if="item.items" class="pi pi-fw pi-chevron-down layout-submenu-toggler"></i>
                 </router-link>
                 <a v-if="!item.to" :href="item.url || '#'" :style="item.style" :class="[item.class, 'p-ripple', { 'p-disabled': item.disabled }]"
                     :target="item.target"  @click="onMenuItemClick($event, item, i)" @mouseenter="onMenuItemMouseEnter(i)" v-ripple>
                     <i :class="['layout-menuitem-icon', item.icon]"></i>
                     <span class="layout-menuitem-text">{{ item.label }}</span>
-                    <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
+                    <i v-if="item.items" class="pi pi-fw pi-chevron-down layout-submenu-toggler"></i>
                 </a>
                 <div class="layout-menu-tooltip">
 					<div class="layout-menu-tooltip-arrow"></div>
 					<div class="layout-menu-tooltip-text">{{item.label}}</div>
 				</div>
                 <transition name="layout-menu">
-                    <appsubmenu v-show="item.items && (root && ((isSlim() && (mobileMenuActive || activeIndex !== null))) ? true : activeIndex === i)" :items="visible(item) && item.items" 
+                    <appsubmenu v-show="activeIndex === i" :items="visible(item) && item.items" 
                         :menuActive="menuActive" :layoutMode="layoutMode" :parentMenuItemActive="activeIndex === i" @menuitem-click="$emit('menuitem-click', $event)"></appsubmenu>
                 </transition>
             </li>
