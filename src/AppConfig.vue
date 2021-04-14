@@ -154,12 +154,6 @@ export default {
         onConfigClick(event) {
             this.$emit("config-click", event);
         },
-        onChange(value) {
-            this.$appState.inputStyle = value;
-        },
-        onRippleChange(value) {
-            this.$primevue.config.ripple = value;
-        },
         changeMenuMode(mode) {
             this.$emit("update:layoutMode", mode);
             if(mode === 'horizontal') {
@@ -178,7 +172,13 @@ export default {
         },
         changeMenuScheme(scheme) {
             this.$emit("menu-theme", scheme);
-        }
+        },
+        onChange(value) {
+            this.$appState.inputStyle = value;
+        },
+        onRippleChange(value) {
+            this.$primevue.config.ripple = value;
+        },
     },
 };
 </script>

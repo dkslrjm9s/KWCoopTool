@@ -1,11 +1,10 @@
 <template>
     <div :class="containerClass" :data-theme="colorScheme" @click="onDocumentClick($event)">
         <div class="layout-content-wrapper">
-            <AppTopBar :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :layoutMode="layoutMode" :topbarTheme="topbarTheme" :mobileMenuActive="staticMenuMobileActive"
-                :menuActive="menuActive" @menu-click="onMenuClick" 
-                @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" 
-                :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" @topbar-usermenu-click="onTopbarUserMenuClick" @toggle-menu="onToggleMenu"
-                :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" :activeTopbarItem="activeTopbarItem"
+            <AppTopBar :layoutMode="layoutMode" :topbarTheme="topbarTheme" :menuActive="menuActive" :mobileMenuActive="staticMenuMobileActive" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" 
+                :topbarUserMenuActive="topbarUserMenuActive" :topbarUserMenuClick="topbarUserMenuClick" :searchActive="searchActive" :searchClick="searchClick" :topbarItemClick="topbarItemClick" 
+                :activeTopbarItem="activeTopbarItem" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" 
+                @menu-button-click="onMenuButtonClick" @right-menubutton-click="onRightMenuButtonClick" @toggle-menu="onToggleMenu" @topbar-usermenu-click="onTopbarUserMenuClick"
                 @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @topbar-search-toggle="onTopbarSearchToggle" @topbar-search-click="OnTopbarSearchClick" 
                 @topbar-search-hide="onTopbarSearchHide"></AppTopBar>
 
@@ -19,8 +18,9 @@
 
         <AppRightPanel v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightPanel>
 
-        <AppConfig v-model:configActive="configActive" v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" @config-click="onConfigClick" @config-button-click="onConfigButtonClick"
-            @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"></AppConfig>
+        <AppConfig v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" v-model:configActive="configActive"
+            @config-click="onConfigClick" @config-button-click="onConfigButtonClick" @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" 
+            @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"></AppConfig>
 
         <div class="layout-mask modal-in"></div>
     </div>
@@ -93,12 +93,6 @@ export default {
         },
     },
     methods: {
-        onTopbarThemeChange(theme) {
-            this.$emit('topbar-theme', theme);
-        },
-        onMenuThemeChange(theme) {
-            this.$emit('menu-theme', theme);
-        },
         onDocumentClick() {
             if (!this.searchClick && this.searchActive) {
                 this.onTopbarSearchHide();
@@ -199,6 +193,12 @@ export default {
             this.staticMenuMobileActive = false;
             this.unblockBodyScroll();
         },
+        onTopbarThemeChange(theme) {
+            this.$emit('topbar-theme', theme);
+        },
+        onMenuThemeChange(theme) {
+            this.$emit('menu-theme', theme);
+        },
         changeComponentTheme(theme) {
             this.$emit('change-component-theme', theme);
         },
@@ -206,6 +206,27 @@ export default {
             this.colorScheme = scheme;
             this.$emit('change-color-scheme', scheme);
             this.$appState.colorScheme = scheme;
+        },
+        onSidebarMouseOver() {
+            this.sidebarActive = !this.isMobile();
+        },
+        onSidebarMouseLeave() {
+            this.sidebarActive = false;
+        },
+        onTopbarSearchToggle() {
+            this.searchActive = !this.searchActive;
+            this.searchClick = true;
+        },
+        OnTopbarSearchClick() {
+            this.searchClick = true;
+        },
+        onTopbarSearchHide() {
+            this.searchActive = false;
+            this.searchClick = false;
+        },
+        onTopbarUserMenuClick() {
+            this.topbarUserMenuActive = !this.topbarUserMenuActive;
+            this.topbarUserMenuClick = true;
         },
         blockBodyScroll() {
             if (document.body.classList) {
@@ -233,28 +254,7 @@ export default {
         },
         isMobile() {
             return window.innerWidth <= 991;
-        },
-        onSidebarMouseOver() {
-            this.sidebarActive = !this.isMobile();
-        },
-        onSidebarMouseLeave() {
-            this.sidebarActive = false;
-        },
-        onTopbarSearchToggle() {
-            this.searchActive = !this.searchActive;
-            this.searchClick = true;
-        },
-        OnTopbarSearchClick() {
-            this.searchClick = true;
-        },
-        onTopbarSearchHide() {
-            this.searchActive = false;
-            this.searchClick = false;
-        },
-        onTopbarUserMenuClick() {
-            this.topbarUserMenuActive = !this.topbarUserMenuActive;
-            this.topbarUserMenuClick = true;
-        },
+        }
     },
 };
 </script>

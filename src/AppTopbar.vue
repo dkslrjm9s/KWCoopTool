@@ -10,8 +10,9 @@
                 </a>
             </div>
 
-            <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver"
-                @toggle-menu="onToggleMenu" @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
+            <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" 
+                @sidebar-mouse-leave="onSidebarMouseLeave" @sidebar-mouse-over="onSidebarMouseOver" @toggle-menu="onToggleMenu" 
+                @menu-click="onMenuClick" @menuitem-click="onMenuItemClick" @root-menuitem-click="onRootMenuItemClick" />
 
             <div class="layout-topbar-right">
                 <ul class="layout-topbar-actions">
@@ -78,7 +79,9 @@
 import AppMenu from './AppMenu';
 export default {
     name: "AppTopbar",
-    emits: ["menu-click", "menuitem-click", "root-menuitem-click", "menu-button-click", "toggle-menu", "right-menubutton-click", "sidebar-mouse-over", "sidebar-mouse-leave", "topbar-search-toggle", "topbar-search-click", "topbar-search-hide", "topbar-usermenu-click", "update:searchClick"],
+    emits: ["menu-click", "menuitem-click", "root-menuitem-click", "menu-button-click", "toggle-menu", "right-menubutton-click", 
+        "sidebar-mouse-over", "sidebar-mouse-leave", "topbar-search-toggle", "topbar-search-click", "topbar-search-hide", 
+        "topbar-usermenu-click", "update:searchClick"],
     props: {
         searchActive: Boolean,
         searchClick: Boolean,
@@ -92,10 +95,6 @@ export default {
         topbarTheme: String,
         menuActive: Boolean,
         mobileMenuActive: Boolean
-    },
-    data() {
-        return {           
-        };
     },
     unmounted() {
         if (this.subscription) {
