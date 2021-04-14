@@ -131,7 +131,6 @@ export default {
             logoColor: 'white',
             d_colorScheme: this.colorScheme,
             d_topbarTheme: this.topbarTheme,
-            d_menuTheme: this.menuTheme,
             d_menuMode: this.layoutMode
         };
     },
@@ -142,6 +141,14 @@ export default {
         inputStyle() {
             return this.$appState.inputStyle;
         },
+        d_menuTheme: {
+            get() {
+                return this.menuTheme;
+            },
+            set(value) {
+                this.$emit('menu-theme', value);
+            }
+        }
     },
     methods: {
         changeComponentTheme(theme) {
@@ -156,7 +163,7 @@ export default {
         },
         changeMenuMode(mode) {
             this.$emit("update:layoutMode", mode);
-            if(mode === 'horizontal') {
+            if(mode === 'horizontal' && this.topbarTheme !== this.menuTheme) {
                 this.$emit('menu-theme', this.d_topbarTheme);
             }
         },
