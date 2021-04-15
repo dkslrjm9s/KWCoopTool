@@ -537,7 +537,6 @@ export default {
                     }
                 ]
             },
-
             chartOptions1: {
                 legend: {
                     display: false,
@@ -555,25 +554,7 @@ export default {
                     }]
                 }
             },
-
-            chart2: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
-                        label: 'Revenue',
-                        data: [12, 19, 3, 5, 2, 3, 9],
-                        borderColor: [
-                            getComputedStyle(document.body).getPropertyValue('--primary-color') || '#2c84d8',
-                        ],
-                        borderWidth: 4,
-                        fill: true,
-                        backgroundColor: [
-                            getComputedStyle(document.body).getPropertyValue('--primary-lighter-color') || '#2c84d8',
-                        ],
-                    }
-                ]
-            },
-
+            chart2: null,
             chartOptions2: {
                 legend: {
                     display: false,
@@ -605,6 +586,39 @@ export default {
                         }
                     }]
                 }
+            }
+        }
+    },
+    watch: {
+		'$appState.isNewThemeLoaded'(isLoaded) {
+			if (isLoaded) {
+				this.refreshChart();
+				this.$appState.isNewThemeLoaded = false;
+			}
+		}
+	},
+    mounted() {
+        this.refreshChart();
+    },
+    methods: {
+        refreshChart() {
+            this.chart2 = this.getChart();
+        },
+        getChart() {
+            const borderColor = getComputedStyle(document.body).getPropertyValue('--primary-color') || '#2c84d8';
+            const backgroundColor = getComputedStyle(document.body).getPropertyValue('--primary-lighter-color') || '#2c84d8';
+            return {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        label: 'Revenue',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: [borderColor],
+                        borderWidth: 4,
+                        fill: true,
+                        backgroundColor: [backgroundColor],
+                    }
+                ]
             }
         }
     }

@@ -57,9 +57,11 @@
 
                 const newURL = urlTokens.join("/");
 
-                this.replaceLink(element, newURL);
+                this.replaceLink(element, newURL, () => {
+                    this.$appState.isNewThemeLoaded = true;
+                });
             },
-            replaceLink(linkElement, href) {
+            replaceLink(linkElement, href, callback) {
                 if (this.isIE()) {
                     linkElement.setAttribute("href", href);
                 } else {
@@ -74,6 +76,10 @@
                     cloneLinkElement.addEventListener("load", () => {
                         linkElement.remove();
                         cloneLinkElement.setAttribute("id", id);
+
+                        if(callback) {
+                            callback();
+                        }
                     });
                 }
             },
