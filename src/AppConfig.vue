@@ -101,7 +101,7 @@
 <script>
 export default {
     name: "AppConfig",
-    emits: ["config-button-click", "config-click", "update:layoutMode", "menu-theme", "update:colorScheme", "topbar-theme", "change-component-theme", "change-color-scheme"],
+    emits: ["config-button-click", "config-click", "change-layout-mode", "menu-theme", "update:colorScheme", "topbar-theme", "change-component-theme", "change-color-scheme"],
     props: {
         configActive: {
             type: Boolean,
@@ -162,10 +162,7 @@ export default {
             this.$emit("config-click", event);
         },
         changeMenuMode(mode) {
-            this.$emit("update:layoutMode", mode);
-            if(mode === 'horizontal' && this.topbarTheme !== this.menuTheme) {
-                this.$emit('menu-theme', this.d_topbarTheme);
-            }
+            this.$emit('change-layout-mode', mode);
         },
         changeColorScheme(scheme) {
             this.$emit("change-color-scheme", scheme);

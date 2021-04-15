@@ -18,7 +18,7 @@
 
         <AppRightPanel v-model:rightMenuClick="rightMenuClick" :rightMenuActive="rightMenuActive" @right-menu-click="onRightMenuClick"></AppRightPanel>
 
-        <AppConfig v-model:layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" v-model:configActive="configActive"
+        <AppConfig :layoutMode="layoutMode" :menuTheme="menuTheme" v-model:colorScheme="colorScheme" :topbarTheme="topbarTheme" v-model:configActive="configActive" @change-layout-mode="onChangeLayoutMode"
             @config-click="onConfigClick" @config-button-click="onConfigButtonClick" @change-color-scheme="changeColorScheme" @change-component-theme="changeComponentTheme" 
             @topbar-theme="onTopbarThemeChange" @menu-theme="onMenuThemeChange"></AppConfig>
 
@@ -192,6 +192,16 @@ export default {
         hideOverlayMenu() {
             this.staticMenuMobileActive = false;
             this.unblockBodyScroll();
+        },
+        onChangeLayoutMode(mode) {
+            this.layoutMode = mode;
+            if(mode === 'horizontal') {
+                this.sidebarActive = false;
+
+                if(this.topbarTheme !== this.menuTheme) {
+                    this.$emit('menu-theme', this.topbarTheme);
+                }
+            }
         },
         onTopbarThemeChange(theme) {
             this.$emit('topbar-theme', theme);
