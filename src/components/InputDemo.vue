@@ -338,4 +338,8 @@
 	::v-deep(.multiselect-custom .country-placeholder) {
 		padding: 0.25rem;
 	}
+	::v-deep(.p-chips .p-chips-token) {
+		background-color: var(--primary-color);
+		color: var(--primary-color-text)
+	}
 </style>
