@@ -2,7 +2,7 @@
 	<div class="login-body">
 		<div class="login-wrapper">
 			<div class="login-panel">
-				<a href="/" class="logo">
+				<a @click="goDashboard" class="logo">
                 <img src="assets/layout/images/logo-freya-single.svg" alt="freya-layout" />
             </a>
             <InputText id="email" placeholder="Email" />
@@ -20,5 +20,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        goDashboard() {
+            window.location = "/#/"
+        }
+    }
+};
 </script>

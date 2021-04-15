@@ -1,7 +1,7 @@
 <template>
     <div class="exception-body error">
         <div class="exception-topbar">
-            <a id="logolink" href="/" class="layout-topbar-logo">
+            <a id="logolink" @click="goDashboard" class="layout-topbar-logo">
                 <img :src="'assets/layout/images/logo-' + (colorScheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
             </a>
         </div>
@@ -23,6 +23,11 @@ export default {
     computed: {
         colorScheme() {
             return this.$appState.colorScheme; 
+        }
+    },
+    methods: {
+        goDashboard() {
+            window.location = "/#/"
         }
     }
 };
