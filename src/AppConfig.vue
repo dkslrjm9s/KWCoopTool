@@ -130,7 +130,6 @@ export default {
             ],
             logoColor: 'white',
             d_colorScheme: this.colorScheme,
-            d_topbarTheme: this.topbarTheme,
             d_menuMode: this.layoutMode
         };
     },
@@ -147,6 +146,14 @@ export default {
             },
             set(value) {
                 this.$emit('menu-theme', value);
+            }
+        },
+        d_topbarTheme: {
+            get() {
+                return this.topbarTheme;
+            },
+            set(value) {
+                this.$emit("topbar-theme", value);
             }
         }
     },
