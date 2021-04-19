@@ -108,8 +108,8 @@ export default {
 }
 
 ::v-deep(.fc .fc-view-container .fc-event-container .fc-event) {
-	background-color: var(--primary-color);
-	border-color: var(--primary-color);
+	background-color: var(--primary-dark-color);
+	border-color: var(--primary-dark-color);
 	color: var(--primary-color-text)
 }
 </style>
