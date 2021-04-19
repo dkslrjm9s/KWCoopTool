@@ -103,8 +103,9 @@
 				<div class="blog-posts">
 					<div class="blog-post">
 						<div class="blog-text">
-							<h1>Building Revenue With Confidence</h1>
-							<span>And avoiding failures</span>
+							<h5>Building Revenue With Confidence</h5>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 						</div>
 						<div class="blog-profile">
 							<img src="assets/demo/images/avatar/amyelsner.png" alt="apollo" />
@@ -113,8 +114,9 @@
 
 					<div class="blog-post">
 						<div class="blog-text">
-							<h1>Latest Marketing Trends</h1>
-							<span>Don't miss out our tips</span>
+							<h5>Latest Marketing Trends</h5>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 						</div>
 						<div class="blog-profile">
 							<img src="assets/demo/images/avatar/annafali.png" alt="apollo" />
@@ -123,8 +125,9 @@
 
 					<div class="blog-post">
 						<div class="blog-text">
-							<h1>How To Reach Your Audience</h1>
-							<span>10 ways to increase your efficiency</span>
+							<h5>How To Reach Your Audience</h5>
+							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 						</div>
 						<div class="blog-profile">
 							<img src="assets/demo/images/avatar/stephenshaw.png" alt="apollo" />
