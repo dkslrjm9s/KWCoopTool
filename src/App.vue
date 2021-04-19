@@ -196,7 +196,9 @@ export default {
         onChangeLayoutMode(mode) {
             this.layoutMode = mode;
             if(mode === 'sidebar') { 
-                this.sidebarActive = true;
+                if(this.sidebarStatic) {
+                    this.sidebarActive = true;
+                }
             }
             else {
                 this.sidebarActive = false;
