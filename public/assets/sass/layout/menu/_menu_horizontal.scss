@@ -36,6 +36,33 @@
                                     max-width: 230px;
                                     @include flex-direction-column();
                                 }
+
+                                ul {
+                                    // li {
+                                    //     &.active-menuitem {
+                                    //         ul {
+                                    //             li {
+                                    //                 &.active-menuitem {
+                                    //                     ul {
+                                                            &.layout-menu-leave-to {
+                                                                max-height: 0;
+                                                            }
+                                                    
+                                                            &.layout-menu-leave-from {
+                                                                max-height: 500px;
+                                                            }
+                                                    
+                                                            &.layout-menu-leave-active {
+                                                                overflow: hidden;
+                                                                transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
+                                                            }
+                                    //                     }
+                                    //                 }
+                                    //             }
+                                    //         }
+                                    //     }
+                                    // }
+                                }
                             }
                         }
 
@@ -102,20 +129,44 @@
                                     @include nested-submenu-indents(10, 2, 10);
                                 }
                             }
+                        }
+
+                        .layout-root-menuitem {
+                            .layout-menu-leave-to {
+                                overflow: hidden;
+                                display: none;
+                                transform: none;
+                            }
+                    
+                            .layout-menu-leave-active {
+                                overflow: hidden;
+                                transform: none;
+                            }
 
                             // ul {
-                            //     &.layout-menu-enter-from,
-                            //     &.layout-menu-leave-to,
-                            //     &.layout-menu-enter-to,
-                            //     &.layout-menu-leave-from {
-                            //         max-height: 460px;
-                            //     }
-        
-                            //     &.layout-menu-enter-active ,
-                            //     &.layout-menu-leave-active {
-                            //         // overflow: visible;
-                            //         overflow: auto;
-                            //         transition: none;
+                            //     li {
+                            //         &.active-menuitem {
+                            //             // ul {
+                            //             //     li {
+                            //             //         &.active-menuitem {
+                            //                         ul {
+                            //                             &.layout-menu-leave-to {
+                            //                                 max-height: 0;
+                            //                             }
+                                                
+                            //                             &.layout-menu-leave-from {
+                            //                                 max-height: 500px;
+                            //                             }
+                                                
+                            //                             &.layout-menu-leave-active {
+                            //                                 overflow: hidden;
+                            //                                 transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
+                            //                             }
+                            //                         }
+                            //             //         }
+                            //             //     }
+                            //             // }
+                            //         }
                             //     }
                             // }
                         }

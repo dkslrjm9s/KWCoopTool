@@ -81,6 +81,8 @@ export default {
                 this.activeIndex = index === this.activeIndex ? null : index;
             }
             else {
+                this.activeIndex = index;
+                
 				if(this.layoutMode !== 'sidebar') {
 					const ink = this.getInk(event.currentTarget);
 					if (ink) {

@@ -195,13 +195,16 @@ export default {
         },
         onChangeLayoutMode(mode) {
             this.layoutMode = mode;
-            if(mode === 'horizontal') {
+            if(mode === 'sidebar') { 
+                this.sidebarActive = true;
+            }
+            else {
                 this.sidebarActive = false;
 
                 if(this.topbarTheme !== this.menuTheme) {
                     this.$emit('menu-theme', this.topbarTheme);
                 }
-            }
+            }   
         },
         onTopbarThemeChange(theme) {
             this.$emit('topbar-theme', theme);
