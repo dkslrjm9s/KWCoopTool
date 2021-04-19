@@ -37,31 +37,17 @@
                                     @include flex-direction-column();
                                 }
 
-                                ul {
-                                    // li {
-                                    //     &.active-menuitem {
-                                    //         ul {
-                                    //             li {
-                                    //                 &.active-menuitem {
-                                    //                     ul {
-                                                            &.layout-menu-leave-to {
-                                                                max-height: 0;
-                                                            }
-                                                    
-                                                            &.layout-menu-leave-from {
-                                                                max-height: 500px;
-                                                            }
-                                                    
-                                                            &.layout-menu-leave-active {
-                                                                overflow: hidden;
-                                                                transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
-                                                            }
-                                    //                     }
-                                    //                 }
-                                    //             }
-                                    //         }
-                                    //     }
-                                    // }
+                                .layout-menu-leave-to {
+                                    max-height: 0;
+                                }
+                        
+                                .layout-menu-leave-from {
+                                    max-height: 1000px;
+                                }
+                        
+                                .layout-menu-leave-active {
+                                    overflow: hidden;
+                                    transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
                                 }
                             }
                         }
@@ -109,6 +95,22 @@
                                 > div {
                                     display: none;
                                 }
+    
+                                > ul {
+                                    &.layout-menu-enter-from{
+                                        opacity: 0;
+                                        transform: none;
+                                    }
+    
+                                    &.layout-menu-leave-to {
+                                        opacity: 0;
+                                    }
+    
+                                    &.layout-menu-leave-active,
+                                    &.layout-menu-enter-active {
+                                        transition: none;
+                                    }
+                                }
                             }
 
                             > ul {
@@ -129,46 +131,6 @@
                                     @include nested-submenu-indents(10, 2, 10);
                                 }
                             }
-                        }
-
-                        .layout-root-menuitem {
-                            .layout-menu-leave-to {
-                                overflow: hidden;
-                                display: none;
-                                transform: none;
-                            }
-                    
-                            .layout-menu-leave-active {
-                                overflow: hidden;
-                                transform: none;
-                            }
-
-                            // ul {
-                            //     li {
-                            //         &.active-menuitem {
-                            //             // ul {
-                            //             //     li {
-                            //             //         &.active-menuitem {
-                            //                         ul {
-                            //                             &.layout-menu-leave-to {
-                            //                                 max-height: 0;
-                            //                             }
-                                                
-                            //                             &.layout-menu-leave-from {
-                            //                                 max-height: 500px;
-                            //                             }
-                                                
-                            //                             &.layout-menu-leave-active {
-                            //                                 overflow: hidden;
-                            //                                 transition: max-height 0.45s cubic-bezier(0, 1, 0, 1);
-                            //                             }
-                            //                         }
-                            //             //         }
-                            //             //     }
-                            //             // }
-                            //         }
-                            //     }
-                            // }
                         }
                     }
                 }
