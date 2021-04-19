@@ -7,7 +7,7 @@
                 </div>
             </div>
 
-            <div class="p-col-12">
+            <div class="p-col-12 p-pb-0">
                 <div class="p-grid">
                     <div class="p-col">
                         <div class="card overview-box white">
