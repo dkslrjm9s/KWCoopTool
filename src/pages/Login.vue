@@ -6,7 +6,7 @@
                 <img src="assets/layout/images/logo-freya-single.svg" alt="freya-layout" />
             </a>
             <InputText id="email" placeholder="Email" />
-            <Password id="password" placeholder="Password" />
+            <Password id="password" placeholder="Password" :feedback="false" />
             <Button label="LOGIN" type="button" ></button>
             <a href="#">forget password?</a>
             <p>Don’t you have an account, <a href="#">sign up</a></p>
