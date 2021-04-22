@@ -5,9 +5,9 @@
                 <a tabindex="0" class="menu-button" @click="onMenuButtonClick">
                     <i class="pi pi-bars"></i>
                 </a>
-                <a tabindex="0" id="logo-link" class="layout-topbar-logo" @click="onMenuButtonClick">
+                <router-link id="logo-link" class="layout-topbar-logo" to="/">
                     <img :src="'assets/layout/images/logo-' + (topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'" alt="freya-layout"/>
-                </a>
+                </router-link>
             </div>
 
             <AppMenu :layoutMode="layoutMode" :sidebarActive="sidebarActive" :sidebarStatic="sidebarStatic" :menuActive="menuActive" :mobileMenuActive="mobileMenuActive" 
@@ -24,7 +24,7 @@
                         <div class="search-input-wrapper" @click="onTopbarSearchClick">
                             <span class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
-                                <InputText type="text" placeholder="Search..." @keydown="onInputKeydown" />
+                                <InputText ref="desktopInput" type="text" placeholder="Search..." @keydown="onInputKeydown" />
                             </span>
                         </div>
 
@@ -32,7 +32,7 @@
                             <div class="search-input-wrapper p-fluid" style="width: 100%" @click="onTopbarSearchClick">
                                 <span class="p-input-icon-left">
                                     <i class="pi pi-search"></i>
-                                    <InputText type="text" placeholder="Search..." @keydown="onInputKeydown" />
+                                    <InputText ref="phoneInput" type="text" placeholder="Search..." @keydown="onInputKeydown" />
                                 </span>
                             </div>
                         </ul>
@@ -119,6 +119,7 @@ export default {
         },
         onTopbarSearchToggle(event) {
             this.$emit('topbar-search-toggle', event);
+            this.onSearchFocus();
         },
         onTopbarSearchClick(event) {
             this.$emit("topbar-search-click", event);
@@ -142,6 +143,16 @@ export default {
         },
         onSidebarMouseLeave() {
             this.$emit("sidebar-mouse-leave");
+        }, 
+        onSearchFocus() {
+            if(window.innerWidth >= 576) {
+                this.$refs.desktopInput.$el.focus();
+            }
+            else {
+                this.$nextTick(function() {
+                    this.$refs.phoneInput.$el.focus();
+                })
+            }
         }
     }, 
     components: { 
