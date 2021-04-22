@@ -105,3 +105,10 @@ export default {
     }
 }
 </script>
+
+<style scoped lang="scss">
+    ::v-deep(.p-chips .p-chips-token) {
+		background-color: var(--primary-color);
+		color: var(--primary-color-text)
+	}
+</style>
