@@ -234,4 +234,8 @@
     ::v-deep(.custom-skeleton ul) {
         list-style: none;
     }
+
+    ::v-deep(.p-chip .pi-chip-remove-icon) {
+        margin-left: .25rem;
+    }
 </style>
