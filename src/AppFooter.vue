@@ -6,18 +6,18 @@
                     <div class="p-col-6 ">
                         <span class="footer-menutitle">SITE MAP</span>
                         <ul>
-                            <li><a href="/">Dashboard</a></li>
-                            <li><a href="/crud">Crud</a></li>
-                            <li><a href="/invoice">Invoice</a></li>
-                            <li><a href="/help">Help</a></li>
+                            <li><router-link to="/">Dashboard</router-link></li>
+                            <li><router-link to="/crud">Crud</router-link></li>
+                            <li><router-link to="/invoice">Invoice</router-link></li>
+                            <li><router-link to="/help">Help</router-link></li>
                         </ul>
                     </div>
                     <div class="p-col-6">
                         <span class="footer-menutitle"></span>
                         <ul>
-                            <li><a href="/calendar">Calendar</a></li>
-                            <li><a href="/widgets">Widgets</a></li>
-                            <li><a href="/documentation">Documentation</a></li>
+                            <li><router-link to="/calendar">Calendar</router-link></li>
+                            <li><router-link to="/widgets">Widgets</router-link></li>
+                            <li><router-link to="/documentation">Documentation</router-link></li>
                             <li><a href="https://www.primefaces.org/store">Buy Now</a></li>
                         </ul>
                     </div>
