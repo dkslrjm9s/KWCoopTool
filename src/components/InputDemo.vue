@@ -48,7 +48,7 @@
 				<Textarea placeholder="Your Message" :autoResize="true" rows="3" cols="30" />
 
 				<h5>AutoComplete</h5>
-				<AutoComplete placeholder="Search" id="dd" :dropdown="true" :multiple="true" v-model="selectedAutoValue" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="name"/>
+				<AutoComplete placeholder="Search" :dropdown="true" :multiple="true" v-model="selectedAutoValue" :suggestions="autoFilteredValue" @complete="searchCountry($event)" field="name"/>
 
 				<h5>Calendar</h5>
 				<Calendar :showIcon="true" :showButtonBar="true" v-model="calendarValue"></Calendar>
@@ -341,5 +341,8 @@
 	::v-deep(.p-chips .p-chips-token) {
 		background-color: var(--primary-color);
 		color: var(--primary-color-text)
+	}
+	::v-deep(.p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-token) {
+		margin: 0.15rem 0.5rem 0.15rem 0;
 	}
 </style>
