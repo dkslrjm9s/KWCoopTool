@@ -101,7 +101,7 @@
 				<h4>Articles</h4>
 				<p>Recent articles from our team.</p>
 				<div class="blog-posts">
-					<div class="blog-post">
+					<div class="blog-post" :style="darkModeBorder">
 						<div class="blog-text">
 							<h5>Building Revenue With Confidence</h5>
 							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
@@ -112,7 +112,7 @@
 						</div>
 					</div>
 
-					<div class="blog-post">
+					<div class="blog-post" :style="darkModeBorder">
 						<div class="blog-text">
 							<h5>Latest Marketing Trends</h5>
 							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
@@ -123,7 +123,7 @@
 						</div>
 					</div>
 
-					<div class="blog-post">
+					<div class="blog-post" :style="darkModeBorder">
 						<div class="blog-text">
 							<h5>How To Reach Your Audience</h5>
 							<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
@@ -142,6 +142,14 @@
 
 <script>
 	export default {
+		computed: {
+			darkModeBorder() {
+				if(this.$appState.colorScheme === 'dark') {
+					return {'borderColor': '#545B67'};
+				}
+				return '';
+			}
+		}
 	}
 </script>
 
