@@ -340,7 +340,7 @@
 	}
 	::v-deep(.p-chips .p-chips-token) {
 		background-color: var(--primary-color);
-		color: var(--primary-color-text)
+		color: var(--primary-color-text);
 	}
 	::v-deep(.p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-token) {
 		margin: 0.15rem 0.5rem 0.15rem 0;
