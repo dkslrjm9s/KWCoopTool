@@ -19,11 +19,11 @@
 							paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown" :rowsPerPageOptions="[5,10,25]"
 							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products" responsiveLayout="scroll">
 					<template #header>
-						<div class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+						<div class="table-header p-d-flex p-flex-column p-flex-md-row p-jc-md-between p-ai-start p-ai-md-center">
 							<h5 class="p-mb-2 p-m-md-0">Manage Products</h5>
 							<span class="p-input-icon-left">
                                 <i class="pi pi-search" />
-                                <InputText v-model="filters['global']" placeholder="Search..." />
+                                <InputText v-model="filters['global'].value" placeholder="Search..." />
                             </span>
 						</div>
 					</template>
@@ -174,6 +174,7 @@
 </template>
 
 <script>
+import {FilterMatchMode} from 'primevue/api';
 import ProductService from '../service/ProductService';
 
 export default {
@@ -197,6 +198,7 @@ export default {
 	productService: null,
 	created() {
 		this.productService = new ProductService();
+		this.initFilters();
 	},
 	mounted() {
 		this.productService.getProducts().then(data => this.products = data);
@@ -279,7 +281,12 @@ export default {
 			this.deleteProductsDialog = false;
 			this.selectedProducts = null;
 			this.$toast.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
-		}
+		},
+		initFilters() {
+            this.filters = {
+                'global': {value: null, matchMode: FilterMatchMode.CONTAINS},
+            }
+        }
 	}
 }
 </script>
