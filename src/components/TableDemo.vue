@@ -58,7 +58,7 @@
                         </template>
                         <template #filter="{filterModel}">
                             <div class="p-mb-3 p-text-bold">Agent Picker</div>
-                            <MultiSelect v-model="filterModel.value" :options="representatives" optionLabel="name" placeholder="Any" class="p-column-filter">
+                            <MultiSelect v-model="filterModel.value" :options="representatives" optionLabel="name" placeholder="Any" class="p-column-filter" style="width: 12rem">
                                 <template #option="slotProps">
                                     <div class="p-multiselect-representative-option">
                                         <img :alt="slotProps.option.name" :src="'assets/demo/images/avatar/' + slotProps.option.image" width="32" style="vertical-align: middle" />
