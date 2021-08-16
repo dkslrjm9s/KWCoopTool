@@ -64,10 +64,10 @@
 			<div class="card">
 				<h5>Templating</h5>
                 <Button type="button" class="p-mr-2 p-mb-2 p-px-3">
-                    <img alt="logo" src="../assets/images/logo-white.svg" style="width: 1.5rem"/>
+                    <img alt="logo" src="assets/demo/images/logo-white.svg" style="width: 1.5rem"/>
                 </Button>
                 <Button type="button" class="p-button-outlined p-button-success p-mr-2 p-mb-2">
-                    <img alt="logo" src="../assets/images/logo.svg" style="width: 1.5rem" />
+                    <img alt="logo" src="assets/demo/images/logo.svg" style="width: 1.5rem" />
                     <span class="p-ml-2 p-text-bold">PrimeVue</span>
                 </Button>
 			</div>
