@@ -534,6 +534,7 @@ export default {
                         backgroundColor: [
                             'rgba(255, 169, 40, .2)'
                         ],
+                        tension: .4
                     }
                 ]
             },
@@ -617,6 +618,7 @@ export default {
                         borderWidth: 4,
                         fill: true,
                         backgroundColor: [backgroundColor],
+                        tension: .4
                     }
                 ]
             }
