@@ -51,6 +51,14 @@ const routes = [
         },
     },
     {
+        path: '/speeddial',
+        name: 'speeddial',
+        component: () => import('./components/SpeedDialDemo.vue'),
+        meta: {
+            breadcrumb: [{ parent: 'UI Kit', label: 'Speed Dial' }],
+        },
+    },
+    {
         path: '/table',
         name: 'table',
         component: () => import('./components/TableDemo.vue'),
