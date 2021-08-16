@@ -234,9 +234,6 @@
     ::v-deep(.custom-skeleton ul) {
         list-style: none;
     }
-    ::v-deep(.p-chip .pi-chip-remove-icon) {
-        margin-left: .25rem;
-    }
     ::v-deep(.custom-chip) {
         background-color: var(--primary-color);
 		color: var(--primary-color-text);
