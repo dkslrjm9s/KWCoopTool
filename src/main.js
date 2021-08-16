@@ -95,11 +95,6 @@ import 'primeicons/primeicons.css';
 import 'prismjs/themes/prism-coy.css';
 import './App.scss';
 
-router.beforeEach(function(to, from, next) {
-    window.scrollTo(0, 0);
-    next();
-});
-
 const app = createApp({
     render () { return h(AppWrapper) }
 });
