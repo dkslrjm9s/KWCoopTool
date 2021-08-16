@@ -138,7 +138,7 @@ export default {
             return this.$primevue.config.ripple;
         },
         inputStyle() {
-            return this.$appState.inputStyle;
+            return this.$primevue.config.inputStyle;
         },
         d_menuTheme: {
             get() {
@@ -185,7 +185,7 @@ export default {
             this.$emit("menu-theme", scheme);
         },
         onChange(value) {
-            this.$appState.inputStyle = value;
+            this.$primevue.config.inputStyle = value;
         },
         onRippleChange(value) {
             this.$primevue.config.ripple = value;

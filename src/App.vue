@@ -73,7 +73,7 @@ export default {
                     "layout-slim": this.layoutMode === "slim",
                     "layout-rightpanel-active": this.rightMenuActive,
                     'layout-mobile-active': this.staticMenuMobileActive,
-                    "p-input-filled": this.$appState.inputStyle === "filled",
+                    "p-input-filled": this.$primevue.config.inputStyle === "filled",
                     "p-ripple-disabled": !this.$primevue.config.ripple,
                 },
                 "layout-menu-" + this.menuTheme + ' layout-topbar-' + this.topbarTheme
