@@ -7,7 +7,7 @@
                 </a>
                 <InputText id="email" placeholder="Email" />
                 <Password id="password" placeholder="Password" :feedback="false" />
-                <Button label="LOGIN" type="button" ></button>
+                <Button label="LOGIN" type="button"></Button>
                 <a href="#">forget password?</a>
                 <p>Don’t you have an account, <a href="#">sign up</a></p>
             </div>
