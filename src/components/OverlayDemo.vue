@@ -36,7 +36,7 @@
 				<div class="p-grid p-formgrid">
 					<div class="p-col-6">
 						<Button type="button" label="Image" @click="toggle" class="p-button-success"/>
-						<OverlayPanel ref="op" appendTo="body" :showCloseIcon="true" style="width: 300px" :breakpoints="{'960px': '75vw', '640px': '100vw'}">
+						<OverlayPanel ref="op" appendTo="body" :showCloseIcon="true" :breakpoints="{'960px': '75vw', '640px': '100vw'}">
 							<img src="assets/demo/images/nature/nature9.jpg" alt="Nature 9" />
 						</OverlayPanel>
 					</div>
