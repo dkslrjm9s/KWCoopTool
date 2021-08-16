@@ -1,5 +1,4 @@
-import { createApp, h } from 'vue';
-import { reactive } from 'vue';
+import { createApp, h, reactive } from 'vue';
 import router from './router';
 import AppWrapper from './AppWrapper.vue';
 import PrimeVue from 'primevue/config';
@@ -92,9 +91,6 @@ import 'primevue/resources/primevue.min.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import 'prismjs/themes/prism-coy.css';
-import '@fullcalendar/core/main.min.css';
-import '@fullcalendar/daygrid/main.min.css';
-import '@fullcalendar/timegrid/main.min.css';
 import './App.scss';
 
 router.beforeEach(function(to, from, next) {
