@@ -2,30 +2,30 @@
 	<div class="p-grid p-fluid">
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
-				<h5 class="centerText">Linear Chart</h5>
+				<h5>Linear Chart</h5>
 				<Chart type="line" :data="lineData" :options="chartsOptions"></Chart>
 			</div>		
-			<div class="card">
-				<h5 class="centerText">Pie Chart</h5>
-				<Chart type="pie" :data="pieData" :options="chartsOptions2"></Chart>
+			<div class="card p-d-flex p-flex-column p-ai-center">
+				<h5 class="p-as-start">Pie Chart</h5>
+				<Chart type="pie" :data="pieData" :options="chartsOptions2" style="width: 50%"></Chart>
 			</div>		
-			<div class="card">
-				<h5 class="centerText">Polar Area Chart</h5>
-				<Chart type="polarArea" :data="polarData" :options="chartsOptions2"></Chart>
+			<div class="card p-d-flex p-flex-column p-ai-center">
+				<h5 class="p-as-start">Polar Area Chart</h5>
+				<Chart type="polarArea" :data="polarData" :options="chartsOptions2" style="width: 50%"></Chart>
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
-				<h5 class="centerText">Bar Chart</h5>
+				<h5>Bar Chart</h5>
 				<Chart type="bar" :data="barData" :options="chartsOptions"></Chart>
 			</div>		
-			<div class="card">
-				<h5 class="centerText">Doughnut Chart</h5>
-				<Chart type="doughnut" :data="pieData" :options="chartsOptions2"></Chart>
+			<div class="card p-d-flex p-flex-column p-ai-center">
+				<h5 class="p-as-start">Doughnut Chart</h5>
+				<Chart type="doughnut" :data="pieData" :options="chartsOptions2" style="width: 50%"></Chart>
 			</div>		
-			<div class="card">
-				<h5 class="centerText">Radar Chart</h5>
-				<Chart type="radar" :data="radarData" :options="chartsOptions2"></Chart>
+			<div class="card p-d-flex p-flex-column p-ai-center">
+				<h5 class="p-as-start">Radar Chart</h5>
+				<Chart type="radar" :data="radarData" :options="chartsOptions2" style="width: 50%"></Chart>
 			</div>
 		</div>
 	</div>
@@ -133,10 +133,12 @@ export default {
 				]
 			},
 			chartsOptions: {
-				legend: {
-					display: true,
-					labels: {
-						fontColor: '#A0A7B5'
+				plugins: {
+					legend: {
+						display: true,
+						labels: {
+							color: '#A0A7B5'
+						}
 					}
 				},
 				responsive: true,
@@ -160,12 +162,13 @@ export default {
 				}
 			},
 			chartsOptions2: {
-				legend: {
-					display: true,
-					labels: {
-						fontColor: '#A0A7B5'
-					}
-				},
+				plugins: {
+                    legend: {
+                        labels: {
+                            color: '#A0A7B5'
+                        }
+                    }
+                },
 				responsive: true
 			}
 		}
