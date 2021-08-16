@@ -2,6 +2,7 @@
 	<div class="p-grid">
 		<div class="p-col-12">
 			<div class="card">
+				<h5>Calendar</h5>
 				<FullCalendar :events="events" :options="options" />
 
 				<Dialog v-model:visible="eventDialog" :style="{width: '450px'}" header="Event Details" :modal="true" :closable="true">
@@ -45,23 +46,19 @@ export default {
 			clickedEvent: null,
 			changedEvent: {title:'', start: null, end:'', allDay: null},
 			options: {
-				plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
-				defaultDate: '2023-01-01',
-				header: {
-					left: 'prev,next',
-					center: 'title',
-					right: 'dayGridMonth,timeGridWeek,timeGridDay'
-				},
-				editable: true,
-				eventClick: (e) => {
-					this.eventDialog = true;
-					this.clickedEvent = e.event;
-					this.changedEvent.title = this.clickedEvent.title;
-					this.changedEvent.start = this.clickedEvent.start;
-					this.changedEvent.end = this.clickedEvent.end;
-				}
-			},
-			events: null
+                plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
+                initialDate : '2023-01-01',
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                editable: true,
+                selectable:true, 
+                selectMirror: true, 
+                dayMaxEvents: true
+            },
+            events: null
 		};
 	},
 	eventService: null,
