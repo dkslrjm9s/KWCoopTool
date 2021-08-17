@@ -716,6 +716,7 @@ $inputSwitchSliderOnHoverBg:$primaryDarkColor !default;
 $inputSwitchHandleOnBg:$shade000 !default;
 
 //panel
+$panelHeaderBorderColor:$shade300 !default;
 $panelHeaderBorder:1px solid $shade300 !default;
 $panelHeaderBg:$shade100 !default;
 $panelHeaderTextColor:$shade700 !default;
@@ -727,6 +728,7 @@ $panelHeaderHoverBg:$shade200 !default;
 $panelHeaderHoverBorderColor:$shade300 !default;
 $panelHeaderTextHoverColor:$shade700 !default;
 
+$panelContentBorderColor: $shade300 !default;
 $panelContentBorder:1px solid $shade300 !default;
 $panelContentBg:$shade000 !default;
 $panelContentTextColor:$shade700 !default;
@@ -903,6 +905,7 @@ $pickListBreakpoint:769px !default;
 
 //schedule
 $fullCalendarEventBg:$primaryDarkColor !default;
+$fullCalendarEventBorderColor: $primaryDarkColor !default;
 $fullCalendarEventBorder:1px solid $primaryDarkColor !default;
 $fullCalendarEventTextColor:$primaryTextColor !default;
 
@@ -1163,6 +1166,29 @@ $skeletonAnimationBg:rgba(255,255,255,0.4);
 $splitterGutterBg:$shade100;
 $splitterGutterHandleBg:$shade300;
 
+//speeddial
+$speedDialButtonWidth: 4rem !default;
+$speedDialButtonHeight: 4rem !default;
+$speedDialButtonIconFontSize: 1.3rem !default;
+$speedDialActionWidth: 3rem !default;
+$speedDialActionHeight: 3rem !default;
+$speedDialActionBg: $shade700 !default;
+$speedDialActionHoverBg: $shade800 !default;
+$speedDialActionTextColor: #fff !default;
+$speedDialActionTextHoverColor: #fff !default;
+
+//dock
+$dockActionWidth: 4rem !default;
+$dockActionHeight: 4rem !default;
+$dockItemPadding: .5rem !default;
+$dockCurrentItemMargin: 1.5rem !default;
+$dockFirstItemsMargin: 1.3rem !default;
+$dockSecondItemsMargin: 0.9rem !default;
+$dockBg: rgba(255,255,255,.1) !default;
+$dockBorder: 1px solid rgba(255,255,255,0.2) !default;
+$dockPadding: .5rem .5rem !default;
+$dockBorderRadius: .5rem !default;
+
 :root {
     --surface-a:#{$shade000};
     --surface-b:#{$shade100};
@@ -1189,8 +1215,25 @@ $splitterGutterHandleBg:$shade300;
     --surface-700: #616161;
     --surface-800: #424242;
     --surface-900: #212121;
+    --gray-50: #FAFAFA;
+    --gray-100: #F5F5F5;
+    --gray-200: #EEEEEE;
+    --gray-300: #E0E0E0;
+    --gray-400: #BDBDBD;
+    --gray-500: #9E9E9E;
+    --gray-600: #757575;
+    --gray-700: #616161;
+    --gray-800: #424242;
+    --gray-900: #212121;
     --content-padding:#{$panelContentPadding};
     --inline-spacing:#{$inlineSpacing};
+    --border-radius:#{$borderRadius};
+    --surface-ground:#f8f9fa;
+    --surface-section:#ffffff;
+    --surface-card:#ffffff;
+    --surface-overlay:#ffffff;
+    --surface-border:#dee2e6;
+    --surface-hover: #e9ecef;
 }
 
 </code></pre>
