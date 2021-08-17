@@ -31,7 +31,6 @@
 		"axios": "^0.21.1",
 		"chart.js": "3.3.2",
 		"core-js": "^3.6.5",
-		"dart-sass": "^1.25.0",
 		"primeflex": "2.0.0",
 		"primeicons": "4.1.0",
 		"primevue": "3.6.4",
