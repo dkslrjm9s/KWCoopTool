@@ -65,41 +65,31 @@
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Sidebar</h5>
+				<Button icon="pi pi-arrow-right" @click="visibleLeft = true" class="p-mr-2" />
+				<Button icon="pi pi-arrow-left" @click="visibleRight = true" class="p-mr-2"  />
+				<Button icon="pi pi-arrow-down" @click="visibleTop = true" class="p-mr-2"  />
+				<Button icon="pi pi-arrow-up" @click="visibleBottom = true" class="p-mr-2"  />
+				<Button icon="pi pi-th-large" @click="visibleFull = true"  />
+
 				<Sidebar v-model:visible="visibleLeft" :baseZIndex="1000">
-					<h4 style="fontWeight:normal">Left Sidebar</h4>
-					<Button type="button" @click="visibleLeft = false" label="Save" class="p-button-success" style="margin-right:.25em" />
-					<Button type="button" @click="visibleLeft = false" label="Cancel" class="p-button-secondary"/>
+					<h3>Left Sidebar</h3>
 				</Sidebar>
-
+				
 				<Sidebar v-model:visible="visibleRight" :baseZIndex="1000" position="right">
-					<h4 style="fontWeight:normal">Right Sidebar</h4>
-					<Button type="button" @click="visibleRight = false" label="Save" class="p-button-success" style="margin-right:.25em" />
-					<Button type="button" @click="visibleRight = false" label="Cancel" class="p-button-secondary"/>
+					<h3>Right Sidebar</h3>
 				</Sidebar>
-
+				
 				<Sidebar v-model:visible="visibleTop" :baseZIndex="1000" position="top">
-					<h4 style="fontWeight:normal">Top Sidebar</h4>
-					<Button type="button" @click="visibleTop = false" label="Save" class="p-button-success" style="margin-right:.25em" />
-					<Button type="button" @click="visibleTop = false" label="Cancel" class="p-button-secondary"/>
+					<h3>Top Sidebar</h3>
 				</Sidebar>
-
+				
 				<Sidebar v-model:visible="visibleBottom" :baseZIndex="1000" position="bottom">
-					<h4 style="fontWeight:normal">Bottom Sidebar</h4>
-					<Button type="button" @click="visibleBottom = false" label="Save" class="p-button-success" style="margin-right:.25em" />
-					<Button type="button" @click="visibleBottom = false" label="Cancel" class="p-button-secondary"/>
+					<h3>Bottom Sidebar</h3>
 				</Sidebar>
-
+				
 				<Sidebar v-model:visible="visibleFull" :baseZIndex="1000" position="full">
-					<h4 style="fontWeight:normal">Full Screen</h4>
-					<Button type="button" @click="visibleFull = false" label="Save" class="p-button-success" style="margin-right:.25em" />
-					<Button type="button" @click="visibleFull = false" label="Cancel" class="p-button-secondary"/>
+					<h3>Full Screen</h3>
 				</Sidebar>
-
-				<Button icon="pi pi-arrow-right" @click="visibleLeft = true" class="p-button-warning" style="margin-right:.25em" />
-				<Button icon="pi pi-arrow-left" @click="visibleRight = true" class="p-button-warning" style="margin-right:.25em" />
-				<Button icon="pi pi-arrow-down" @click="visibleTop = true" class="p-button-warning" style="margin-right:.25em" />
-				<Button icon="pi pi-arrow-up" @click="visibleBottom = true" class="p-button-warning" style="margin-right:.25em" />
-				<Button icon="pi pi-external-link" @click="visibleFull = true" class="p-button-warning"/>
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
