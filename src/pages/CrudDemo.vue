@@ -337,4 +337,14 @@ export default {
 			color: #8A5340;
 		}
 	}
+
+	@media screen and (max-width: 960px) {
+		::v-deep(.p-toolbar) {
+			flex-wrap: wrap;
+		
+			.p-button {
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
 </style>
