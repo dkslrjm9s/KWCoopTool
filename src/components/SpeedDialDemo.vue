@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Toast />
         <div class="card">
             <h5>Linear</h5>
             <div class="speeddial-linear-demo" :style="{ position: 'relative', height: '500px' }">
