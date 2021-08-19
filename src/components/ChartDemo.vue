@@ -25,7 +25,7 @@
 			</div>		
 			<div class="card p-d-flex p-flex-column p-ai-center">
 				<h5 class="p-as-start">Radar Chart</h5>
-				<Chart type="radar" :data="radarData" :options="chartsOptions2" style="width: 50%"></Chart>
+				<Chart type="radar" :data="radarData" style="width: 50%"></Chart>
 			</div>
 		</div>
 	</div>
@@ -145,22 +145,22 @@ export default {
 				},
 				responsive: true,
 				scales: {
-					yAxes: [{
+					y: {
 						ticks: {
-							fontColor: '#A0A7B5'
+							color: '#A0A7B5'
 						},
-						gridLines: {
+						grid: {
 							color:  'rgba(160, 167, 181, .3)',
 						}
-					}],
-					xAxes: [{
+					},
+					x: {
 						ticks: {
-							fontColor: '#A0A7B5'
+							color: '#A0A7B5'
 						},
-						gridLines: {
+						grid: {
 							color:  'rgba(160, 167, 181, .3)',
 						}
-					}],
+					},
 				}
 			},
 			chartsOptions2: {

@@ -547,12 +547,12 @@ export default {
                     mode: 'index'
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: false,
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
                         display: false,
-                    }]
+                    }
                 }
             },
             chart2: null,
@@ -565,27 +565,27 @@ export default {
                     mode: 'index'
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: true,
-                        gridLines: {
-                            color:    'transparent',
+                        grid: {
+                            color: 'transparent',
                         },
                         ticks: {
-                            fontColor: '#BFC2C6'
+                            color: '#BFC2C6'
                         }
-                    }],
-                    yAxes: [{
+                    },
+                    y: {
                         display: true,
-                        gridLines: {
+                        grid: {
                             color:  'rgba(191, 194, 198, .45)',
                             borderDash:[5, 10],
                         },
                         ticks: {
-                            fontColor:  '#BFC2C6',
+                            color:  '#BFC2C6',
                             min: 0,
                             stepSize: 5,
                         }
-                    }]
+                    }
                 }
             }
         }
