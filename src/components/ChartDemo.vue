@@ -3,29 +3,29 @@
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Linear Chart</h5>
-				<Chart type="line" :data="lineData" :options="chartsOptions"></Chart>
+				<Chart type="line" :data="lineData" :options="lineOptions"></Chart>
 			</div>		
 			<div class="card p-d-flex p-flex-column p-ai-center">
 				<h5 class="p-as-start">Pie Chart</h5>
-				<Chart type="pie" :data="pieData" :options="chartsOptions2" style="width: 50%"></Chart>
+				<Chart type="pie" :data="pieData" :options="chartsOptions" style="width: 50%"></Chart>
 			</div>		
 			<div class="card p-d-flex p-flex-column p-ai-center">
 				<h5 class="p-as-start">Polar Area Chart</h5>
-				<Chart type="polarArea" :data="polarData" :options="chartsOptions2" style="width: 50%"></Chart>
+				<Chart type="polarArea" :data="polarData" :options="chartsOptions" style="width: 50%"></Chart>
 			</div>
 		</div>
 		<div class="p-col-12 p-lg-6">
 			<div class="card">
 				<h5>Bar Chart</h5>
-				<Chart type="bar" :data="barData" :options="chartsOptions"></Chart>
+				<Chart type="bar" :data="barData" :options="barOptions"></Chart>
 			</div>		
 			<div class="card p-d-flex p-flex-column p-ai-center">
 				<h5 class="p-as-start">Doughnut Chart</h5>
-				<Chart type="doughnut" :data="pieData" :options="chartsOptions2" style="width: 50%"></Chart>
+				<Chart type="doughnut" :data="pieData" :options="chartsOptions" style="width: 50%"></Chart>
 			</div>		
 			<div class="card p-d-flex p-flex-column p-ai-center">
 				<h5 class="p-as-start">Radar Chart</h5>
-				<Chart type="radar" :data="radarData" style="width: 50%"></Chart>
+				<Chart type="radar" :data="radarData" :options="radarOptions" style="width: 50%"></Chart>
 			</div>
 		</div>
 	</div>
@@ -134,7 +134,7 @@ export default {
 					}
 				]
 			},
-			chartsOptions: {
+			lineOptions: {
 				plugins: {
 					legend: {
 						display: true,
@@ -163,7 +163,34 @@ export default {
 					},
 				}
 			},
-			chartsOptions2: {
+			barOptions: {
+				plugins: {
+                    legend: {
+                        labels: {
+                            color: '#A0A7B5'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#A0A7B5'
+                        },
+                        grid: {
+                            color:  'rgba(160, 167, 181, .3)',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#A0A7B5'
+                        },
+                        grid: {
+                            color:  'rgba(160, 167, 181, .3)',
+                        }
+                    }
+                }
+			},
+			chartsOptions: {
 				plugins: {
                     legend: {
                         labels: {
@@ -172,6 +199,15 @@ export default {
                     }
                 },
 				responsive: true
+			},
+			radarOptions: {
+				plugins: {
+                    legend: {
+                        labels: {
+                            color: '#A0A7B5'
+                        }
+                    }
+                }
 			}
 		}
 	}
