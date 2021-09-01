@@ -34,7 +34,7 @@
 		"primeflex": "2.0.0",
 		"primeicons": "4.1.0",
 		"primevue": "3.6.4",
-		"prismjs": "^1.15.0",
+		"prismjs": "^1.9.0",
 		"sass": "^1.37.5",
 		"sass-loader": "^10.0.0",
 		"vue": "3.1.5",
