@@ -352,6 +352,6 @@
 		color: var(--primary-color-text);
 	}
 	::v-deep(.p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-token) {
-		margin: 0.15rem 0.5rem 0.15rem 0;
+		margin: 0.1rem 0.5rem 0.1rem 0;
 	}
 </style>
