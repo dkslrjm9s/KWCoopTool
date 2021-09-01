@@ -42,6 +42,15 @@
                 </Galleria>
             </div>
         </div>
+
+        <div class="p-col-12">
+            <div class="card">
+                <h5>Image</h5>
+                <div class="p-d-flex p-jc-center">
+                    <Image src="assets/demo/images/galleria/galleria11.jpg" alt="Image" width="250" preview />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
