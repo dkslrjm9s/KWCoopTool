@@ -373,7 +373,7 @@ $rightSidebarBg: #ffffff !default;
 </code></pre>
 
                 <h5>sass/variables/theme/_theme_light.scss</h5>
-				<p>Variables of the light component theme, see the <a href="https://www.primefaces.org/designer/api/primevue/2.0.1/">Theme Designer API</a> for documentation.</p>
+				<p>Variables of the light component theme, see the <a href="https://www.primefaces.org/designer/api/primevue/3.1.0/">Theme Designer API</a> for documentation.</p>
 
 
 <div style="height: 400px; overflow: auto">
@@ -899,10 +899,6 @@ $dataViewContentBorder:0 none !default;
 $dataViewListItemBorder:solid $shade200 !default;
 $dataViewListItemBorderWidth:0 0 1px 0 !default;
 
-//orderlist, picklist
-$orderListBreakpoint:769px !default;
-$pickListBreakpoint:769px !default;
-
 //schedule
 $fullCalendarEventBg:$primaryDarkColor !default;
 $fullCalendarEventBorderColor: $primaryDarkColor !default;
@@ -912,7 +908,7 @@ $fullCalendarEventTextColor:$primaryTextColor !default;
 //tree
 $treeContainerPadding:0.286rem !default;
 $treeNodePadding:0.143rem !default;
-$treeNodeContentPadding:.5rem !default;
+$treeNodeContentPadding:0 !default;
 $treeNodeChildrenPadding:0 0 0 1rem !default;
 $treeNodeIconColor:$shade600 !default;
 
@@ -991,8 +987,8 @@ $dialogFooterBorder:0 none !default;
 $dialogFooterPadding:0 1.5rem 1.5rem 1.5rem !default;
 
 //confirmpopup
-$confirmPopupContentPadding:$panelContentPadding;
-$confirmPopupFooterPadding:0 1rem 1rem 1rem;
+$confirmPopupContentPadding:$panelContentPadding !default;
+$confirmPopupFooterPadding:0 1rem 1rem 1rem !default;
 
 //tooltip
 $tooltipBg:$shade700 !default;
@@ -1133,38 +1129,38 @@ $galleriaThumbnailNavigatorWidth:2rem !default;
 $galleriaThumbnailNavigatorHeight:2rem !default;
 
 //divider
-$dividerHorizontalMargin:1rem 0;
-$dividerHorizontalPadding:0 1rem;
-$dividerVerticalMargin:0 1rem;
-$dividerVerticalPadding:1rem 0;
-$dividerSize:1px;
-$dividerColor:$shade300;
+$dividerHorizontalMargin:1rem 0 !default;
+$dividerHorizontalPadding:0 1rem !default;
+$dividerVerticalMargin:0 1rem !default;
+$dividerVerticalPadding:1rem 0 !default;
+$dividerSize:1px !default;
+$dividerColor:$shade300 !default;
 
 //avatar
-$avatarBg:$shade300;
-$avatarTextColor:$textColor;
+$avatarBg:$shade300 !default;
+$avatarTextColor:$textColor !default;
 
 //chip
-$chipBg:$shade300;
-$chipTextColor:$textColor;
-$chipBorderRadius: 16px;
+$chipBg:$shade300 !default;
+$chipTextColor:$textColor !default;
+$chipBorderRadius: 16px !default;
 
 //scrollTop
-$scrollTopBg:rgba(0,0,0,0.7);
-$scrollTopHoverBg:rgba(0,0,0,0.8);
-$scrollTopWidth:3rem;
-$scrollTopHeight:3rem;
-$scrollTopBorderRadius:50%;
-$scrollTopFontSize:1.5rem;
-$scrollTopTextColor:$shade100;
+$scrollTopBg:rgba(0,0,0,0.7) !default;
+$scrollTopHoverBg:rgba(0,0,0,0.8) !default;
+$scrollTopWidth:3rem !default;
+$scrollTopHeight:3rem !default;
+$scrollTopBorderRadius:50% !default;
+$scrollTopFontSize:1.5rem !default;
+$scrollTopTextColor:$shade100 !default;
 
 //skeleton
-$skeletonBg:$shade200;
-$skeletonAnimationBg:rgba(255,255,255,0.4);
+$skeletonBg:$shade200 !default;
+$skeletonAnimationBg:rgba(255,255,255,0.4) !default;
 
 //splitter
-$splitterGutterBg:$shade100;
-$splitterGutterHandleBg:$shade300;
+$splitterGutterBg:$shade100 !default;
+$splitterGutterHandleBg:$shade300 !default;
 
 //speeddial
 $speedDialButtonWidth: 4rem !default;
@@ -1188,6 +1184,20 @@ $dockBg: rgba(255,255,255,.1) !default;
 $dockBorder: 1px solid rgba(255,255,255,0.2) !default;
 $dockPadding: .5rem .5rem !default;
 $dockBorderRadius: .5rem !default;
+
+//image
+$imageMaskBg:rgba(0,0,0,0.9) !default;
+$imagePreviewToolbarPadding:1rem !default;
+$imagePreviewIndicatorColor:#f8f9fa !default;
+$imagePreviewIndicatorBg:rgba(0,0,0,0.5) !default;
+$imagePreviewActionIconBg:transparent !default;
+$imagePreviewActionIconColor:#f8f9fa !default;
+$imagePreviewActionIconHoverBg:rgba(255,255,255,0.1) !default;
+$imagePreviewActionIconHoverColor:#f8f9fa !default;
+$imagePreviewActionIconWidth:3rem !default;
+$imagePreviewActionIconHeight:3rem !default;
+$imagePreviewActionIconFontSize:1.5rem !default;
+$imagePreviewActionIconBorderRadius:50% !default;
 
 :root {
     --surface-a:#{$shade000};
