@@ -40,7 +40,6 @@ export default {
                         {label: "Float Label", icon: "pi pi-bookmark", to: "/floatlabel"},
                         {label: "Invalid State", icon: "pi pi-exclamation-circle", to: "/invalidstate"},
                         {label: "Button", icon: "pi pi-mobile", to: "/button", class: 'rotated-icon'},
-                        {label: "Speed Dial", icon: "pi pi-book", to: "/speeddial"},
                         {label: "Table", icon: "pi pi-table", to: "/table"},
                         {label: "List", icon: "pi pi-list", to: "/list"},
                         {label: "Tree", icon: "pi pi-share-alt", to: "/tree"},
