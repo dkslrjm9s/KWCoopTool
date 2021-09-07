@@ -8,5 +8,5 @@
 
 **Implemented New Features and Enhancements**
 
-- Upgrade to PrimeVue 3.7.0 and Vue 3.1.5
+- Upgrade to PrimeVue 3.7.1 and Vue 3.1.5
 - Styles of new PrimeVue components
