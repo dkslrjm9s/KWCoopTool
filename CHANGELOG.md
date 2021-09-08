@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.0
+## 2.0.0 (09.08.2021)
 
 **Migration Guide**
 
